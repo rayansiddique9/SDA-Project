@@ -22,14 +22,15 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
+            android:id="@+id/editText"
             android:layout_width="273dp"
             android:layout_height="48dp"
-            android:inputType="none"
-            android:backgroundTint="@color/white"
             android:background="@drawable/home_search_bar"
+            android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/ic_baseline_search_24"
-            android:padding="5dp"
             android:hint="Search for university"
+            android:inputType="none"
+            android:padding="5dp"
             android:textColorHint="#5555"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +39,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.727"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="344dp"
+            android:layout_height="71dp"
+            android:text="Find the \nPerfect University"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.747" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
