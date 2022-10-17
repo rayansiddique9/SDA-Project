@@ -60,6 +60,7 @@
         android:layout_height="50dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_school_24"
+        android:padding="5dp"
         android:paddingRight="10dp"
         android:text="Universities"
         android:textAlignment="center"
@@ -67,7 +68,7 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.123" />
@@ -79,6 +80,7 @@
         android:layout_marginEnd="36dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_calculate_24"
+        android:padding="4dp"
         android:paddingRight="10dp"
         android:text="Evaluate\nEligiblity"
         android:textAlignment="center"
@@ -98,7 +100,8 @@
         android:layout_marginBottom="4dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_rate_review_24"
-        android:paddingRight="10dp"
+        android:padding="5dp"
+
         android:text="Reviews"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -118,7 +121,7 @@
         android:layout_marginEnd="36dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_newspaper_24"
-        android:paddingRight="10dp"
+        android:padding="5dp"
         android:text="News"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -135,6 +138,7 @@
         android:layout_height="50dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_compare_24"
+        android:padding="4dp"
         android:paddingRight="10dp"
         android:text="Compare\nUniversities"
         android:textAlignment="center"
@@ -142,9 +146,10 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/review"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unis" />
+        app:layout_constraintTop_toBottomOf="@+id/unis"
+        app:layout_constraintVertical_bias="0.503" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
