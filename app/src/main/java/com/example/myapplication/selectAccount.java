@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class selectAccount extends AppCompatActivity{
 
     ArrayAdapter<String> adapter;
-    String []arr = {"Student", "University"};
+    String arr[] = {"Student", "University"};
     Spinner acc;
     Button b;
     String item;
