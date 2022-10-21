@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class selectAccount extends AppCompatActivity{
+public class signup_stu extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
     String []arr = {"Student", "University"};
@@ -18,27 +18,27 @@ public class selectAccount extends AppCompatActivity{
     Button b;
     String item;
     @Override
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_account);
+        setContentView(R.layout.activity_signup_stu);
 
         acc = findViewById(R.id.spinner);
-        b = findViewById(R.id.next);
+        b = findViewById(R.id.nextbtn);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         acc.setAdapter(adapter);
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(item == "Student") {
-                    Intent in = new Intent(selectAccount.this, loginCredentialsStudent.class);
+                if(item == "Student")
+                {
+                    Intent in = new Intent(signup_stu.this, signupdetail_stu.class);
                     startActivity(in);
                 }
                 else if(item == "University")
                 {
-                    Intent in = new Intent(selectAccount.this, loginUni.class);
+                    Intent in = new Intent(signup_stu.this, loginUni.class);
                     startActivity(in);
                 }
             }
@@ -46,8 +46,8 @@ public class selectAccount extends AppCompatActivity{
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-                  item = parent.getItemAtPosition(i).toString();
-              //  Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
+                item = parent.getItemAtPosition(i).toString();
+                //  Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -56,20 +56,5 @@ public class selectAccount extends AppCompatActivity{
 
             }
         });
-
-     /*   auto = findViewById(R.id.act);
-        arr = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,accounts);
-        auto.setAdapter(arr);
-        auto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
-
-            }
-        });*/
-
-
     }
-
 }

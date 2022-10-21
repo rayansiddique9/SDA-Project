@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button b;
+    private Button b2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         b = findViewById(R.id.button4);
+        b2=findViewById(R.id.button5);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in2 = new Intent(MainActivity.this, signup_stu.class);
+                startActivity(in2);
+            }
+        });
     }
 }
 
