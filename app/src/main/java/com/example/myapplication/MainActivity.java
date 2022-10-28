@@ -28,7 +28,7 @@ import java.sql.ResultSetMetaData;
 public class MainActivity extends AppCompatActivity {
     private Button b;
     private TextView textView;
-    private static String ip = "192.168.18.46";
+    private static String ip = "192.168.100.28";
     private static String port = "1433";
     private static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "mydb";
@@ -65,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-     /*   b.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(MainActivity.this, selectAccount.class);
                 startActivity(in);
 
             }
-        });*/
+        });
     }
 
     public void sqlButton(View view)
