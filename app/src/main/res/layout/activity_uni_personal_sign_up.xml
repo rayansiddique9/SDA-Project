@@ -92,8 +92,8 @@
         android:id="@+id/textView9"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:text="TextView"
+        android:text="Location"
         tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="415dp" />
+        tools:layout_editor_absoluteY="399dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
