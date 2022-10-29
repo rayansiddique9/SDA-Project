@@ -26,9 +26,9 @@ import java.sql.ResultSetMetaData;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button b;
+    private Button b, b2;
     private TextView textView;
-    private static String ip = "192.168.100.28";       //ALWAYS CHANGE IP TO CURRENT WIFI
+    private static String ip = "192.168.18.46";       //ALWAYS CHANGE IP TO CURRENT WIFI
     private static String port = "1433";
     private static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "mydb";
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView2);
         b = findViewById(R.id.button4);
+        b2 = findViewById(R.id.button5);
+
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -70,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent in = new Intent(MainActivity.this, selectAccount.class);
                 startActivity(in);
+
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+            Intent in = new Intent(MainActivity.this, University_SignUp.class);
+            startActivity(in);
 
             }
         });

@@ -1,7 +1,12 @@
+
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,16 +17,17 @@ import android.widget.Toast;
 
 public class uniList extends AppCompatActivity {
 
-    String unilist[] = {"FAST-NU Lahore", "LUMS", "GIKI", "NUST Islamabad"};
     String filter[] = {"Degree", "City", "Rating"};
     String sort[] = {"Ranking (Asc)", "Ranking (Dsc)"};
+    uniinfo unilist[] = {new uniinfo("FAST-NU Lahore", R.drawable.fastnulhr), new uniinfo("LUMS", R.drawable.lums), new uniinfo("GIKI", R.drawable.giki)};
     Spinner s1, s2;
     String item;
     ArrayAdapter<String> adapter1;
     ArrayAdapter<String> adapter2;
-    int unipic[] = {R.drawable.fastnulhr, R.drawable.lums, R.drawable.giki, R.drawable.nust};
+
 
     ListView listView;
+    CardView c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +42,29 @@ public class uniList extends AppCompatActivity {
 
 
         listView = findViewById(R.id.unilist);
-        adapterUniList ad = new adapterUniList(getApplicationContext(), unilist, unipic);
+        adapterUniList ad = new adapterUniList(this, R.layout.uni_list_row, unilist);
         listView.setAdapter(ad);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                uniinfo u = (uniinfo) adapterView.getItemAtPosition(i);
+                Toast.makeText(uniList.this,"Item: "+u.uniName, Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(uniList.this, uniPageStudent.class);
+                startActivity(in);
+            }
+        });
+
+
+
+
 
         s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 item = parent.getItemAtPosition(i).toString();
-                Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -57,7 +78,7 @@ public class uniList extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 item = parent.getItemAtPosition(i).toString();
-            //    Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -69,3 +90,5 @@ public class uniList extends AppCompatActivity {
     }
 
 }
+
+
