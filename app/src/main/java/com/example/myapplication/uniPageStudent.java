@@ -1,39 +1,63 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 
 public class uniPageStudent extends AppCompatActivity {
-    private String deptList[] = {"Department Of \n Computer Science", "Department Of \n Electrical Engineering", "Department Of \n Software Engineering", "Department Of \n Mechanical Engineering", "Department Of \n Data Science", "Department Of \n AI"};
-    private String degreeList[] = {"BS-CS", "BS-EE", "BS-SE", "MS-CS", "MS-AI"};
-    private ListView listView, listView2;
-    private ScrollView scroll;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+
+
+    private void loadFragment(Fragment fragment, boolean flag) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        if (!flag){
+            ft.add(R.id.container1 , fragment);
+        }else{
+            ft.replace(R.id.container1 , fragment);
+        }
+        ft.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni_page_student);
-
-        listView = findViewById(R.id.deptlist);
-        listView2 = findViewById(R.id.degreelist);
-     //   scroll = findViewById(R.id.sv);
 
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
@@ -48,35 +72,63 @@ public class uniPageStudent extends AppCompatActivity {
 
 
 
-
-        listView.setOnTouchListener(new View.OnTouchListener() {
+        loadFragment(new campusLife_frag(),false);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                int action = motionEvent.getAction();
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        view.getParent().requestDisallowInterceptTouchEvent(true);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        view.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if(id == R.id.menu_faculty)
+                {
+                    loadFragment(new faculty_frag(), true);
+                }
+                else if(id == R.id.menu_fees)
+                {
+                    loadFragment(new fees_frag(), true);
+                }
+                else if(id == R.id.menu_degree)
+                {
+                    loadFragment(new programsOffered_frag(), true);
+                }
+                else if(id == R.id.menu_alumni)
+                {
+                    loadFragment(new AlumniPlacement_frag(), true);
+                }
+                else if(id == R.id.menu_aid)
+                {
+                    loadFragment(new FinancialAid_frag(), true);
+                }
+                else if(id == R.id.menu_review)
+                {
+                    loadFragment(new Reviews_frag(), true);
                 }
 
-                view.onTouchEvent(motionEvent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+
                 return true;
             }
         });
 
 
-        adapterDeptList ad = new adapterDeptList(getApplicationContext(), deptList);
-        listView.setAdapter(ad);
-
-
-        adapterDegreeList ad2 = new adapterDegreeList(getApplicationContext(), degreeList);
-        listView2.setAdapter(ad2);
-
-
-
     }
+
+
+
+
+
+
+ /*   @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        Toast.makeText(uniPageStudent.this,"ANDER AAGYA", Toast.LENGTH_SHORT).show();
+        if(id == R.id.menu_fees)
+        {
+            Intent intent = new Intent(uniPageStudent.this, uniFees.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }*/
 
 }
