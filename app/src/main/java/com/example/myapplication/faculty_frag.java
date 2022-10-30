@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,16 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link homeFrag#newInstance} factory method to
+ * Use the {@link faculty_frag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class homeFrag extends Fragment {
-
-    private Button buni;
+public class faculty_frag extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +24,7 @@ public class homeFrag extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public homeFrag() {
+    public faculty_frag() {
         // Required empty public constructor
     }
 
@@ -38,11 +34,11 @@ public class homeFrag extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment homeFrag.
+     * @return A new instance of fragment faculty_frag.
      */
     // TODO: Rename and change types and number of parameters
-    public static homeFrag newInstance(String param1, String param2) {
-        homeFrag fragment = new homeFrag();
+    public static faculty_frag newInstance(String param1, String param2) {
+        faculty_frag fragment = new faculty_frag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -52,31 +48,17 @@ public class homeFrag extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home_frag, container, false);
-        buni = view.findViewById(R.id.unis);
-        buni.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(getContext(), uniList.class);
-                startActivity(in);
-
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_faculty_frag, container, false);
     }
 }

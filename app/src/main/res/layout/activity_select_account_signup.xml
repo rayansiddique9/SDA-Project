@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginCredentialsStudent">
+    tools:context=".selectAccount">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elegantTextHeight="true"
-        android:text="Enter Your Credentials"
+        android:text="Welcome to UniGrab"
         android:textAlignment="center"
         android:textColor="#555252"
         android:textSize="30sp"
@@ -24,8 +24,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="131dp"
-        android:layout_height="147dp"
+        android:layout_width="144dp"
+        android:layout_height="171dp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -34,45 +34,68 @@
         app:layout_constraintVertical_bias="0.397"
         app:srcCompat="@drawable/logo" />
 
+    <!--
+    <com.google.android.material.textfield.TextInputLayout
 
-    <EditText
-        android:id="@+id/stuEmail"
+        style="@style/Theme.MyApplication"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:layout_margin="16dp"
+        android:hint="Account"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <AutoCompleteTextView
+            android:id="@+id/act"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:inputType="none"
+            android:text="Select"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    -->
+
+    <Spinner
+        android:id="@+id/spinneracc"
+        android:layout_width="268dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:hint="Select"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.415" />
 
-    <EditText
-        android:id="@+id/stuPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Select Account"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/spinneracc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stuEmail"
-        app:layout_constraintVertical_bias="0.233" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.952" />
 
     <Button
-        android:id="@+id/loginStu"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="Let's Go!"
+        android:id="@+id/next2"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:text="Next"
         android:background="@drawable/signin_bg"
-        android:drawableLeft="@drawable/login_logo"
-        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textSize="25sp"
@@ -80,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stuPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/spinneracc" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
