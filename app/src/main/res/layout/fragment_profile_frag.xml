@@ -52,7 +52,8 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <EditText
+        <TextView
+            android:textSize="20dp"
             android:id="@+id/personFirstNameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +67,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <EditText
+        <TextView
+            android:textSize="20dp"
             android:id="@+id/personLastNameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +82,8 @@
             app:layout_constraintStart_toStartOf="@+id/personFirstNameEditText"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <EditText
+        <TextView
+            android:textSize="20dp"
             android:id="@+id/editTextDate"
             android:layout_width="108dp"
             android:layout_height="wrap_content"
@@ -95,7 +98,8 @@
             app:layout_constraintStart_toStartOf="@+id/personLastNameEditText"
             app:layout_constraintTop_toBottomOf="@+id/personLastNameEditText" />
 
-        <EditText
+        <TextView
+            android:textSize="20dp"
             android:id="@+id/editTextDate2"
             android:layout_width="63dp"
             android:layout_height="wrap_content"
@@ -110,22 +114,6 @@
             app:layout_constraintStart_toStartOf="@+id/personLastNameEditText"
             app:layout_constraintTop_toBottomOf="@+id/personLastNameEditText" />
 
-        <Button
-            android:id="@+id/submitButtonProfile"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/signin_bg"
-            android:text="Save&amp;Exit"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="normal|bold"
-            app:layout_constraintEnd_toEndOf="@+id/personLastNameEditText"
-            app:layout_constraintStart_toStartOf="@+id/personLastNameEditText"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

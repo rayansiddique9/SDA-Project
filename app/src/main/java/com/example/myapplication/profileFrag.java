@@ -64,19 +64,6 @@ public class profileFrag extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        Button buttonX = (Button)getView().findViewById(R.id.submitButtonProfile);
-        buttonX.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                Fragment fragment = new tasks();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(homeFrag, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
         return inflater.inflate(R.layout.fragment_profile_frag, container, false);
 
 
