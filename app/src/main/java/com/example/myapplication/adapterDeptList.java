@@ -38,8 +38,8 @@ public class adapterDeptList extends BaseAdapter {
 
     @Override
     public View getView(int i, View v, ViewGroup viewGroup) {
-        v = inflator.inflate(R.layout.activity_dept_list_row, null);
-        TextView tview = (TextView) v.findViewById(R.id.deptlistrow);
+        v = inflator.inflate(R.layout.dept_list_row, null);
+        TextView tview = (TextView) v.findViewById(R.id.parentDept);
         tview.setText(Listdept[i]);
         return v;
     }

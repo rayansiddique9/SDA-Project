@@ -7,6 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +22,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class fees_frag extends Fragment {
+
+    List<String> listdegree;
+    List<String> listfees;
+    Map<String,List<String>> feeslist;
+    ExpandableListView expandablelistview;
+    ExpandableListAdapter expandableListAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +72,72 @@ public class fees_frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fees_frag, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_fees_frag, container, false);
+
+
+        listdegree=new ArrayList<>();
+        createGroupList();
+        createCollection();
+        //-----------------------------//
+        expandablelistview=view.findViewById(R.id.expandableFees);
+        expandableListAdapter= new degreeParentListAdapter(this.getContext(),listdegree,feeslist);
+        expandablelistview.setAdapter(expandableListAdapter);
+        expandablelistview.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            int lastExpandedPosition=-1;
+            @Override
+            public void onGroupExpand(int i) {
+                if(lastExpandedPosition!=-1 && i!=lastExpandedPosition)
+                {
+                    expandablelistview.collapseGroup(lastExpandedPosition);
+                }
+                lastExpandedPosition=i;
+            }
+        });
+        expandablelistview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                String selected =expandableListAdapter.getChild(i,i1).toString();
+                Toast.makeText(getContext(),"Selected: " + selected,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        return view;
     }
+
+
+    private void createCollection() {
+        String degree1 = "Per Credit Hour Fees : "+"8500";
+        String degree2 = "Per Credit Hour Fees : "+"7500";
+        String degree3 = "Per Credit Hour Fees : "+"6000";
+        feeslist = new HashMap<String,List<String>>();
+        for(String group:listdegree)
+        {
+            if(group.equals("BS-CS")){
+                loadChild(degree1);
+            }
+            else if(group.equals("BS-SE")){
+                loadChild(degree2);
+            }
+            else {
+                loadChild(degree3);
+            }
+            feeslist.put(group,listfees);
+        }
+    }
+
+    private void loadChild(String degree) {
+        listfees = new ArrayList<>();
+        listfees.add(degree);
+    }
+
+    private void createGroupList(){
+        listdegree=new ArrayList<>();
+        listdegree.add("BS-CS");
+        listdegree.add("BS-SE");
+        listdegree.add("BS-EE");
+
+    }
+
 }

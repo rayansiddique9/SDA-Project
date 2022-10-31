@@ -4,26 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".deptListRow">
+>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-
-        >
 
         <TextView
-            android:id="@+id/degreelistrow"
+            android:id="@+id/childDegree"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:textAlignment="center"
             android:textSize="25dp"
             android:text="TextView"
-            android:padding="5dp"
+            android:gravity="center"
+            android:padding="2dp"
             />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </LinearLayout>

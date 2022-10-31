@@ -22,7 +22,7 @@ public class campusLife_frag extends Fragment {
     private String degreeList[] = {"BS-CS", "BS-EE", "BS-SE", "MS-CS", "MS-AI"};
     private ListView listView, listView2;
     private ScrollView scroll;
-
+    private int imagelist[] = {R.drawable.uni1, R.drawable.uni2, R.drawable.uni3, R.drawable.uni4, R.drawable.uni5, R.drawable.uni6};
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -70,8 +70,8 @@ public class campusLife_frag extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_campus_life_frag, container, false);
-        listView = view.findViewById(R.id.deptlist);
-        listView2 = view.findViewById(R.id.degreelist);
+        listView = view.findViewById(R.id.imageslist);
+    //    listView2 = view.findViewById(R.id.degreelist);
         scroll = view.findViewById(R.id.sv);
 
 
@@ -94,12 +94,12 @@ public class campusLife_frag extends Fragment {
         });
 
 
-        adapterDeptList ad = new adapterDeptList(this.getContext(), deptList);
+        AdapterCampusImage ad = new AdapterCampusImage(this.getContext(), imagelist);
         listView.setAdapter(ad);
 
 
-        adapterDegreeList ad2 = new adapterDegreeList(this.getContext(), degreeList);
-        listView2.setAdapter(ad2);
+   //     adapterDegreeList ad2 = new adapterDegreeList(this.getContext(), degreeList);
+    //    listView2.setAdapter(ad2);
 
         return view;
     }

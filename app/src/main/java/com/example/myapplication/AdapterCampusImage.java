@@ -8,22 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class adapterDegreeList extends BaseAdapter {
+public class AdapterCampusImage extends BaseAdapter {
     Context context;
-    String[] Listdegree;
+    int[] listimage;
     LayoutInflater inflator;
 
-    public adapterDegreeList(Context ctx, String[] degreeList)
+    public AdapterCampusImage(Context ctx, int[] imageList)
     {
         this.context = ctx;
-        this.Listdegree = degreeList;
+        this.listimage = imageList;
         inflator = LayoutInflater.from(ctx);
     }
 
-
     @Override
     public int getCount() {
-        return Listdegree.length;
+        return listimage.length;
     }
 
     @Override
@@ -38,9 +37,9 @@ public class adapterDegreeList extends BaseAdapter {
 
     @Override
     public View getView(int i, View v, ViewGroup viewGroup) {
-        v = inflator.inflate(R.layout.degree_list_row, null);
-        TextView tview = (TextView) v.findViewById(R.id.childDegree);
-        tview.setText(Listdegree[i]);
+        v = inflator.inflate(R.layout.campuslife_list_row, null);
+        ImageView iview = (ImageView) v.findViewById(R.id.campuslifeimage);
+        iview.setImageResource(listimage[i]);
         return v;
     }
 

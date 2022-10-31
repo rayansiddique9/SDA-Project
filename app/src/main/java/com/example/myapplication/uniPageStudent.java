@@ -102,6 +102,14 @@ public class uniPageStudent extends AppCompatActivity {
                 {
                     loadFragment(new Reviews_frag(), true);
                 }
+                else if(id == R.id.menu_eligibility)
+                {
+                    loadFragment(new Eligibility_frag(), true);
+                }
+                else if(id == R.id.menu_campus)
+                {
+                    loadFragment(new campusLife_frag(), true);
+                }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
 
