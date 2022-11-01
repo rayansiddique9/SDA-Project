@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private Button b;
     private Button b2;
 
-    private Button b, b2;
     private TextView textView;
     private static String ip = "192.168.18.46";       //ALWAYS CHANGE IP TO CURRENT WIFI
     private static String port = "1433";
@@ -50,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView2);
         b = findViewById(R.id.button4);
-
-        b2=findViewById(R.id.button5);
 
         b2 = findViewById(R.id.button5);
 
@@ -83,20 +80,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in2 = new Intent(MainActivity.this, signupdetail_stu.class);
-                startActivity(in2);
-            }
-        });
-
         b2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-            Intent in = new Intent(MainActivity.this, University_SignUp.class);
+            Intent in = new Intent(MainActivity.this, selectAccount_signup.class);
             startActivity(in);
 
             }

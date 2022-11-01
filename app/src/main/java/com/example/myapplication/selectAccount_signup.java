@@ -37,7 +37,7 @@ public class selectAccount_signup extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if(item == "Student") {
-                    Intent in = new Intent(selectAccount_signup.this, loginCredentialsStudent.class);
+                    Intent in = new Intent(selectAccount_signup.this, signupdetail_stu.class);
                     startActivity(in);
                 }
                 if(item == "University")

@@ -15,42 +15,62 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-
+            android:name=".educationalBgGrad"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".educationalbg_fsc"
-
-            android:name=".uniPageStudent"
-
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-
             android:name=".educationalBgStu"
-
-            android:name=".UniPersonalSignUp"
-
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-
             android:name=".signup_personalinfo_stu"
-
-            android:name=".University_SignUp"
-
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-
             android:name=".signupdetail_stu"
-
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".uniPageStudent"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".UniPersonalSignUp"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".University_SignUp"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".selectAccount_signup"
             android:exported="false">
             <meta-data
@@ -59,7 +79,6 @@
         </activity>
         <activity
             android:name=".uniList"
-
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
