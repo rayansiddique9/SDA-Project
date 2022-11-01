@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,28 +15,51 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+
             android:name=".educationalbg_fsc"
+
+            android:name=".uniPageStudent"
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+
             android:name=".educationalBgStu"
+
+            android:name=".UniPersonalSignUp"
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+
             android:name=".signup_personalinfo_stu"
+
+            android:name=".University_SignUp"
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
+
             android:name=".signupdetail_stu"
+
+            android:name=".selectAccount_signup"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".uniList"
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

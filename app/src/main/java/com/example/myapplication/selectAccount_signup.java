@@ -1,16 +1,20 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.helper.widget.Carousel;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class selectAccount extends AppCompatActivity{
+public class selectAccount_signup extends AppCompatActivity{
 
     ArrayAdapter<String> adapter;
     String arr[] = {"Student", "University"};
@@ -22,10 +26,10 @@ public class selectAccount extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_account);
+        setContentView(R.layout.activity_select_account_signup);
 
-        acc = findViewById(R.id.spinner);
-        b = findViewById(R.id.next);
+        acc = findViewById(R.id.spinneracc);
+        b = findViewById(R.id.next2);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         acc.setAdapter(adapter);
@@ -33,12 +37,12 @@ public class selectAccount extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if(item == "Student") {
-                    Intent in = new Intent(selectAccount.this, loginCredentialsStudent.class);
+                    Intent in = new Intent(selectAccount_signup.this, loginCredentialsStudent.class);
                     startActivity(in);
                 }
-                else if(item == "University")
+                if(item == "University")
                 {
-                    Intent in = new Intent(selectAccount.this, loginUni.class);
+                    Intent in = new Intent(selectAccount_signup.this, University_SignUp.class);
                     startActivity(in);
                 }
             }
@@ -46,7 +50,7 @@ public class selectAccount extends AppCompatActivity{
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-                  item = parent.getItemAtPosition(i).toString();
+                item = parent.getItemAtPosition(i).toString();
               //  Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
 
             }
