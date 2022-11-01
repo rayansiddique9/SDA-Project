@@ -10,17 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class signup_stu extends AppCompatActivity {
-
+public class educationalBgStu extends AppCompatActivity {
     ArrayAdapter<String> adapter;
-    String []arr = {"Student", "University"};
+    String []arr = {"FSc", "A Levels"};
     Spinner acc;
     Button b;
     String item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_stu);
+        setContentView(R.layout.activity_educational_bg_stu);
 
         acc = findViewById(R.id.spinner);
         b = findViewById(R.id.nextbtn);
@@ -31,16 +30,16 @@ public class signup_stu extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(item == "Student")
+                if(item == "FSc")
                 {
-                    Intent in = new Intent(signup_stu.this, signupdetail_stu.class);
+                    Intent in = new Intent(educationalBgStu.this, educationalbg_fsc.class);
                     startActivity(in);
                 }
-                else if(item == "University")
+                /*else if(item == "A Levels")
                 {
-                    Intent in = new Intent(signup_stu.this, loginUni.class);
+                    Intent in = new Intent(educationalBgStu.this, loginUni.class);
                     startActivity(in);
-                }
+                }*/
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
