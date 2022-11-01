@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 public class selectAccount extends AppCompatActivity{
 
-    ArrayAdapter<String> adapter;
-    String arr[] = {"Student", "University"};
-    Spinner acc;
-    Button b;
-    String item;
+    private ArrayAdapter<String> adapter;
+    private String arr[] = {"Student", "University"};
+    private Spinner acc;
+    private Button b;
+    private String item;
     @Override
 
 

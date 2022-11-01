@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +17,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AlumniPlacement_frag extends Fragment {
+
+
+    alumniInfo alumnilist[] = {new alumniInfo("Rayan", "Company: Poyon Workshop", "Batch 2020"), new alumniInfo("Raza", "Company: Cake Army", "Batch 2020"),new alumniInfo("Arez", "Company: Father n Chachu Shop", "Batch 2020"), new alumniInfo("Huzaifa", "Company: Zoo", "Batch 2020"), new alumniInfo("Arslan", "Company: Chaudry Catering", "Batch 2020")};
+    ListView listView;
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +65,16 @@ public class AlumniPlacement_frag extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alumni_placement_frag, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_alumni_placement_frag, container, false);
+        listView = view.findViewById(R.id.alumnilist);
+        adapterAlumni ad = new adapterAlumni(this.getContext(), R.layout.alumni_list_row, alumnilist);
+        listView.setAdapter(ad);
+
+        return view;
     }
 }

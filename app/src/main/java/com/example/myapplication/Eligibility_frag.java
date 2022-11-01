@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Eligibility_frag extends Fragment {
+
+    private ArrayAdapter<String> adapter;
+    private String arr[] = {"Bachelors", "Masters"};
+    private Spinner acc;
+    private Button b;
+    private String item;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +66,34 @@ public class Eligibility_frag extends Fragment {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eligibility_frag, container, false);
+        View view = inflater.inflate(R.layout.fragment_eligibility_frag, container, false);
+        acc = view.findViewById(R.id.spinnerprogram);
+        b = view.findViewById(R.id.btnEligibility);
+        adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_dropdown_item, arr);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        acc.setAdapter(adapter);
+      /*  b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(item == "Bachelors") {
+                    Intent in = new Intent(selectAccount.this, loginCredentialsStudent.class);
+                    startActivity(in);
+                }
+                else if(item == "Masters")
+                {
+                    Intent in = new Intent(selectAccount.this, loginUni.class);
+                    startActivity(in);
+                }
+            }
+        });*/
+
+
+
+
+        return view;
     }
 }
