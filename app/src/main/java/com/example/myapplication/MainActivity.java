@@ -26,6 +26,10 @@ import java.sql.ResultSetMetaData;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button b;
+    private Button b2;
+
     private Button b, b2;
     private TextView textView;
     private static String ip = "192.168.18.46";       //ALWAYS CHANGE IP TO CURRENT WIFI
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView2);
         b = findViewById(R.id.button4);
+
+        b2=findViewById(R.id.button5);
+
         b2 = findViewById(R.id.button5);
 
 
@@ -73,6 +80,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent in = new Intent(MainActivity.this, selectAccount.class);
                 startActivity(in);
 
+            }
+        });
+
+
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in2 = new Intent(MainActivity.this, signupdetail_stu.class);
+                startActivity(in2);
             }
         });
 
@@ -134,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         {
             textView.setText("Connection is null");
         }
+
     }
 
 
