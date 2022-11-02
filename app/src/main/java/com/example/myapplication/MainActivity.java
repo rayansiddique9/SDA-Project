@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button b2;
 
     private TextView textView;
-    private static String ip = "192.168.18.46";       //ALWAYS CHANGE IP TO CURRENT WIFI
+    private static String ip = "192.168.124.241";       //ALWAYS CHANGE IP TO CURRENT WIFI
     private static String port = "1433";
     private static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "mydb";

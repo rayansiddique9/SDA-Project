@@ -57,10 +57,10 @@
 
         <Button
             android:id="@+id/btnEligibility"
-            android:layout_width="228dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:background="@drawable/signin_bg"
-            android:text="Check Eligibility"
+            android:text="Next"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white"
             android:textSize="25dp"
@@ -71,20 +71,6 @@
             app:layout_constraintTop_toBottomOf="@+id/spinnerprogram"
             app:layout_constraintVertical_bias="0.517" />
 
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Status"
-            android:textSize="25dp"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            android:paddingTop="7dp"
-            android:background="#05f2fa"
-            app:layout_constraintBottom_toTopOf="@+id/spinnerprogram"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/program" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,24 +78,41 @@ public class Eligibility_frag extends Fragment {
         adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_dropdown_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         acc.setAdapter(adapter);
-      /*  b.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(item == "Bachelors") {
-                    Intent in = new Intent(selectAccount.this, loginCredentialsStudent.class);
+                  //  Toast.makeText(getContext(),"In bachelors ",Toast.LENGTH_SHORT).show();
+                    Intent in = new Intent(getActivity(), eligibilityFragBS_Page.class);
                     startActivity(in);
                 }
                 else if(item == "Masters")
                 {
-                    Intent in = new Intent(selectAccount.this, loginUni.class);
+                  //  Toast.makeText(getContext(),"In masters ",Toast.LENGTH_SHORT).show();
+                    Intent in = new Intent(getActivity(), eligibilityFragMS_Page.class);
                     startActivity(in);
                 }
             }
-        });*/
+        });
 
+        acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
+                item = parent.getItemAtPosition(i).toString();
+                //  Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
         return view;
     }
+
+
 }
