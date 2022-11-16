@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private Button b2;
 
     private TextView textView;
-    private static String ip = "192.168.124.241";       //ALWAYS CHANGE IP TO CURRENT WIFI
+    private static String ip = "10.0.2.2";       //ALWAYS CHANGE IP TO CURRENT WIFI
     private static String port = "1433";
     private static String Classes = "net.sourceforge.jtds.jdbc.Driver";
-    private static String database = "mydb";
+    private static String database = "UniGrab";
     private static String username = "sa";
     private static String password = "258369";
     private static String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database;
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
             textView.setText("Failure");
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+/*
         b2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+ */
     }
 
     public void sqlButton(View view)
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             Statement statement = null;
             try {
                 statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select * from person");
+                ResultSet resultSet = statement.executeQuery("select userName from [User]");
                 while(resultSet.next())
                 {
                     textView.setText(resultSet.getString(1));

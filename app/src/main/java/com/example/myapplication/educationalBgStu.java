@@ -12,7 +12,7 @@ import android.widget.Spinner;
 
 public class educationalBgStu extends AppCompatActivity {
     ArrayAdapter<String> adapter;
-    String []arr = {"FSc", "A Levels"};
+    String []arr = {"Bachelors", "Masters"};
     Spinner acc;
     Button b;
     String item;
@@ -30,16 +30,16 @@ public class educationalBgStu extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(item == "FSc")
+                if(item == "Bachelors")
                 {
                     Intent in = new Intent(educationalBgStu.this, educationalbg_fsc.class);
                     startActivity(in);
                 }
-                /*else if(item == "A Levels")
+                else if(item == "Masters")
                 {
-                    Intent in = new Intent(educationalBgStu.this, loginUni.class);
+                    Intent in = new Intent(educationalBgStu.this, educationalBgGrad.class);
                     startActivity(in);
-                }*/
+                }
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

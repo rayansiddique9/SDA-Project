@@ -33,7 +33,7 @@ public class educationalbg_fsc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent in = new Intent(educationalbg_fsc.this, loginUni.class);
+                Intent in = new Intent(educationalbg_fsc.this, uniList.class);
                 startActivity(in);
             }
         });

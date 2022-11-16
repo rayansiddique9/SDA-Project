@@ -18,6 +18,7 @@ import android.widget.Button;
 public class homeFrag extends Fragment {
 
     private Button buni;
+    private Button elg;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,6 +70,8 @@ public class homeFrag extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_frag, container, false);
         buni = view.findViewById(R.id.unis);
+        elg = view.findViewById(R.id.eligibility);
+
         buni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +80,16 @@ public class homeFrag extends Fragment {
 
             }
         });
+
+        elg.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getContext(), educationalBgStu.class);
+                startActivity(in);
+
+            }
+        });
+
         return view;
     }
 }
