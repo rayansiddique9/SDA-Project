@@ -8,7 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +24,9 @@ public class homeFrag extends Fragment {
 
     private Button buni;
     private Button elg;
+    private Button Search;
+    private AutoCompleteTextView act;
+    ArrayList<String> arrUnis = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,6 +79,25 @@ public class homeFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home_frag, container, false);
         buni = view.findViewById(R.id.unis);
         elg = view.findViewById(R.id.eligibility);
+        act = view.findViewById(R.id.autotext);
+        Search = view.findViewById(R.id.search);
+
+
+        arrUnis.add("Fast");
+        arrUnis.add("Comsats");
+        arrUnis.add("Lums");
+        arrUnis.add("Giki");
+        arrUnis.add("Nust");
+        arrUnis.add("VU");
+        arrUnis.add("UCP");
+        arrUnis.add("FCCU");
+        arrUnis.add("GCU");
+        ArrayAdapter<String> actadapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, arrUnis);
+        act.setAdapter(actadapter);
+        act.setThreshold(1);
+
+
+
 
         buni.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +113,22 @@ public class homeFrag extends Fragment {
             public void onClick(View view) {
                 Intent in = new Intent(getContext(), educationalBgStu.class);
                 startActivity(in);
+
+            }
+        });
+
+        Search.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), act.getText(), Toast.LENGTH_SHORT).show();
+                if(act.length() != 0) {
+                    Intent in = new Intent(getContext(), uniPageStudent.class);
+                    startActivity(in);
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "Search Field Empty", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

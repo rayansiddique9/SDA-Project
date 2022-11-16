@@ -21,8 +21,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <EditText
-            android:id="@+id/editText"
+        <AutoCompleteTextView
+            android:id="@+id/autotext"
             android:layout_width="273dp"
             android:layout_height="48dp"
             android:background="@drawable/home_search_bar"
@@ -40,13 +40,28 @@
             app:layout_constraintVertical_bias="0.727"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <Button
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textColor="@color/white"
+            android:background="#aedefc"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/autotext"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/autotext"
+            app:layout_constraintTop_toBottomOf="@+id/autotext"
+            app:layout_constraintVertical_bias="0.0" />
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="344dp"
             android:layout_height="71dp"
             android:text="Find the \nPerfect University"
             android:textSize="30dp"
-            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintBottom_toTopOf="@+id/autotext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
