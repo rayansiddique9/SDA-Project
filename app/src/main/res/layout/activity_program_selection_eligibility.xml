@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".educationalBgStu">
+    tools:context=".programSelectionEligibility">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -24,7 +24,7 @@
             android:layout_width="273dp"
             android:layout_height="90dp"
             android:paddingTop="7dp"
-            android:text="Select Program Type\nYou want To Apply For"
+            android:text="Select Program \nYou want To Apply For"
             android:textColor="@color/black"
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +38,7 @@
             android:id="@+id/textView6"
             android:layout_width="139dp"
             android:layout_height="31dp"
-            android:text="Program Type"
+            android:text="Program"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

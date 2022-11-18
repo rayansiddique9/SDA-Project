@@ -31,7 +31,7 @@ public class educationalBgGrad extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent in = new Intent(educationalBgGrad.this, uniList.class);
+                Intent in = new Intent(educationalBgGrad.this, MainActivity.class);
                 startActivity(in);
             }
         });

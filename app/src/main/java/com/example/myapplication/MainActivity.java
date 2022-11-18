@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-/*
+
         b2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
- */
+
     }
 
     public void sqlButton(View view)
@@ -145,34 +145,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-/*    public void GetTextFromSQL(View v)
-    {
-        TextView tx;
-        tx = findViewById(R.id.textView2);
-        try {
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            connect = connectionHelper.connectionclass();
-            if(connect != null)
-            {
-                String query = "select * from Person";
-                Statement st = connect.createStatement();
-                ResultSet rs = st.executeQuery(query);
-                while(rs.next())
-                {
-                    tx.setText(rs.getString(1));
-                }
-            }
-            else
-            {
-                connectionResult = "check connection";
-            }
-        }
-        catch(Exception ex)
-        {
-            Log.e("error",ex.getMessage());
-        }
-    }*/
 
 }
 

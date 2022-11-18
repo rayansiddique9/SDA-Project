@@ -31,7 +31,6 @@
         android:background="@drawable/signin_bg"
         android:text="Sign Up"
         android:textAlignment="center"
-        android:onClick="sqlButton2"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
         android:textSize="20sp"

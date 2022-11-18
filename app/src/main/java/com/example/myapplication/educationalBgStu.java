@@ -30,16 +30,11 @@ public class educationalBgStu extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(item == "Bachelors")
-                {
-                    Intent in = new Intent(educationalBgStu.this, educationalbg_fsc.class);
-                    startActivity(in);
-                }
-                else if(item == "Masters")
-                {
-                    Intent in = new Intent(educationalBgStu.this, educationalBgGrad.class);
-                    startActivity(in);
-                }
+
+                Intent in = new Intent(educationalBgStu.this, programSelectionEligibility.class);
+                in.putExtra("str",item);
+                startActivity(in);
+
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

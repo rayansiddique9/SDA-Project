@@ -111,7 +111,7 @@ public class homeFrag extends Fragment {
         elg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getContext(), educationalBgStu.class);
+                Intent in = new Intent(getContext(), programSelectionEligibility.class);
                 startActivity(in);
 
             }
