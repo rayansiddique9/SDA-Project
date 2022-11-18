@@ -30,7 +30,6 @@ public class Evaluator{
     private static String username = "sa";
     private static String password = "258369";
     private Connection connection = null;
-    private CallableStatement cs = null;
 
     private int marks;
     private String subjectCombo;

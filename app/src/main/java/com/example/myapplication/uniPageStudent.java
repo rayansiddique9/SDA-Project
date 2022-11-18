@@ -20,6 +20,7 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +30,8 @@ public class uniPageStudent extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    TextView tname;
+    View headerview;
 
 
     private void loadFragment(Fragment fragment, boolean flag) {
@@ -62,6 +65,12 @@ public class uniPageStudent extends AppCompatActivity {
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
         toolbar = findViewById(R.id.toolbar1);
+        headerview = navigationView.getHeaderView(0);
+        tname = (TextView) headerview.findViewById(R.id.menu_uniname);
+
+        String s = getIntent().getExtras().getString("uniname");
+       // Toast.makeText(uniPageStudent.this, "Name: " + s, Toast.LENGTH_SHORT).show();
+        tname.setText(s);
 
         setSupportActionBar(toolbar);
 

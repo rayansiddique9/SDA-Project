@@ -13,6 +13,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.SearchUni;
+
 import java.util.ArrayList;
 
 /**
@@ -26,7 +28,8 @@ public class homeFrag extends Fragment {
     private Button elg;
     private Button Search;
     private AutoCompleteTextView act;
-    ArrayList<String> arrUnis = new ArrayList<>();
+    ArrayList<String> arrUnis;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,29 +85,29 @@ public class homeFrag extends Fragment {
         act = view.findViewById(R.id.autotext);
         Search = view.findViewById(R.id.search);
 
+        SearchUni obj = new SearchUni();
+        obj.connectToDb(getContext());
 
-        arrUnis.add("Fast");
-        arrUnis.add("Comsats");
-        arrUnis.add("Lums");
-        arrUnis.add("Giki");
-        arrUnis.add("Nust");
-        arrUnis.add("VU");
-        arrUnis.add("UCP");
-        arrUnis.add("FCCU");
-        arrUnis.add("GCU");
+        arrUnis = new ArrayList<String>();
+        obj.getUnis(getContext(),arrUnis);
+
         ArrayAdapter<String> actadapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, arrUnis);
         act.setAdapter(actadapter);
         act.setThreshold(1);
 
 
-
-
         buni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getContext(), uniList.class);
+                ArrayList<String> arr = new ArrayList<String>();
+                /*for(int z = 0; z < arr.size(); z++)
+                {
+                    Toast.makeText(getContext(),arr.get(z), Toast.LENGTH_SHORT).show();
+                }*/
+                obj.getUnis(getContext(), arr);
+                Intent in = new Intent(getContext(), Universities.class);
+                in.putExtra("allunis", arr);
                 startActivity(in);
-
             }
         });
 
@@ -123,6 +126,7 @@ public class homeFrag extends Fragment {
                 Toast.makeText(getContext(), act.getText(), Toast.LENGTH_SHORT).show();
                 if(act.length() != 0) {
                     Intent in = new Intent(getContext(), uniPageStudent.class);
+                    in.putExtra("uniname", act.getText().toString());
                     startActivity(in);
                 }
                 else

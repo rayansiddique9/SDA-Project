@@ -86,6 +86,7 @@ public class uniList extends AppCompatActivity {
                     uniinfo u = (uniinfo) adapterView.getItemAtPosition(i);
                     Toast.makeText(uniList.this, "Item: " + u.uniName, Toast.LENGTH_SHORT).show();
                     Intent in = new Intent(uniList.this, uniPageStudent.class);
+                    in.putExtra("uniname", u.uniName);
                     startActivity(in);
                 }
             });
