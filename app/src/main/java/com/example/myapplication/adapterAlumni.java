@@ -12,27 +12,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
+import com.example.myapplication.Classes.alumniInfo;
 
-class alumniInfo
-{
-    String name;
-    String company;
-    String batch;
-    alumniInfo(String n, String c, String b)
-    {
-        this.name = n;
-        this.company = c;
-        this.batch = b;
-    }
-}
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class adapterAlumni extends ArrayAdapter<alumniInfo> {
 
 
 
-    public adapterAlumni(@NonNull Context context, int resource, @NonNull alumniInfo[] objects) {
+    public adapterAlumni(@NonNull Context context, int resource, @NonNull List<alumniInfo> objects) {
         super(context, resource, objects);
     }
 
@@ -50,9 +40,9 @@ public class adapterAlumni extends ArrayAdapter<alumniInfo> {
         TextView t1 = (TextView) convertView.findViewById(R.id.alumniName);
         TextView t2 = (TextView) convertView.findViewById(R.id.alumniCompany);
         TextView t3 = (TextView) convertView.findViewById(R.id.alumniBatch);
-        t1.setText(obj.name);
-        t2.setText(obj.company);
-        t3.setText(obj.batch);
+        t1.setText(obj.getName());
+        t2.setText(obj.getCompany());
+        t3.setText(obj.getBatch());
 
         return convertView;
     }

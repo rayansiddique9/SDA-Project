@@ -11,6 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.alumniInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AlumniPlacement_frag#newInstance} factory method to
@@ -19,9 +25,9 @@ import android.widget.TextView;
 public class AlumniPlacement_frag extends Fragment {
 
 
-    alumniInfo alumnilist[] = {new alumniInfo("Rayan", "Company: Poyon Workshop", "Batch 2020"), new alumniInfo("Raza", "Company: Cake Army", "Batch 2020"),new alumniInfo("Arez", "Company: Father n Chachu Shop", "Batch 2020"), new alumniInfo("Huzaifa", "Company: Zoo", "Batch 2020"), new alumniInfo("Arslan", "Company: Chaudry Catering", "Batch 2020")};
+    List<alumniInfo> alumnilist;
     ListView listView;
-
+    String str;
 
 
 
@@ -71,6 +77,10 @@ public class AlumniPlacement_frag extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_alumni_placement_frag, container, false);
+
+        str = getArguments().getString("universityName");
+        alumnilist = (List<alumniInfo>) getArguments().getSerializable("alumnis");
+
         listView = view.findViewById(R.id.alumnilist);
         adapterAlumni ad = new adapterAlumni(this.getContext(), R.layout.alumni_list_row, alumnilist);
         listView.setAdapter(ad);

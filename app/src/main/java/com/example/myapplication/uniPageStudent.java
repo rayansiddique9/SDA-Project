@@ -23,7 +23,15 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.aidInfo;
+import com.example.myapplication.Classes.alumniInfo;
+import com.example.myapplication.Classes.feeinfo;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class uniPageStudent extends AppCompatActivity {
@@ -32,9 +40,13 @@ public class uniPageStudent extends AppCompatActivity {
     Toolbar toolbar;
     TextView tname;
     View headerview;
+    ArrayList<String> depts;
+    List<alumniInfo> arr;
+    List<feeinfo> fees;
+    List<aidInfo> aid;
 
-
-    private void loadFragment(Fragment fragment, boolean flag) {
+    private void loadFragment(Fragment fragment, boolean flag, Bundle b) {
+        fragment.setArguments(b);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         if (!flag){
@@ -62,6 +74,9 @@ public class uniPageStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni_page_student);
 
+        SearchUni obj = new SearchUni();             //making instance of persistance class
+        obj.connectToDb(uniPageStudent.this);   //connecting to db
+
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
         toolbar = findViewById(R.id.toolbar1);
@@ -69,8 +84,16 @@ public class uniPageStudent extends AppCompatActivity {
         tname = (TextView) headerview.findViewById(R.id.menu_uniname);
 
         String s = getIntent().getExtras().getString("uniname");
-       // Toast.makeText(uniPageStudent.this, "Name: " + s, Toast.LENGTH_SHORT).show();
         tname.setText(s);
+
+        depts = new ArrayList<String>();
+        arr = new ArrayList<alumniInfo>();
+        fees = new ArrayList<feeinfo>();
+        aid = new ArrayList<aidInfo>();
+
+        obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid);   //gets uni content from db
+
+
 
         setSupportActionBar(toolbar);
 
@@ -80,8 +103,10 @@ public class uniPageStudent extends AppCompatActivity {
         toggle.syncState();
 
 
+        Bundle bundle = new Bundle();
+        bundle.putString("universityName", s);
 
-        loadFragment(new campusLife_frag(),false);
+        loadFragment(new campusLife_frag(),false, bundle);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -89,35 +114,52 @@ public class uniPageStudent extends AppCompatActivity {
 
                 if(id == R.id.menu_faculty)
                 {
-                    loadFragment(new faculty_frag(), true);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putStringArrayList("dept", depts);
+                    b.putSerializable("obj", obj);
+                    loadFragment(new faculty_frag(), true, b);
                 }
                 else if(id == R.id.menu_fees)
                 {
-                    loadFragment(new fees_frag(), true);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putSerializable("fee", (Serializable) fees);
+                    loadFragment(new fees_frag(), true, b);
                 }
                 else if(id == R.id.menu_degree)
                 {
-                    loadFragment(new programsOffered_frag(), true);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putStringArrayList("dept", depts);
+                    b.putSerializable("obj", obj);
+                    loadFragment(new programsOffered_frag(), true, b);
                 }
                 else if(id == R.id.menu_alumni)
                 {
-                    loadFragment(new AlumniPlacement_frag(), true);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putSerializable("alumnis", (Serializable) arr);
+                    loadFragment(new AlumniPlacement_frag(), true, b);
                 }
                 else if(id == R.id.menu_aid)
                 {
-                    loadFragment(new FinancialAid_frag(), true);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putSerializable("a", (Serializable) aid);
+                    loadFragment(new FinancialAid_frag(), true, b);
                 }
                 else if(id == R.id.menu_review)
                 {
-                    loadFragment(new Reviews_frag(), true);
+                    loadFragment(new Reviews_frag(), true, bundle);
                 }
                 else if(id == R.id.menu_eligibility)
                 {
-                    loadFragment(new Eligibility_frag(), true);
+                    loadFragment(new Eligibility_frag(), true, bundle);
                 }
                 else if(id == R.id.menu_campus)
                 {
-                    loadFragment(new campusLife_frag(), true);
+                    loadFragment(new campusLife_frag(), true, bundle);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);

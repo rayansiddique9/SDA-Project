@@ -11,6 +11,9 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.profinfo;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +31,7 @@ public class faculty_frag extends Fragment {
     Map<String,List<profinfo>> proflist;
     ExpandableListView expandablelistview;
     ExpandableListAdapter expandableListAdapter;
+    String str;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,11 +78,13 @@ public class faculty_frag extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_faculty_frag, container, false);
+        str = getArguments().getString("universityName");
+        listdepartment = new ArrayList<String>();
+        listdepartment = getArguments().getStringArrayList("dept");
+        SearchUni obj = (SearchUni) getArguments().getSerializable("obj");
+        obj.connectToDb(getContext());
 
-
-        listdepartment=new ArrayList<>();
-        createGroupList();
-        createCollection();
+        createCollection(obj);
         //-----------------------------//
         expandablelistview=view.findViewById(R.id.expandabledept);
         expandableListAdapter= new AdapterFaculty(this.getContext(),listdepartment,proflist);
@@ -106,16 +112,12 @@ public class faculty_frag extends Fragment {
         return view;
     }
 
-    private void createCollection() {
+    private void createCollection(SearchUni obj) {
 
-        profinfo profs[] = {new profinfo("Akhlaq Bhatti", "HOD MATHS", "bhatti@gmail.com"), new profinfo("Arshad Ali", "Professor", "arshad@nu.pk"), new profinfo("salman shoaib", "Lab Assistant", "salman@nu.pk")};
-        profinfo profs1[] = {new profinfo("Ali afzzal", "Professor", "aliafzal@nu.pk"), new profinfo("Raziuddin", "Lecturer", "raziuddin@nu.pk"), new profinfo("khawaja fahd", "Assistant Professor", "khawajafahd@nu.pk"), new profinfo("ishaq raza", "Professor", "ishaq@nu.pk")};
-        profinfo profs2[] = {new profinfo("Hina Firdous", "Lecturer", "hina@gmail.com"), new profinfo("Aleena Ahmed", "Lecturer", "aleena@nu.pk"), new profinfo("saira karim", "Professor", "sairakarim@nu.pk"), new profinfo("mubashir qayum", "Professor", "mubashir@nu.pk"), new profinfo("tauseef shah", "Assistant Professor", "tauseef@nu.pk")};
-
-
-
+        List<profinfo> prof = new ArrayList<profinfo>();
         proflist = new HashMap<String,List<profinfo>>();
-        for(String group:listdepartment)
+
+        /*for(String group:listdepartment)
         {
             if(group.equals("Department Of \n Computing")){
                 loadChild(profs);
@@ -127,10 +129,18 @@ public class faculty_frag extends Fragment {
                 loadChild(profs2);
             }
             proflist.put(group,listprof);
+        }*/
+
+        for(int z = 0; z < listdepartment.size(); z++)
+        {
+            obj.getFacultyOfDept(getContext(), str, listdepartment.get(z), prof);
+            loadChild(prof);
+            prof.clear();
+            proflist.put(listdepartment.get(z),listprof);
         }
     }
 
-    private void loadChild(profinfo[] obj) {
+    private void loadChild(List<profinfo> obj) {
         listprof = new ArrayList<>();
         for(profinfo i: obj)
         {
@@ -138,11 +148,4 @@ public class faculty_frag extends Fragment {
         }
     }
 
-    private void createGroupList(){
-        listdepartment=new ArrayList<>();
-        listdepartment.add("Department Of \n Computing");
-        listdepartment.add("Department Of \n Engineering");
-        listdepartment.add("Department Of \n Management Sciences");
-
-    }
 }

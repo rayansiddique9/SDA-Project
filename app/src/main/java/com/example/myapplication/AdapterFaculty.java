@@ -8,23 +8,13 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.example.myapplication.Classes.profinfo;
+
 import java.util.List;
 import java.util.Map;
 
-class profinfo
-{
-    public String profname;
-    public String designation;
-    public String email;
 
-    public profinfo(String profName, String Designation, String Email)
-    {
-        this.profname = profName;
-        this.designation = Designation;
-        this.email = Email;
-    }
 
-}
 
 public class AdapterFaculty extends BaseExpandableListAdapter {
 
@@ -95,12 +85,13 @@ public class AdapterFaculty extends BaseExpandableListAdapter {
 
             view = inflater.inflate(R.layout.faculty_list_row,null);
         }
+
         TextView tview = (TextView) view.findViewById(R.id.teacherName);
         TextView tview2 = (TextView) view.findViewById(R.id.teacherDesignation);
         TextView tview3 = (TextView) view.findViewById(R.id.teacherEmail);
-        tview.setText(obj.profname);
-        tview2.setText(obj.designation);
-        tview3.setText(obj.email);
+        tview.setText(obj.getProfname());
+        tview2.setText(obj.getDesignation());
+        tview3.setText(obj.getEmail());
 
         return view;
     }
