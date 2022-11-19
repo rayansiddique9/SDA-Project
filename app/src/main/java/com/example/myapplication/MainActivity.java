@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private Button b2;
 
     private TextView textView;
-    private static String ip = "10.0.2.2";       //ALWAYS CHANGE IP TO CURRENT WIFI
+
+    private static String ip = "192.168.0.107";       //ALWAYS CHANGE IP TO CURRENT WIFI
     private static String port = "1433";
     private static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "UniGrab";
     private static String username = "sa";
-    private static String password = "258369";
+    private static String password = "123456";
     private static String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database;
 
     private Connection connection = null;
