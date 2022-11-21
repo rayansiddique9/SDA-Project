@@ -75,19 +75,13 @@ public class Evaluator{
 
          try {
              statement = connection.createStatement();
-        /*     CallableStatement cs;
-             cs = connection.prepareCall("{CALL getEligibleUnisBS(?,?,?)}");
-             cs.setString(1,degree );
-             cs.setString(2, subjectCombo);
-             cs.registerOutParameter(3, marks);
-             cs.execute();
-             ResultSet resultSet = cs.getResultSet();*/
              ResultSet resultSet = statement.executeQuery("select us.userName from [User] us join University u on u.idUniversity = us.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join UndergraduateProgram up on p.idProgram = up.idUGProgram join ugReqBG b on up.idUGProgram = b.bgid where b.name = '"+subjectCombo+"' and p.name = '"+degree+"' and "+marks+" >= up.minMarks");
              while(resultSet.next())
              {
                  arr.add(resultSet.getString(1));
               //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
              }
+             Toast.makeText(ptr, String.valueOf(arr.size()), Toast.LENGTH_SHORT).show();
          }
          catch(SQLException e)
          {

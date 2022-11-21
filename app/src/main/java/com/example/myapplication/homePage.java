@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.currentUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -22,8 +23,8 @@ public class homePage extends AppCompatActivity {
     Student obj;
 
     // loads the fragment on tha basis of given 'fragment'
-    private void loadFrag(Fragment fragment, boolean flag, Bundle bundle){
-        fragment.setArguments(bundle);
+    private void loadFrag(Fragment fragment, boolean flag){
+      /*  fragment.setArguments();*/
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         if (!flag){
@@ -42,30 +43,33 @@ public class homePage extends AppCompatActivity {
 
         String str = getIntent().getExtras().getString("edutype");
 
-    //    Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
-        obj = (Student) getIntent().getExtras().getSerializable("stu");
+        currentUser cu  = currentUser.getInstance(obj);
+        obj = cu.getStu();
+
+     //   obj = (Student) getIntent().getExtras().getSerializable("stu");
 
     //    Toast.makeText(this, Integer.toString(((UndergradStudent)obj).getMarks()), Toast.LENGTH_SHORT).show();
 
         bnView = findViewById(R.id.nav_view);
 
         bnView.setSelectedItemId(R.id.navigation_home);
-        Bundle b = new Bundle();
+      /*  Bundle b = new Bundle();
         b.putString("edutype", str);
-        b.putSerializable("stu", obj);
-        loadFrag(new homeFrag(),false, b);
+        b.putSerializable("stu", obj);*/
+        loadFrag(new homeFrag(),false);
 
         bnView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId() ;
                 if (id == R.id.navigation_home){
-                    loadFrag(new homeFrag(),true, b);
+                    loadFrag(new homeFrag(),true);
                 }else if (id == R.id.navigation_profile){
-                    loadFrag(new profileFrag(),true, b);
+                    loadFrag(new profileFrag(),true);
                 }else{
-                    loadFrag(new settingsFrag(),true, b);
+                    loadFrag(new settingsFrag(),true);
                 }
                 return true;
             }

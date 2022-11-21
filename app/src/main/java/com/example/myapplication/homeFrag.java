@@ -17,6 +17,7 @@ import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.SearchUni;
 import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.currentUser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -89,19 +90,24 @@ public class homeFrag extends Fragment {
         elg = view.findViewById(R.id.eligibility);
         act = view.findViewById(R.id.autotext);
         Search = view.findViewById(R.id.search);
-
+/*
         str = getArguments().getString("edutype");
-        obj1 = (Student) getArguments().getSerializable("stu");
+        obj1 = (Student) getArguments().getSerializable("stu");*/
+
+        currentUser cu  = currentUser.getInstance(obj1);
+        obj1 = cu.getStu();
+        String st = obj1.getEducationType();
 
 
-        /*Toast.makeText(getContext(), "Type:"+str, Toast.LENGTH_SHORT).show();
+
+       /* Toast.makeText(getContext(), "Type:"+str, Toast.LENGTH_SHORT).show();
         if(str.equals("Undergraduate"))
         {
-            Toast.makeText(getContext(), Integer.toString(((UndergradStudent)obj).getMarks()), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(getContext(), Float.toString(((GraduateStudent)obj).getCgpa()), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
         }*/
 
 
@@ -136,8 +142,8 @@ public class homeFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getContext(), programSelectionEligibility.class);
-                in.putExtra("type", str);
-                in.putExtra("object", (Serializable) obj1);
+              //  in.putExtra("type", str);
+             //   in.putExtra("object", (Serializable) obj1);
                 startActivity(in);
 
             }

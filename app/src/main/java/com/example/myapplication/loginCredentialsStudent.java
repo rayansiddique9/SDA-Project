@@ -14,6 +14,7 @@ import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.UndergradStudent;
 import com.example.myapplication.Classes.Visitor;
+import com.example.myapplication.Classes.currentUser;
 
 import java.io.Serializable;
 
@@ -25,6 +26,7 @@ public class loginCredentialsStudent extends AppCompatActivity {
     Visitor obj;
     String edu;
     Student obj1;
+    currentUser cu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,20 +47,22 @@ public class loginCredentialsStudent extends AppCompatActivity {
                     {
                         edu = obj.getEducationType(username, password, loginCredentialsStudent.this);
                         if (edu.equals("Undergraduate")) {
-                                   Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
-                            obj1 = obj.makeUndergradObj(username, password, loginCredentialsStudent.this);
-                                 Toast.makeText(loginCredentialsStudent.this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
+                               //    Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
+                            obj1 = (Student) obj.makeUndergradObj(username, password, loginCredentialsStudent.this);
+                               //  Toast.makeText(loginCredentialsStudent.this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
+                            cu = currentUser.getInstance(obj1);
 
                         }
                         else
                         {
-                                  Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
-                            obj1 = obj.makeGradObj(username, password, loginCredentialsStudent.this);
-                                  Toast.makeText(loginCredentialsStudent.this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
+                                //  Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
+                            obj1 = (Student) obj.makeGradObj(username, password, loginCredentialsStudent.this);
+                               //   Toast.makeText(loginCredentialsStudent.this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
+                            cu = currentUser.getInstance(obj1);
                         }
                         Intent in = new Intent(loginCredentialsStudent.this, homePage.class);
                         in.putExtra("edutype", edu);
-                    //    in.putExtra("stu", (Serializable) obj1);
+                     //   in.putExtra("stu", obj1);
                         startActivity(in);
                     }
                     else

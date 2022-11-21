@@ -15,6 +15,7 @@ import com.example.myapplication.Classes.Evaluator;
 import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.currentUser;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,10 +41,14 @@ public class programSelectionEligibility extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_selection_eligibility);
 
-        String st = getIntent().getExtras().getString("type");
-        obj1 = (Student) getIntent().getExtras().getSerializable("object");
+      //  String st = getIntent().getExtras().getString("type");
+     //   obj1 = (Student) getIntent().getExtras().getSerializable("object");
 
-         /*Toast.makeText(this, "Type:"+st, Toast.LENGTH_SHORT).show();
+        currentUser cu  = currentUser.getInstance(obj1);
+        obj1 = cu.getStu();
+        String st = obj1.getEducationType();
+
+        Toast.makeText(this, "Type:"+st, Toast.LENGTH_SHORT).show();
         if(st.equals("Undergraduate"))
         {
             Toast.makeText(this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
@@ -51,10 +56,15 @@ public class programSelectionEligibility extends AppCompatActivity {
         else
         {
             Toast.makeText(this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
-        }*/
+        }
 
-        arr = new ArrayList<>();
+
+
+
+
+        arr = new ArrayList<String>();
         obj1.getAvalaiblePrograms(this, arr);
+      //  Toast.makeText(this, "Size:"+String.valueOf(arr.size()), Toast.LENGTH_SHORT).show();
 
         acc = findViewById(R.id.spinner);
         b = findViewById(R.id.nextbtn);
@@ -67,6 +77,7 @@ public class programSelectionEligibility extends AppCompatActivity {
             public void onClick(View view) {
 
                 ArrayList<String>rst = obj1.getEligibleUniList(programSelectionEligibility.this, item);
+                Toast.makeText(programSelectionEligibility.this, "Unis:"+String.valueOf(rst.size()), Toast.LENGTH_SHORT).show();
                 Intent in = new Intent(programSelectionEligibility.this, uniList.class);
                 in.putExtra("arr", rst);
                 startActivity(in);
