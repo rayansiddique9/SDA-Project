@@ -14,7 +14,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Admission Fees : "
+            android:text="Fee Structure"
+            android:textAlignment="center"
             android:textSize="30dp"
 
             android:padding="15dp"
@@ -24,13 +25,11 @@
 
             />
 
-        <ExpandableListView
+        <ListView
             android:layout_width="match_parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:layout_height="match_parent"
-            android:id="@+id/expandableFees"
+            android:id="@+id/feelist"
             android:nestedScrollingEnabled="true"
             android:background="@color/white"
             android:outlineAmbientShadowColor="@color/white"

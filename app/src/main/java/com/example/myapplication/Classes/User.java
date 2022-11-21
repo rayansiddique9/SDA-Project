@@ -1,21 +1,12 @@
 package com.example.myapplication.Classes;
 
-public class User {
-    protected int idUser;
-    protected String userName;
-    protected String email;
-    protected String location;
-    protected String password;
-    protected double longitude;
-    protected double latitude;
+import android.os.Parcelable;
 
-    protected User(int uid,String name, String email,String location,String password,double longitude, double latitude){
-        this.idUser = uid;
-        this.userName = name;
-        this.email = email;
-        this.location = location;
-        this.password = password;
-        this.longitude = longitude;
-        this.latitude = latitude;
-    }
+import java.io.Serializable;
+
+public abstract class User implements Serializable{
+    protected String name;
+    protected String email;
+    protected String password;
+    authenticateUser au;
 }

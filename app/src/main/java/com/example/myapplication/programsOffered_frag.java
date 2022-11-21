@@ -13,6 +13,8 @@ import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.SearchUni;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +32,7 @@ public class programsOffered_frag extends Fragment {
     Map<String,List<String>> degreelist;
     ExpandableListView expandablelistview;
     ExpandableListAdapter expandableListAdapter;
-
+    String str;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -84,10 +86,21 @@ public class programsOffered_frag extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_programs_offered_frag, container, false);
 
+        str = getArguments().getString("universityName");
+        deptlist = new ArrayList<String>();
+        deptlist = getArguments().getStringArrayList("dept");
+        SearchUni obj = (SearchUni) getArguments().getSerializable("obj");
+        obj.connectToDb(getContext());
 
-        deptlist=new ArrayList<>();
-        createGroupList();
-        createCollection();
+        /*Toast.makeText(getContext(), "name: " + str, Toast.LENGTH_SHORT).show();
+        for(int z = 0; z < departments.size(); z++)
+        {
+            Toast.makeText(getContext(), "Dept: " + departments.get(z), Toast.LENGTH_SHORT).show();
+        }*/
+
+
+   //     createGroupList();
+        createCollection(obj);
         //-----------------------------//
         expandablelistview=view.findViewById(R.id.expandableDegrees);
         expandableListAdapter= new deptParentListAdapter(this.getContext(),deptlist,degreelist);
@@ -116,12 +129,12 @@ public class programsOffered_frag extends Fragment {
     }
 
 
-    private void createCollection() {
-        String[] dept1 ={"BS-CS", "BS-DS", "BS-AI", "MS-CS"};
-        String[] dept2 ={"BS-EE", "BS-CE", "MS-EE"};
-        String[] dept3 ={"BS-BBA", "BS-AF", "MBA"};
+    private void createCollection(SearchUni obj) {
+
+        List<String> deg = new ArrayList<>();
         degreelist = new HashMap<String,List<String>>();
-        for(String group:deptlist)
+
+        /*for(String group:deptlist)
         {
             if(group.equals("Department Of \n Computing")){
                 loadChild(dept1);
@@ -133,10 +146,17 @@ public class programsOffered_frag extends Fragment {
                 loadChild(dept3);
             }
             degreelist.put(group,listdegree);
+        }*/
+        for(int z = 0; z < deptlist.size(); z++)
+        {
+            obj.getProgramsOfDept(getContext(), str, deptlist.get(z), deg);
+            loadChild(deg);
+            deg.clear();
+            degreelist.put(deptlist.get(z),listdegree);
         }
     }
 
-    private void loadChild(String[] dept) {
+    private void loadChild(List<String> dept) {
         listdegree =new ArrayList<>();
         for(String Dept: dept)
         {
@@ -145,13 +165,13 @@ public class programsOffered_frag extends Fragment {
 
     }
 
-    private void createGroupList(){
+  /*  private void createGroupList(){
         deptlist=new ArrayList<>();
         deptlist.add("Department Of \n Computing");
         deptlist.add("Department Of \n Engineering");
         deptlist.add("Department Of \n Management Sciences");
 
-    }
+    }*/
 
 
 }

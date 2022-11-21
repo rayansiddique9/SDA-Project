@@ -10,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 public class adapterReview extends ArrayAdapter<String> {
     String []reviews;
 
-    public adapterReview(@NonNull Context context, int resource, @NonNull String[] objects) {
+    public adapterReview(@NonNull Context context, int resource, @NonNull List<String> objects) {
         super(context, resource, objects);
     }
 

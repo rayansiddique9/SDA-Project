@@ -19,6 +19,24 @@
 
 
     <TextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#FF0000"
+        android:text="Error"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.382" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="351dp"
         android:layout_height="75dp"
@@ -34,7 +52,7 @@
         app:layout_constraintVertical_bias="0.052" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextTextPersonName1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -93,8 +111,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.918" />
 
+
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextTextdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

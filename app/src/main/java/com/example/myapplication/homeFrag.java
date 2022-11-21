@@ -13,6 +13,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.GraduateStudent;
+import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.currentUser;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +33,10 @@ public class homeFrag extends Fragment {
     private Button elg;
     private Button Search;
     private AutoCompleteTextView act;
-    ArrayList<String> arrUnis = new ArrayList<>();
+    ArrayList<String> arrUnis;
+    Student obj1;
+    String str;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +48,6 @@ public class homeFrag extends Fragment {
     private String mParam2;
 
     public homeFrag() {
-        // Required empty public constructor
     }
 
     /**
@@ -81,30 +90,51 @@ public class homeFrag extends Fragment {
         elg = view.findViewById(R.id.eligibility);
         act = view.findViewById(R.id.autotext);
         Search = view.findViewById(R.id.search);
+/*
+        str = getArguments().getString("edutype");
+        obj1 = (Student) getArguments().getSerializable("stu");*/
+
+        currentUser cu  = currentUser.getInstance(obj1);
+        obj1 = cu.getStu();
+        String st = obj1.getEducationType();
 
 
-        arrUnis.add("Fast");
-        arrUnis.add("Comsats");
-        arrUnis.add("Lums");
-        arrUnis.add("Giki");
-        arrUnis.add("Nust");
-        arrUnis.add("VU");
-        arrUnis.add("UCP");
-        arrUnis.add("FCCU");
-        arrUnis.add("GCU");
+
+       /* Toast.makeText(getContext(), "Type:"+str, Toast.LENGTH_SHORT).show();
+        if(str.equals("Undergraduate"))
+        {
+            Toast.makeText(getContext(), Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getContext(), Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
+        }*/
+
+
+
+        SearchUni obj = new SearchUni();
+        obj.connectToDb(getContext());
+
+        arrUnis = new ArrayList<String>();
+        obj.getUnis(getContext(),arrUnis);
+
         ArrayAdapter<String> actadapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, arrUnis);
         act.setAdapter(actadapter);
         act.setThreshold(1);
 
 
-
-
         buni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getContext(), uniList.class);
+                ArrayList<String> arr = new ArrayList<String>();
+                /*for(int z = 0; z < arr.size(); z++)
+                {
+                    Toast.makeText(getContext(),arr.get(z), Toast.LENGTH_SHORT).show();
+                }*/
+                obj.getUnis(getContext(), arr);
+                Intent in = new Intent(getContext(), Universities.class);
+                in.putExtra("allunis", arr);
                 startActivity(in);
-
             }
         });
 
@@ -112,6 +142,8 @@ public class homeFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getContext(), programSelectionEligibility.class);
+              //  in.putExtra("type", str);
+             //   in.putExtra("object", (Serializable) obj1);
                 startActivity(in);
 
             }
@@ -123,6 +155,7 @@ public class homeFrag extends Fragment {
                 Toast.makeText(getContext(), act.getText(), Toast.LENGTH_SHORT).show();
                 if(act.length() != 0) {
                     Intent in = new Intent(getContext(), uniPageStudent.class);
+                    in.putExtra("uniname", act.getText().toString());
                     startActivity(in);
                 }
                 else

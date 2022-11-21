@@ -11,20 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-class aidInfo
-{
-    String name;
-    String detail;
-    aidInfo(String n, String d)
-    {
-        this.name = n;
-        this.detail = d;
-    }
-}
+import com.example.myapplication.Classes.aidInfo;
+
+import java.util.List;
+
 
 public class adapterFinancialAid extends ArrayAdapter<aidInfo> {
 
-    public adapterFinancialAid(@NonNull Context context, int resource, @NonNull aidInfo[] objects) {
+    public adapterFinancialAid(@NonNull Context context, int resource, @NonNull List<aidInfo> objects) {
         super(context, resource, objects);
     }
 
@@ -41,8 +35,8 @@ public class adapterFinancialAid extends ArrayAdapter<aidInfo> {
         // all views defined in list cell design
         TextView t1 = (TextView) convertView.findViewById(R.id.aidName);
         TextView t2 = (TextView) convertView.findViewById(R.id.aidDetail);
-        t1.setText(obj.name);
-        t2.setText(obj.detail);
+        t1.setText(obj.getName());
+        t2.setText(obj.getDetail());
 
         return convertView;
     }

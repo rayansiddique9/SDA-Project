@@ -36,7 +36,7 @@
 
 
                 <TextView
-                    android:id="@+id/name"
+                    android:id="@+id/details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -80,45 +80,6 @@ Harvard's founding was authorized by the Massachusetts colonial legislature, dre
 
                     />
 
-<!--
-                <ListView
-
-                    android:id="@+id/deptlist"
-                    android:layout_width="match_parent"
-                    android:layout_height="260dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@color/white"
-                    android:nestedScrollingEnabled="true"
-                    android:textAlignment="center"
-                 />
--->
-
-
-
-<!--
-            <TextView
-                android:id="@+id/degrees"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_weight="1"
-                android:background="#aedefc"
-                android:padding="20dp"
-                android:text="DEGREES"
-                android:textAlignment="center"
-                android:textColor="#F0FFF0"
-                android:textSize="30dp" />
-
-            <ListView
-
-                    android:id="@+id/degreelist"
-                    android:layout_width="match_parent"
-                    android:layout_height="152dp"
-                    android:background="@color/white"
-                    android:nestedScrollingEnabled="true"
-
-                     />
-
--->
         </LinearLayout>
 
     </ScrollView>
