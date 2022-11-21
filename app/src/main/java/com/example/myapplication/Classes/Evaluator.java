@@ -185,32 +185,62 @@ public class Evaluator{
         }
     }
 
- //for student applying for undergrad / for undergraduate student obj
-
-    public void getEducationalBackground()
+    public boolean getStatusBS(String degree, Context ptr, String subjectCombo, int marks, String uniname)
     {
-        //when student obj is created -> pass undergraduateStudent obj to this function bu using put extra from login to this page serially
-        //then this.subjectCombo = UndergradStudentobj.subjectCombo
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select 1 from [User] us join University u on u.idUniversity = us.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join UndergraduateProgram up on p.idProgram = up.idUGProgram join ugReqBG b on up.idUGProgram = b.bgid where b.name = '"+subjectCombo+"' and p.name = '"+degree+"' and "+marks+" >= up.minMarks and  us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    if (resultSet.getString(1).equals("1")) {
+                        return true;
+                    }
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 
-    public void getIntermediateMarks()
+    public boolean getStatusMS(String degree, Context ptr, String subjectCombo, float marks, String uniname)
     {
-        //when student obj is created -> pass undergraduateStudent obj to this function bu using put extra from login to this page serially
-        //then this.marks = UndergradStudentobj.marks
-    }
+        if(connection != null)
+        {
+            Statement statement = null;
 
- //for student applying for masters / for graduateStudent
-
-    public void getBSProgram()
-    {
-        //when student obj is created -> pass GraduateStudent obj to this function bu using put extra from login to this page serially
-        //then this.subjectCombo = GraduateStudentobj.subjectCombo
-    }
-
-    public void getCGPA()
-    {
-        //when student obj is created -> pass GraduateStudent obj to this function bu using put extra from login to this page serially
-        //then this.marks = GraduateStudent.marks
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select 1 from [User] us join University u on u.idUniversity = us.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join GraduateProgram up on p.idProgram = up.idGProgram join gReqBG b on up.idGProgram = b.bgid where b.name = '"+subjectCombo+"' and p.name = '"+degree+"' and "+marks+" >= up.minCGPA and us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    if (resultSet.getString(1).equals("1")) {
+                        return true;
+                    }
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 
 }

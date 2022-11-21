@@ -48,7 +48,7 @@ public class programSelectionEligibility extends AppCompatActivity {
         obj1 = cu.getStu();
         String st = obj1.getEducationType();
 
-        Toast.makeText(this, "Type:"+st, Toast.LENGTH_SHORT).show();
+     /*   Toast.makeText(this, "Type:"+st, Toast.LENGTH_SHORT).show();
         if(st.equals("Undergraduate"))
         {
             Toast.makeText(this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
@@ -57,7 +57,7 @@ public class programSelectionEligibility extends AppCompatActivity {
         {
             Toast.makeText(this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
         }
-
+*/
 
 
 

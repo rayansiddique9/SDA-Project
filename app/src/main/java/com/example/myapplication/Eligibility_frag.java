@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.currentUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,10 +31,15 @@ import android.widget.Toast;
 public class Eligibility_frag extends Fragment {
 
     private ArrayAdapter<String> adapter;
-    private String arr[] = {"Bachelors", "Masters"};
+ //   private String arr[] = {"Bachelors", "Masters"};
     private Spinner acc;
     private Button b;
     private String item;
+    Student obj1;
+    String str;
+    List<String> arr;
+    private TextView tv;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,6 +86,18 @@ public class Eligibility_frag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_eligibility_frag, container, false);
+
+
+        currentUser cu  = currentUser.getInstance(obj1);
+        obj1 = cu.getStu();
+        String st = obj1.getEducationType();
+        str = getArguments().getString("universityName");
+
+
+        arr = new ArrayList<String>();
+        obj1.getAvalaiblePrograms(getContext(), arr);
+
+        tv = view.findViewById(R.id.program);
         acc = view.findViewById(R.id.spinnerprogram);
         b = view.findViewById(R.id.btnEligibility);
         adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_dropdown_item, arr);
@@ -81,16 +106,37 @@ public class Eligibility_frag extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(item == "Bachelors") {
-                  //  Toast.makeText(getContext(),"In bachelors ",Toast.LENGTH_SHORT).show();
-                    Intent in = new Intent(getActivity(), eligibilityFragBS_Page.class);
-                    startActivity(in);
-                }
-                else if(item == "Masters")
+                if(obj1.getEligiblityStatus(getContext(), item, str) == true)
                 {
-                  //  Toast.makeText(getContext(),"In masters ",Toast.LENGTH_SHORT).show();
-                    Intent in = new Intent(getActivity(), eligibilityFragMS_Page.class);
-                    startActivity(in);
+                    tv.setText("You are eligible to apply in selected program of "+str);
+
+                    CountDownTimer timer = new CountDownTimer(3000, 1000) {
+                        @Override
+                        public void onTick(long l) {
+                            tv.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            tv.setVisibility(View.INVISIBLE);
+                        }
+                    }.start();
+                }
+                else
+                {
+                    tv.setText("You are not eligible to apply in selected program of "+str);
+
+                    CountDownTimer timer = new CountDownTimer(3000, 1000) {
+                        @Override
+                        public void onTick(long l) {
+                            tv.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            tv.setVisibility(View.INVISIBLE);
+                        }
+                    }.start();
                 }
             }
         });
@@ -100,7 +146,6 @@ public class Eligibility_frag extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 item = parent.getItemAtPosition(i).toString();
                 //  Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
-
             }
 
             @Override

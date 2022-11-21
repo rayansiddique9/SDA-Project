@@ -2,6 +2,7 @@ package com.example.myapplication.Classes;
 
 import android.content.Context;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.contextaware.ContextAwareHelper;
 
@@ -29,6 +30,7 @@ public class Visitor extends User{
         this.au.connectToDb(ptr);
         if(this.au.verifyInfoStu(ptr, uname.getText().toString(), pass.getText().toString()) == true)
         {
+
             return true;
         }
         return false;

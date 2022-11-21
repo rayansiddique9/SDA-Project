@@ -172,22 +172,4 @@ public class uniPageStudent extends AppCompatActivity {
     }
 
 
-
-
-
-
- /*   @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        Toast.makeText(uniPageStudent.this,"ANDER AAGYA", Toast.LENGTH_SHORT).show();
-        if(id == R.id.menu_fees)
-        {
-            Intent intent = new Intent(uniPageStudent.this, uniFees.class);
-            startActivity(intent);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
 }

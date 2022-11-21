@@ -76,4 +76,19 @@ public class Student extends Visitor {
 
     }
 
+    public boolean getEligiblityStatus(Context ptr, String preferredDeg, String uname)
+    {
+        e.connectToDb(ptr);
+        if(this.educationType.equals("Undergraduate"))
+        {
+            return e.getStatusBS(preferredDeg, ptr, ((UndergradStudent)this).getSubjectCombo(), ((UndergradStudent)this).getMarks(), uname);
+
+        }
+        else
+        {
+            return e.getStatusMS(preferredDeg, ptr, ((GraduateStudent)this).getBsDeg(), ((GraduateStudent)this).getCgpa(), uname);
+        }
+    }
+
+
 }

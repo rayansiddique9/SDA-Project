@@ -42,32 +42,29 @@ public class loginCredentialsStudent extends AppCompatActivity {
             {
                 try {
 
-
                     if (obj.signInStu(username, password, loginCredentialsStudent.this) == true)
                     {
-                        edu = obj.getEducationType(username, password, loginCredentialsStudent.this);
-                        if (edu.equals("Undergraduate")) {
-                               //    Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
-                            obj1 = (Student) obj.makeUndergradObj(username, password, loginCredentialsStudent.this);
-                               //  Toast.makeText(loginCredentialsStudent.this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
-                            cu = currentUser.getInstance(obj1);
+                            edu = obj.getEducationType(username, password, loginCredentialsStudent.this);
+                            if (edu.equals("Undergraduate")) {
+                                //    Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
+                                obj1 = (Student) obj.makeUndergradObj(username, password, loginCredentialsStudent.this);
+                                //  Toast.makeText(loginCredentialsStudent.this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
+                                cu = currentUser.getInstance(obj1);
 
-                        }
-                        else
-                        {
+                            } else {
                                 //  Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
-                            obj1 = (Student) obj.makeGradObj(username, password, loginCredentialsStudent.this);
-                               //   Toast.makeText(loginCredentialsStudent.this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
-                            cu = currentUser.getInstance(obj1);
-                        }
-                        Intent in = new Intent(loginCredentialsStudent.this, homePage.class);
-                        in.putExtra("edutype", edu);
-                     //   in.putExtra("stu", obj1);
-                        startActivity(in);
+                                obj1 = (Student) obj.makeGradObj(username, password, loginCredentialsStudent.this);
+                                //   Toast.makeText(loginCredentialsStudent.this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
+                                cu = currentUser.getInstance(obj1);
+                            }
+                            Intent in = new Intent(loginCredentialsStudent.this, homePage.class);
+                            in.putExtra("edutype", edu);
+                            //   in.putExtra("stu", obj1);
+                            startActivity(in);
                     }
                     else
                     {
-                        Toast.makeText(loginCredentialsStudent.this, "Wrong credentials", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(loginCredentialsStudent.this, "Wrong credentials or Account Disabled", Toast.LENGTH_SHORT).show();
                     }
                 }
                 catch(Exception e)

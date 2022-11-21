@@ -58,7 +58,7 @@ public class authenticateUser {
 
             try {
                 statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select 1 from [User] u where u.userName = '"+name+"' and u.password = '"+pass+"'");
+                ResultSet resultSet = statement.executeQuery("select 1 from [User] us join Student s on us.idUser = s.idStudent where us.userName = '"+name+"' and us.password = '"+pass+"' and us.isDisabled = 0");
 
                 while(resultSet.next())
                 {

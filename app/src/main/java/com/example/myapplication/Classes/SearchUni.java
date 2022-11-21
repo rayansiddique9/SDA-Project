@@ -185,4 +185,60 @@ public class SearchUni implements Serializable {
         }
     }
 
+    public String getCampusLife(Context ptr, String uniname)
+    {
+        String str = null;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.campusLife from [User] us join University u on u.idUniversity = us.idUser where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getString(1);
+                     //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
+    public void getUniReviews(Context ptr, String uniname, List<String> arr)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select r.review from [User] us join University u on us.idUser = u.idUniversity join Review r on u.idUniversity = r.idUniversity where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    arr.add(resultSet.getString(1));
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
