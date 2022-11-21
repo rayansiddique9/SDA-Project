@@ -18,6 +18,22 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Error"
+        android:visibility="invisible"
+        android:background="#FF0000"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="345dp"
         android:layout_height="43dp"
@@ -33,14 +49,14 @@
         app:layout_constraintVertical_bias="0.049" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Username"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:textColor="#555252"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,12 +64,12 @@
         app:layout_constraintVertical_bias="0.53" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textColor="#555252"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.707" />
 
     <EditText
@@ -87,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.466" />
 
     <Button

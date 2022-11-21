@@ -12,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.Evaluator;
+import com.example.myapplication.Classes.GraduateStudent;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.UndergradStudent;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,6 +32,7 @@ public class programSelectionEligibility extends AppCompatActivity {
     Spinner acc;
     Button b;
     String item;
+    Student obj1;
 
 
     @Override
@@ -36,14 +40,21 @@ public class programSelectionEligibility extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_selection_eligibility);
 
-        Evaluator obj = new Evaluator();
-        obj.connectToDb(programSelectionEligibility.this);
-        arr = new ArrayList<String>();
-        obj.fillBSlist(arr, programSelectionEligibility.this);
+        String st = getIntent().getExtras().getString("type");
+        obj1 = (Student) getIntent().getExtras().getSerializable("object");
 
+         /*Toast.makeText(this, "Type:"+st, Toast.LENGTH_SHORT).show();
+        if(st.equals("Undergraduate"))
+        {
+            Toast.makeText(this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
+        }*/
 
-      //  obj.fillMSlist(arr, programSelectionEligibility.this);      //if education type of student object is graduate
-
+        arr = new ArrayList<>();
+        obj1.getAvalaiblePrograms(this, arr);
 
         acc = findViewById(R.id.spinner);
         b = findViewById(R.id.nextbtn);
@@ -55,29 +66,7 @@ public class programSelectionEligibility extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-             //   String st = getIntent().getExtras().getString("str");
-            //    Toast.makeText(getApplicationContext(),"Item: "+st, Toast.LENGTH_SHORT).show();
-
-              /*  if(Objects.equals(st, "Bachelors")) {
-                    Intent in = new Intent(programSelectionEligibility.this, educationalbg_fsc.class);
-                    startActivity(in);
-
-                }
-                else if(Objects.equals(st, "Masters"))
-                {
-                    Intent in = new Intent(programSelectionEligibility.this, educationalBgGrad.class);
-                    startActivity(in);
-                }
-               */
-
-
-                obj.getPrefferedDegree(item);
-
-                ArrayList<String>rst = obj.getFilteredUnisUG(item, programSelectionEligibility.this);
-
-           //     ArrayList<String>rst = obj.getFilteredUnisG(item, programSelectionEligibility.this);  //if education type of student object is graduate
-
-
+                ArrayList<String>rst = obj1.getEligibleUniList(programSelectionEligibility.this, item);
                 Intent in = new Intent(programSelectionEligibility.this, uniList.class);
                 in.putExtra("arr", rst);
                 startActivity(in);
@@ -98,6 +87,7 @@ public class programSelectionEligibility extends AppCompatActivity {
 
             }
         });
+
 
     }
 }

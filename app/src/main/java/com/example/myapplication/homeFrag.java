@@ -13,8 +13,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.UndergradStudent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -29,6 +33,8 @@ public class homeFrag extends Fragment {
     private Button Search;
     private AutoCompleteTextView act;
     ArrayList<String> arrUnis;
+    Student obj1;
+    String str;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -41,7 +47,6 @@ public class homeFrag extends Fragment {
     private String mParam2;
 
     public homeFrag() {
-        // Required empty public constructor
     }
 
     /**
@@ -85,6 +90,22 @@ public class homeFrag extends Fragment {
         act = view.findViewById(R.id.autotext);
         Search = view.findViewById(R.id.search);
 
+        str = getArguments().getString("edutype");
+        obj1 = (Student) getArguments().getSerializable("stu");
+
+
+        /*Toast.makeText(getContext(), "Type:"+str, Toast.LENGTH_SHORT).show();
+        if(str.equals("Undergraduate"))
+        {
+            Toast.makeText(getContext(), Integer.toString(((UndergradStudent)obj).getMarks()), Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getContext(), Float.toString(((GraduateStudent)obj).getCgpa()), Toast.LENGTH_SHORT).show();
+        }*/
+
+
+
         SearchUni obj = new SearchUni();
         obj.connectToDb(getContext());
 
@@ -115,6 +136,8 @@ public class homeFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getContext(), programSelectionEligibility.class);
+                in.putExtra("type", str);
+                in.putExtra("object", (Serializable) obj1);
                 startActivity(in);
 
             }

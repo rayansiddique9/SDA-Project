@@ -8,16 +8,22 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.myapplication.Classes.GraduateStudent;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.UndergradStudent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class homePage extends AppCompatActivity {
 
     private BottomNavigationView bnView;
+    Student obj;
 
     // loads the fragment on tha basis of given 'fragment'
-    private void loadFrag(Fragment fragment, boolean flag){
+    private void loadFrag(Fragment fragment, boolean flag, Bundle bundle){
+        fragment.setArguments(bundle);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         if (!flag){
@@ -34,22 +40,32 @@ public class homePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
 
+        String str = getIntent().getExtras().getString("edutype");
+
+    //    Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+
+        obj = (Student) getIntent().getExtras().getSerializable("stu");
+
+    //    Toast.makeText(this, Integer.toString(((UndergradStudent)obj).getMarks()), Toast.LENGTH_SHORT).show();
+
         bnView = findViewById(R.id.nav_view);
 
-
         bnView.setSelectedItemId(R.id.navigation_home);
-        loadFrag(new homeFrag(),false);
+        Bundle b = new Bundle();
+        b.putString("edutype", str);
+        b.putSerializable("stu", obj);
+        loadFrag(new homeFrag(),false, b);
 
         bnView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId() ;
                 if (id == R.id.navigation_home){
-                    loadFrag(new homeFrag(),true);
+                    loadFrag(new homeFrag(),true, b);
                 }else if (id == R.id.navigation_profile){
-                    loadFrag(new profileFrag(),true);
+                    loadFrag(new profileFrag(),true, b);
                 }else{
-                    loadFrag(new settingsFrag(),true);
+                    loadFrag(new settingsFrag(),true, b);
                 }
                 return true;
             }

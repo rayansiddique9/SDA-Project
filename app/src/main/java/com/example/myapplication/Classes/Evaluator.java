@@ -31,9 +31,7 @@ public class Evaluator{
     private static String password = "258369";
     private Connection connection = null;
 
-    private int marks;
-    private String subjectCombo;
-    private String degree;
+
 
 
     public void  connectToDb(Context ptr)
@@ -67,19 +65,8 @@ public class Evaluator{
         return true;
     }
 
- public Evaluator()
- {
-    this.degree = null;
-    this.marks = 930;
-    this.subjectCombo = "fsc pre eng";
- }
 
- public void getPrefferedDegree(String deg)
- {
-    this.degree = deg;
- }
-
- public ArrayList<String> getFilteredUnisUG( String degree, Context ptr)
+ public ArrayList<String> getFilteredUnisUG( String degree, Context ptr, String subjectCombo, int marks)
  {
      ArrayList<String> arr = new ArrayList<String>();
      if(connection != null)
@@ -118,7 +105,7 @@ public class Evaluator{
  }
 
 
-    public ArrayList<String> getFilteredUnisG( String degree, Context ptr)
+    public ArrayList<String> getFilteredUnisG( String degree, Context ptr, String subjectCombo, Float marks)
     {
         ArrayList<String> arr = new ArrayList<String>();
         if(connection != null)
