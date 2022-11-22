@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_student_profile">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="890dp"
+        android:layout_height="1295dp"
+        tools:context=".activity_student_profile"
+        tools:layout_editor_absoluteX="-82dp"
+        tools:layout_editor_absoluteY="-247dp">
+
+        <EditText
+            android:id="@+id/subjectcombo"
+            android:layout_width="135dp"
+            android:layout_height="74dp"
+            android:layout_marginTop="60dp"
+            android:ems="110"
+            android:inputType="textPersonName"
+            android:text="subjectCombo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/latitude" />
+
+        <EditText
+            android:id="@+id/equivalence"
+            android:layout_width="153dp"
+            android:layout_height="82dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Equivalence"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.139"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="645dp" />
+
+        <EditText
+            android:id="@+id/latitude"
+            android:layout_width="165dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Latitude"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.416"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DOB" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="98dp"
+            android:layout_height="127dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.229"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="133dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="44dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="FirstName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            tools:layout_editor_absoluteY="282dp" />
+
+        <EditText
+            android:id="@+id/lastname"
+            android:layout_width="145dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="LastName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="344dp" />
+
+        <EditText
+            android:id="@+id/DOB"
+            android:layout_width="148dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="DOB"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.385"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastname" />
+
+        <EditText
+            android:id="@+id/longitude"
+            android:layout_width="151dp"
+            android:layout_height="56dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Longitude"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toTopOf="@+id/equivalence"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            app:layout_constraintVertical_bias="0.46" />
+
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="92dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Location"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.137"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstname" />
+
+        <EditText
+            android:id="@+id/CGPA"
+            android:layout_width="191dp"
+            android:layout_height="58dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="CGPA"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.633"
+            tools:layout_editor_absoluteX="187dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
