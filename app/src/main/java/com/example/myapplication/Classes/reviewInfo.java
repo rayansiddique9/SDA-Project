@@ -1,8 +1,8 @@
 package com.example.myapplication.Classes;
 
 public class reviewInfo {
-    String review;
-    int rating;
+    private String review;
+    private int rating;
 
     public reviewInfo(String text, int rating)
     {

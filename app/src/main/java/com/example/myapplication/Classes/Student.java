@@ -126,6 +126,19 @@ public class Student extends Visitor {
         su.insertReview(sid, uid, rating, review);
     }
 
+    public void getFaqs(Context ptr, List<faqInfo> ar)
+    {
+        su.connectToDb(ptr);
+        su.getFAQs(ar);
+    }
+
+    public void giveFeedback(Context ptr, String str)
+    {
+        su.connectToDb(ptr);
+        int uid = su.getUserId(this.getUsername());
+        su.insertFeedback(str, uid);
+    }
+
 
 
 }

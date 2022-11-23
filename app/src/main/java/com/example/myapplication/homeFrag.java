@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -32,6 +33,7 @@ public class homeFrag extends Fragment {
     private Button buni;
     private Button elg;
     private Button Search;
+    private Button Feedback;
     private AutoCompleteTextView act;
     ArrayList<String> arrUnis;
     Student obj1;
@@ -81,6 +83,7 @@ public class homeFrag extends Fragment {
 
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,26 +93,11 @@ public class homeFrag extends Fragment {
         elg = view.findViewById(R.id.eligibility);
         act = view.findViewById(R.id.autotext);
         Search = view.findViewById(R.id.search);
-/*
-        str = getArguments().getString("edutype");
-        obj1 = (Student) getArguments().getSerializable("stu");*/
+        Feedback = view.findViewById(R.id.feedback);
 
         currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
         String st = obj1.getEducationType();
-
-
-
-       /* Toast.makeText(getContext(), "Type:"+str, Toast.LENGTH_SHORT).show();
-        if(str.equals("Undergraduate"))
-        {
-            Toast.makeText(getContext(), Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(getContext(), Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
-        }*/
-
 
 
         SearchUni obj = new SearchUni();
@@ -163,6 +151,14 @@ public class homeFrag extends Fragment {
                     Toast.makeText(getContext(), "Search Field Empty", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        Feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getContext(), feedbackAndFaq.class);
+                startActivity(in);
             }
         });
 

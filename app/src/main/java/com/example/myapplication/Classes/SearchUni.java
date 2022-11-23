@@ -393,4 +393,85 @@ public class SearchUni implements Serializable {
         }
     }
 
+    public void getFAQs(List<faqInfo> arr)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select fa.question, fa.answer from FAQs fa");
+
+                while(resultSet.next())
+                {
+                    arr.add(new faqInfo(resultSet.getString(1), resultSet.getString(2)));
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void insertFeedback(String fb, int uid)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                String query = "insert into Feedback values("+uid+", '"+fb+"')";
+                statement.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public int getUserId(String name)
+    {
+        int ans = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select a.idUser from [User] a where a.userName = '"+name+"'");
+
+                while(resultSet.next())
+                {
+                    ans = resultSet.getInt(1);
+                }
+
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return ans;
+    }
+
 }
