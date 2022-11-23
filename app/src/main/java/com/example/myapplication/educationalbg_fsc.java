@@ -89,7 +89,7 @@ public class educationalbg_fsc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                obj.createUndergradAcc(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item);
+                obj.createUndergradAcc(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
              //   UndergradStudent obj1 = new UndergradStudent(username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item);
                 Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
                 /*in.putExtra("edutype",edutype);

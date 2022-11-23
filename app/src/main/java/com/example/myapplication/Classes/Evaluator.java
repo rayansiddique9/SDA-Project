@@ -243,4 +243,94 @@ public class Evaluator{
         return false;
     }
 
+    public void fillAllPrograms(List<String> arr, Context ptr)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select distinct p.name from Program p");
+                while(resultSet.next())
+                {
+                    arr.add(resultSet.getString(1));
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public ArrayList<String> getUnisDegFiltered( String degree, Context ptr)
+    {
+        ArrayList<String> arr = new ArrayList<String>();
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select us.userName from [User] us join University u on u.idUniversity = us.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment where p.name = '"+degree+"'");
+                while(resultSet.next())
+                {
+                    arr.add(resultSet.getString(1));
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+
+        return arr;
+    }
+
+    public ArrayList<String> getUnisRankingFiltered(Context ptr, int l, int u)
+    {
+        ArrayList<String> arr = new ArrayList<String>();
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select us.userName from [User] us join University u on u.idUniversity = us.idUser where u.ranking >= "+l+" and u.ranking <= "+u+"");
+                while(resultSet.next())
+                {
+                    arr.add(resultSet.getString(1));
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+
+        return arr;
+    }
+
 }

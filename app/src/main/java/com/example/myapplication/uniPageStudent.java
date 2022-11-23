@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -160,6 +161,13 @@ public class uniPageStudent extends AppCompatActivity {
                 else if(id == R.id.menu_campus)
                 {
                     loadFragment(new campusLife_frag(), true, bundle);
+                }
+                else if(id == R.id.menu_location)
+                {
+                    Intent in = new Intent(uniPageStudent.this, google.class);
+                    in.putExtra("universityName", s);
+                    startActivity(in);
+                  //  loadFragment(new MapsFragment(), true, bundle);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);

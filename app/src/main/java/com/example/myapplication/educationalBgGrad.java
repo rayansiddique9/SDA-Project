@@ -56,7 +56,7 @@ public class educationalBgGrad extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                obj.createGradAcc(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item);
+                obj.createGradAcc(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
                 //GraduateStudent obj1 = new GraduateStudent(username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item);
                 Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
               /*  in.putExtra("activityname", "educationalBgGrad");

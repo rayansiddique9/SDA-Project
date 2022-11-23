@@ -18,9 +18,9 @@ public class Student extends Visitor {
     protected Evaluator e;
 
 
-    public Student(String name, String email, String pass, String eduType, String d, String fname, String lname)
+    public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
     {
-        super(name, email, pass);
+        super(name, email, pass, isadmin, isdisabled);
         this.educationType = eduType;
         this.dob = d;
         this.firstName = fname;
@@ -88,6 +88,30 @@ public class Student extends Visitor {
         {
             return e.getStatusMS(preferredDeg, ptr, ((GraduateStudent)this).getBsDeg(), ((GraduateStudent)this).getCgpa(), uname);
         }
+    }
+
+    public void getAllPrograms(Context ptr, List<String> programlist)
+    {
+        e.connectToDb(ptr);
+        e.fillAllPrograms(programlist, ptr);
+    }
+
+    public ArrayList<String> getFilteredUniListDeg(Context ptr, String preferredDeg)
+    {
+        e.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = e.getUnisDegFiltered(preferredDeg, ptr);
+        return rst;
+
+    }
+
+    public ArrayList<String> getFilteredUniListRanking(Context ptr, int l, int u)
+    {
+        e.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = e.getUnisRankingFiltered(ptr, l, u);
+        return rst;
+
     }
 
 

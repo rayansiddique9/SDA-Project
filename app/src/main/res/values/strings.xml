@@ -13,5 +13,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="navigation_open">Open Navigation drawer</string>
     <string name="navigation_close">Close Navigation drawer</string>
+    <string name="title_activity_google_map">googleMap</string>
+    <string name="title_activity_google">google</string>
 
 </resources>

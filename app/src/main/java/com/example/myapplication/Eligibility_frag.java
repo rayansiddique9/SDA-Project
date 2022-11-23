@@ -88,7 +88,7 @@ public class Eligibility_frag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_eligibility_frag, container, false);
 
 
-        currentUser cu  = currentUser.getInstance(obj1);
+        currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
         String st = obj1.getEducationType();
         str = getArguments().getString("universityName");

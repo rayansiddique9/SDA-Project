@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,62 +12,35 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.myapplication.Classes.Evaluator;
-import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.Student;
-import com.example.myapplication.Classes.UndergradStudent;
 import com.example.myapplication.Classes.currentUser;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+public class filterUniDeg1 extends AppCompatActivity {
 
-
-public class programSelectionEligibility extends AppCompatActivity {
     ArrayAdapter<String> adapter;
+    Student obj1;
     List<String> arr;
-    List<String> arr1;
     Spinner acc;
     Button b;
     String item;
-    Student obj1;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_program_selection_eligibility);
-
-      //  String st = getIntent().getExtras().getString("type");
-     //   obj1 = (Student) getIntent().getExtras().getSerializable("object");
+        setContentView(R.layout.activity_filter_uni_deg1);
 
         currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
-        String st = obj1.getEducationType();
-
-     /*   Toast.makeText(this, "Type:"+st, Toast.LENGTH_SHORT).show();
-        if(st.equals("Undergraduate"))
-        {
-            Toast.makeText(this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
-        }
-*/
-
-
-
 
         arr = new ArrayList<String>();
-        obj1.getAvalaiblePrograms(this, arr);
-      //  Toast.makeText(this, "Size:"+String.valueOf(arr.size()), Toast.LENGTH_SHORT).show();
+        obj1.getAllPrograms(this, arr);
 
-        acc = findViewById(R.id.spinner);
+
+        acc = findViewById(R.id.spinnerdeg);
         b = findViewById(R.id.nextbtn);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -76,9 +50,9 @@ public class programSelectionEligibility extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ArrayList<String>rst = obj1.getEligibleUniList(programSelectionEligibility.this, item);
-                Toast.makeText(programSelectionEligibility.this, "Unis:"+String.valueOf(rst.size()), Toast.LENGTH_SHORT).show();
-                Intent in = new Intent(programSelectionEligibility.this, uniList.class);
+                ArrayList<String>rst = obj1.getFilteredUniListDeg(filterUniDeg1.this, item);
+                Toast.makeText(filterUniDeg1.this, "Unis:"+String.valueOf(rst.size()), Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(filterUniDeg1.this, uniList.class);
                 in.putExtra("arr", rst);
                 startActivity(in);
 
@@ -89,7 +63,6 @@ public class programSelectionEligibility extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 item = parent.getItemAtPosition(i).toString();
-                //  Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
 
             }
 

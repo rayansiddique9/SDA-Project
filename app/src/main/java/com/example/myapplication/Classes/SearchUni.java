@@ -241,4 +241,65 @@ public class SearchUni implements Serializable {
         }
     }
 
+    public double getUniLatitude(Context ptr,String universityname)
+    {
+        double ans = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.latitude from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+universityname+"'");
+                while(resultSet.next())
+                {
+                    ans = (double) resultSet.getFloat(1);
+                }
+
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return ans;
+    }
+
+    public double getUniLongitude(Context ptr,String universityname)
+    {
+        double ans = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.longitude from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+universityname+"'");
+
+                while(resultSet.next())
+                {
+                    ans = (double) resultSet.getFloat(1);
+                }
+
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return ans;
+    }
+
 }

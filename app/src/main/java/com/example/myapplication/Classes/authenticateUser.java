@@ -122,11 +122,11 @@ public class authenticateUser {
 
             try {
                 statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select u.email, s.educationType, s.DOB, s.firstName, s.lastName, ug.marks, ug.subjectCombo from [User] u join Student s on u.idUser = s.idStudent join Undergraduate ug on s.idStudent = ug.idStudent where u.userName = '"+name+"' and u.password = '"+pass+"'");
+                ResultSet resultSet = statement.executeQuery("select u.email, s.educationType, s.DOB, s.firstName, s.lastName, ug.marks, ug.subjectCombo, u.isAdmin, u.isDisabled from [User] u join Student s on u.idUser = s.idStudent join Undergraduate ug on s.idStudent = ug.idStudent where u.userName = '"+name+"' and u.password = '"+pass+"'");
 
                 while(resultSet.next())
                 {
-                    obj = new UndergradStudent(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getInt(6), resultSet.getString(7));
+                    obj = new UndergradStudent(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getInt(6), resultSet.getString(7), resultSet.getInt(8), resultSet.getInt(9));
                 }
             }
             catch(SQLException e)
@@ -152,11 +152,11 @@ public class authenticateUser {
 
             try {
                 statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select u.email, s.educationType, s.DOB, s.firstName, s.lastName, ug.CGPA, ug.BSDegree from [User] u join Student s on u.idUser = s.idStudent join Graduate ug on s.idStudent = ug.idStudent where u.userName = '"+name+"' and u.password = '"+pass+"'");
+                ResultSet resultSet = statement.executeQuery("select u.email, s.educationType, s.DOB, s.firstName, s.lastName, ug.CGPA, ug.BSDegree, u.isAdmin, u.isDisabled from [User] u join Student s on u.idUser = s.idStudent join Graduate ug on s.idStudent = ug.idStudent where u.userName = '"+name+"' and u.password = '"+pass+"'");
 
                 while(resultSet.next())
                 {
-                    obj = new GraduateStudent(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),  resultSet.getFloat(6), resultSet.getString(7));
+                    obj = new GraduateStudent(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),  resultSet.getFloat(6), resultSet.getString(7),  resultSet.getInt(8), resultSet.getInt(9));
                 }
             }
             catch(SQLException e)

@@ -94,7 +94,7 @@ public class homeFrag extends Fragment {
         str = getArguments().getString("edutype");
         obj1 = (Student) getArguments().getSerializable("stu");*/
 
-        currentUser cu  = currentUser.getInstance(obj1);
+        currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
         String st = obj1.getEducationType();
 

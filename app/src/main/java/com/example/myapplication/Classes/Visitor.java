@@ -18,11 +18,13 @@ public class Visitor extends User{
         this.password = null;
     }
 
-    public Visitor(String name, String email, String pass)
+    public Visitor(String name, String email, String pass, int admin, int disabled)
     {
         this.name = name;
         this.email = email;
         this.password = pass;
+        this.isAdmin = admin;
+        this.isDisabled = disabled;
     }
 
     public boolean signInStu(EditText uname, EditText pass, Context ptr)

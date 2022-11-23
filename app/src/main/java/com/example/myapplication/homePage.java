@@ -45,7 +45,7 @@ public class homePage extends AppCompatActivity {
 
       //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
-        currentUser cu  = currentUser.getInstance(obj);
+        currentUser cu  = currentUser.getInstance(obj, null, null);
         obj = cu.getStu();
 
      //   obj = (Student) getIntent().getExtras().getSerializable("stu");
