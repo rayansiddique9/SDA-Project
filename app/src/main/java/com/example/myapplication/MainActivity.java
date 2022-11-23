@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "UniGrab";
     private static String username = "sa";
-    private static String password = "258369";
+    private static String password = "12345678";
     private static String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database;
 
     private Connection connection = null;
