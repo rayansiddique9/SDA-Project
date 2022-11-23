@@ -13,7 +13,7 @@ import android.widget.Spinner;
 public class selectAccount extends AppCompatActivity{
 
     private ArrayAdapter<String> adapter;
-    private String arr[] = {"Student", "University"};
+    private String arr[] = {"Student", "University", "Admin"};
     private Spinner acc;
     private Button b;
     private String item;
@@ -39,6 +39,11 @@ public class selectAccount extends AppCompatActivity{
                 else if(item == "University")
                 {
                     Intent in = new Intent(selectAccount.this, loginUni.class);
+                    startActivity(in);
+                }
+                else
+                {
+                    Intent in = new Intent(selectAccount.this, loginAdmin.class);
                     startActivity(in);
                 }
             }

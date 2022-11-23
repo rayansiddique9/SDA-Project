@@ -89,13 +89,19 @@ public class educationalbg_fsc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                obj.createUndergradAcc(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
-             //   UndergradStudent obj1 = new UndergradStudent(username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item);
-                Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
+                if(Integer.valueOf(marks.getText().toString()) >= 300 && Integer.valueOf(marks.getText().toString()) <= 1000) {
+                    obj.createUndergradAcc(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
+                    //   UndergradStudent obj1 = new UndergradStudent(username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item);
+                    Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
                 /*in.putExtra("edutype",edutype);
                 in.putExtra("activityname", "educationalbg_fsc");
                 in.putExtra("undergrad", (Serializable) obj1);*/
-                startActivity(in);
+                    startActivity(in);
+                }
+                else
+                {
+                    Toast.makeText(educationalbg_fsc.this, "Marks should be >= 300 & <= 1000", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

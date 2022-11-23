@@ -4,11 +4,17 @@ import java.util.ArrayList;
 
 public class Department {
     private String name;
-    private ArrayList<UndergraduteProgram> programs;
+    private ArrayList<UndergraduteProgram> ugprgms;
+    private ArrayList<GraduateProgram> gprgms;
 
-    public Department(String n, ArrayList<UndergraduteProgram> obj)
+    public Department(String n, ArrayList<UndergraduteProgram> obj, ArrayList<GraduateProgram> obj1)
     {
         this.name = n;
-        this.programs = obj;
+        this.ugprgms = obj;
+        this.gprgms = obj1;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.UndergradStudent;
@@ -56,13 +57,19 @@ public class educationalBgGrad extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                obj.createGradAcc(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
-                //GraduateStudent obj1 = new GraduateStudent(username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item);
-                Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
+                if(Float.valueOf(cgpa.getText().toString()) >= 1.0 && Float.valueOf(cgpa.getText().toString()) <= 4.0) {
+                    obj.createGradAcc(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
+                    //GraduateStudent obj1 = new GraduateStudent(username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item);
+                    Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
               /*  in.putExtra("activityname", "educationalBgGrad");
                 in.putExtra("edutype",edutype);
                 in.putExtra("grad", (Serializable) obj1);*/
-                startActivity(in);
+                    startActivity(in);
+                }
+                else
+                {
+                    Toast.makeText(educationalBgGrad.this, "CGPA must be >= 1.0 && <= 4.0", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -1,20 +1,15 @@
 package com.example.myapplication.Classes;
 
-public class Program {          //abstract class
+public abstract class  Program {
     protected String name;
-    protected int type;                               //0 for ug    1 for grad
+    protected int creditHours;
+    protected int feepch;
+    protected int admissionfees;
 
-
- /*   public Program(String n, int t)
-    {
-        this.name = n;
-        this.type = t;
+    public Program(String name, int ch, int fpch, int admissionfee) {
+        this.name = name;
+        this.creditHours = ch;
+        this.feepch = fpch;
+        this.admissionfees = admissionfee;
     }
-
-    public Program()
-    {
-        this.name = null;
-        this.type = 0;
-    } */
-
 }

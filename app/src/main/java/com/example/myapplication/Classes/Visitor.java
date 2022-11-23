@@ -37,7 +37,26 @@ public class Visitor extends User{
         this.au.connectToDb(ptr);
         if(this.au.verifyInfoStu(ptr, uname.getText().toString(), pass.getText().toString()) == true)
         {
+            return true;
+        }
+        return false;
+    }
 
+    public boolean signInUni(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        if(this.au.verifyInfoUni(ptr, uname.getText().toString(), pass.getText().toString()) == true)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean signInAdmin(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        if(this.au.verifyInfoAdmin(ptr, uname.getText().toString(), pass.getText().toString()) == true)
+        {
             return true;
         }
         return false;
@@ -60,6 +79,14 @@ public class Visitor extends User{
         this.au.connectToDb(ptr);
         return this.au.getGStu(ptr, uname.getText().toString(), pass.getText().toString());
     }
+
+    public University makeUni(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        return this.au.getUni(ptr, uname.getText().toString(), pass.getText().toString());
+    }
+
+
 
 
 }

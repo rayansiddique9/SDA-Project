@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginUni">
+    tools:context=".loginAdmin">
+
 
     <TextView
-        android:id="@+id/textViewUniLogin"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elegantTextHeight="true"
@@ -23,10 +24,10 @@
         app:layout_constraintVertical_bias="0.346" />
 
     <ImageView
-        android:id="@+id/imageViewLogin"
-        android:layout_width="144dp"
-        android:layout_height="171dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewUniLogin"
+        android:id="@+id/imageView"
+        android:layout_width="131dp"
+        android:layout_height="147dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,39 +37,36 @@
 
 
     <EditText
-        android:id="@+id/usernamee"
+        android:id="@+id/usernameadmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
         android:ems="10"
         android:hint="Username"
-        android:inputType="textEmailAddress"
 
-        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUniLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/unipassword"
+        android:id="@+id/stuPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernamee"
+        app:layout_constraintTop_toBottomOf="@+id/usernameadmin"
         app:layout_constraintVertical_bias="0.233" />
 
     <Button
-        android:id="@+id/unilogin"
+        android:id="@+id/loginadminn"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:text="Let's Go!"
@@ -82,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unipassword" />
+        app:layout_constraintTop_toBottomOf="@+id/stuPassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
