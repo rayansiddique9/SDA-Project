@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.example.myapplication.Classes.SearchUni;
 import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.reviewInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ import java.util.List;
  */
 public class Reviews_frag extends Fragment {
 
-    List<String> listreview;
+    List<reviewInfo> listreview;
 
     ListView listView;
 
@@ -87,14 +89,12 @@ public class Reviews_frag extends Fragment {
         SearchUni obj = new SearchUni();
         obj.connectToDb(getContext());
         String str = getArguments().getString("universityName");
-
+        listreview = (List<reviewInfo>) getArguments().getSerializable("r");
+        Toast.makeText(getContext(), "reviews:"+String.valueOf(listreview.size()), Toast.LENGTH_SHORT).show();
 
         currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
 
-
-        listreview = new ArrayList<>();
-        obj.getUniReviews(getContext(), str, listreview);
 
         listView = view.findViewById(R.id.reviewlist);
         adapterReview ad = new adapterReview(this.getContext(), R.layout.alumni_list_row, listreview);

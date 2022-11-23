@@ -86,7 +86,7 @@ public class SearchUni implements Serializable {
         }
     }
 
-    public void getUniveristy(Context ptr,String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a)
+    public void getUniveristy(Context ptr,String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a, List<reviewInfo> r)
     {
         if(connection != null)
         {
@@ -116,6 +116,12 @@ public class SearchUni implements Serializable {
                 while(resultSet3.next())
                 {
                     a.add(new aidInfo(resultSet3.getString(1), resultSet3.getString(2)));
+                }
+
+                ResultSet resultSet4 = statement.executeQuery("select r.review, r.stars from [User] a join University u on a.idUser = u.idUniversity join Review r on u.idUniversity = r.idUniversity where a.userName = '"+universityname+"'");
+                while(resultSet4.next())
+                {
+                    r.add(new reviewInfo(resultSet4.getString(1), resultSet4.getInt(2)));
                 }
 
             }

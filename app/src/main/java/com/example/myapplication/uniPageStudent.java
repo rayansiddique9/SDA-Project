@@ -28,6 +28,7 @@ import com.example.myapplication.Classes.SearchUni;
 import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.alumniInfo;
 import com.example.myapplication.Classes.feeinfo;
+import com.example.myapplication.Classes.reviewInfo;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.Serializable;
@@ -45,6 +46,7 @@ public class uniPageStudent extends AppCompatActivity {
     List<alumniInfo> arr;
     List<feeinfo> fees;
     List<aidInfo> aid;
+    List<reviewInfo> reviewInfos;
 
     private void loadFragment(Fragment fragment, boolean flag, Bundle b) {
         fragment.setArguments(b);
@@ -91,8 +93,9 @@ public class uniPageStudent extends AppCompatActivity {
         arr = new ArrayList<alumniInfo>();
         fees = new ArrayList<feeinfo>();
         aid = new ArrayList<aidInfo>();
+        reviewInfos = new ArrayList<reviewInfo>();
 
-        obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid);   //gets uni content from db
+        obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);   //gets uni content from db
 
 
 
@@ -152,7 +155,10 @@ public class uniPageStudent extends AppCompatActivity {
                 }
                 else if(id == R.id.menu_review)
                 {
-                    loadFragment(new Reviews_frag(), true, bundle);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putSerializable("r", (Serializable) reviewInfos);
+                    loadFragment(new Reviews_frag(), true, b);
                 }
                 else if(id == R.id.menu_eligibility)
                 {
