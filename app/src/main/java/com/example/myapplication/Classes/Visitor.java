@@ -27,6 +27,11 @@ public class Visitor extends User{
         this.isDisabled = disabled;
     }
 
+    public String getUsername()
+    {
+        return this.name;
+    }
+
     public boolean signInStu(EditText uname, EditText pass, Context ptr)
     {
         this.au.connectToDb(ptr);
@@ -55,5 +60,6 @@ public class Visitor extends User{
         this.au.connectToDb(ptr);
         return this.au.getGStu(ptr, uname.getText().toString(), pass.getText().toString());
     }
+
 
 }

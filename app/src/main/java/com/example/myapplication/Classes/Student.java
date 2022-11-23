@@ -16,6 +16,7 @@ public class Student extends Visitor {
     protected String firstName;
     protected String lastName;
     protected Evaluator e;
+    protected SearchUni su;
 
 
     public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
@@ -26,6 +27,7 @@ public class Student extends Visitor {
         this.firstName = fname;
         this.lastName = lname;
         this.e = new Evaluator();
+        this.su = new SearchUni();
     }
 
     public String getDob() {
@@ -113,6 +115,17 @@ public class Student extends Visitor {
         return rst;
 
     }
+
+    public void submitReview(Context ptr, String uname, int rating, String review)
+    {
+        su.connectToDb(ptr);
+        int uid = su.getUniId(uname);
+      //  Toast.makeText(ptr, "UniId:"+String.valueOf(uid), Toast.LENGTH_SHORT).show();
+        int sid = su.getStuId(this.getUsername());
+      //  Toast.makeText(ptr, "StuId:"+String.valueOf(sid), Toast.LENGTH_SHORT).show();
+        su.insertReview(sid, uid, rating, review);
+    }
+
 
 
 }

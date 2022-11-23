@@ -32,7 +32,7 @@ public class SearchUni implements Serializable {
         try {
             Class.forName(Classes);
             connection = DriverManager.getConnection(url, username, password);
-            Toast.makeText(ptr,"Success", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(ptr,"Success", Toast.LENGTH_SHORT).show();
 
         }
         catch (Exception e) {
@@ -300,6 +300,91 @@ public class SearchUni implements Serializable {
             Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
         return ans;
+    }
+
+    public int getUniId(String universityname)
+    {
+        int ans = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select a.idUser from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+universityname+"'");
+
+                while(resultSet.next())
+                {
+                    ans = resultSet.getInt(1);
+                }
+
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+              //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return ans;
+    }
+
+    public int getStuId(String stuname)
+    {
+        int ans = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.idStudent from [User] a join Student u on a.idUser = u.idStudent where a.userName = '"+stuname+"'");
+
+                while(resultSet.next())
+                {
+                    ans = resultSet.getInt(1);
+                }
+
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return ans;
+    }
+
+    public void insertReview(int idstu, int iduni, int star, String text)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                String query = "insert into Review values("+idstu+", "+iduni+", "+star+", '"+text+"')";
+                statement.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
