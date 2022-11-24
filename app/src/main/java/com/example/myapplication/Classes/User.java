@@ -11,4 +11,8 @@ public abstract class User implements Serializable{
     protected int isAdmin;
     protected int isDisabled;
     authenticateUser au;
+
+   /* public String getUsername(){
+      //  return name;
+    }*/
 }

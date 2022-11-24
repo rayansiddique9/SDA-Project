@@ -27,10 +27,10 @@ public class Visitor extends User{
         this.isDisabled = disabled;
     }
 
-    public String getUsername()
-    {
-        return this.name;
-    }
+//    public String getUsername()
+//    {
+//        return this.name;
+//    }
 
     public boolean signInStu(EditText uname, EditText pass, Context ptr)
     {
@@ -87,6 +87,7 @@ public class Visitor extends User{
     }
 
 
-
-
+    public String getUsername() {
+        return this.name;
+    }
 }

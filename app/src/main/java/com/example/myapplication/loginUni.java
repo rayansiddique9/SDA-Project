@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.Department;
@@ -27,6 +28,7 @@ public class loginUni extends AppCompatActivity {
     String edu;
     University obj1;
     currentUser cu;
+    TextView t;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -58,7 +60,12 @@ public class loginUni extends AppCompatActivity {
                             Toast.makeText(loginUni.this, swad.get(x), Toast.LENGTH_SHORT).show();
                         }*/
 
-                      //  Toast.makeText(loginUni.this, obj.getUsername(), Toast.LENGTH_SHORT).show();
+                    /*    String un=obj.getUsername();
+                        Toast.makeText(loginUni.this, un, Toast.LENGTH_SHORT).show();
+*/
+                        //Toast.makeText(loginUni.this, obj1.getUsername(), Toast.LENGTH_SHORT).show();
+
+                    //    t.setText(obj1.getUsername());
 
                         /*ArrayList<Department> dept = null;
                         dept = obj1.getDepartments();
@@ -67,7 +74,7 @@ public class loginUni extends AppCompatActivity {
                         {
                             Toast.makeText(loginUni.this, dept.get(x).getName(), Toast.LENGTH_SHORT).show();
                         }*/
-
+                        in.putExtra("name", username.getText().toString());
                         startActivity(in);
                     }
                     else

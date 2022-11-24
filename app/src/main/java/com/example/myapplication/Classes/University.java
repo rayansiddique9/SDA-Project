@@ -23,6 +23,11 @@ public class University extends Visitor{
         this.departments = depts;
     }
 
+//    @Override
+//    public String getUsername() {
+//        return super.getUsername();
+//    }
+
     /*public void getDepartments(ArrayList<String> arr) {
         for(int i = 0; i < departments.size(); i++)
         {
