@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.myapplication.Classes.managePost;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class addVideoUni extends AppCompatActivity {
 
     private EditText ev;
@@ -36,11 +39,18 @@ public class addVideoUni extends AppCompatActivity {
             public void onClick(View view) {
                 if(ev.getText().length() != 0)
                 {
-                    m.connectToDb(addVideoUni.this);
-                    m.insertVideo(addVideoUni.this, uname, ev.getText().toString());
-                 //   Toast.makeText(addVideoUni.this, "Video posted", Toast.LENGTH_SHORT).show();
-                    Intent in = new Intent(addVideoUni.this, homePageUni.class);
-                    startActivity(in);
+                    if(isYoutubeUrl(ev.getText().toString()) == true)
+                    {
+                        m.connectToDb(addVideoUni.this);
+                        m.insertVideo(addVideoUni.this, uname, ev.getText().toString());
+                        //   Toast.makeText(addVideoUni.this, "Video posted", Toast.LENGTH_SHORT).show();
+                        Intent in = new Intent(addVideoUni.this, homePageUni.class);
+                        startActivity(in);
+                    }
+                    else
+                    {
+                        Toast.makeText(addVideoUni.this, "not valid youtube url", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
@@ -49,4 +59,21 @@ public class addVideoUni extends AppCompatActivity {
             }
         });
     }
+
+    public boolean isYoutubeUrl(String youTubeURl)
+    {
+        boolean success;
+        String pattern = "^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+";
+        if (!youTubeURl.isEmpty() && youTubeURl.matches(pattern))
+        {
+            success = true;
+        }
+        else
+        {
+            // Not Valid youtube URL
+            success = false;
+        }
+        return success;
+    }
+
 }
