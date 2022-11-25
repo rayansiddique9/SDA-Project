@@ -35,9 +35,9 @@ public class Eligibility_frag extends Fragment {
     private Spinner acc;
     private Button b;
     private String item;
-    Student obj1;
-    String str;
-    List<String> arr;
+    private Student obj1;
+    private String str;
+    private List<String> arr;
     private TextView tv;
 
 

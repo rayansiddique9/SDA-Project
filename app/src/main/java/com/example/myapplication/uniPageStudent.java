@@ -25,8 +25,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.alumniInfo;
+import com.example.myapplication.Classes.currentUser;
 import com.example.myapplication.Classes.feeinfo;
 import com.example.myapplication.Classes.reviewInfo;
 import com.google.android.material.navigation.NavigationView;
@@ -37,16 +39,17 @@ import java.util.List;
 
 
 public class uniPageStudent extends AppCompatActivity {
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    TextView tname;
-    View headerview;
-    ArrayList<String> depts;
-    List<alumniInfo> arr;
-    List<feeinfo> fees;
-    List<aidInfo> aid;
-    List<reviewInfo> reviewInfos;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private TextView tname;
+    private View headerview;
+    private ArrayList<String> depts;
+    private List<alumniInfo> arr;
+    private List<feeinfo> fees;
+    private List<aidInfo> aid;
+    private List<reviewInfo> reviewInfos;
+    private Student obj;
 
     private void loadFragment(Fragment fragment, boolean flag, Bundle b) {
         fragment.setArguments(b);
@@ -77,8 +80,11 @@ public class uniPageStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni_page_student);
 
-        SearchUni obj = new SearchUni();             //making instance of persistance class
-        obj.connectToDb(uniPageStudent.this);   //connecting to db
+     /*   SearchUni obj = new SearchUni();             //making instance of persistance class
+        obj.connectToDb(uniPageStudent.this); */  //connecting to db
+
+        currentUser cu  = currentUser.getInstance(obj, null, null);
+        obj = cu.getStu();
 
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
@@ -95,9 +101,9 @@ public class uniPageStudent extends AppCompatActivity {
         aid = new ArrayList<aidInfo>();
         reviewInfos = new ArrayList<reviewInfo>();
 
-        obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);   //gets uni content from db
+        //obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);   //gets uni content from db
 
-
+        obj.getUniContent(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);
 
         setSupportActionBar(toolbar);
 
@@ -121,7 +127,7 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putStringArrayList("dept", depts);
-                    b.putSerializable("obj", obj);
+                   // b.putSerializable("obj", obj);
                     loadFragment(new faculty_frag(), true, b);
                 }
                 else if(id == R.id.menu_fees)
@@ -136,7 +142,7 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putStringArrayList("dept", depts);
-                    b.putSerializable("obj", obj);
+                 //   b.putSerializable("obj", obj);
                     loadFragment(new programsOffered_frag(), true, b);
                 }
                 else if(id == R.id.menu_alumni)

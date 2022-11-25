@@ -14,6 +14,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.viewProfile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,13 +30,12 @@ import java.util.Map;
  */
 public class programsOffered_frag extends Fragment {
 
-    List<String> deptlist;
-    List<String> listdegree;
-    Map<String,List<String>> degreelist;
-    ExpandableListView expandablelistview;
-    ExpandableListAdapter expandableListAdapter;
-    String str;
-
+    private List<String> deptlist;
+    private List<String> listdegree;
+    private Map<String,List<String>> degreelist;
+    private ExpandableListView expandablelistview;
+    private ExpandableListAdapter expandableListAdapter;
+    private String str;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,8 +91,10 @@ public class programsOffered_frag extends Fragment {
         str = getArguments().getString("universityName");
         deptlist = new ArrayList<String>();
         deptlist = getArguments().getStringArrayList("dept");
-        SearchUni obj = (SearchUni) getArguments().getSerializable("obj");
+
+        viewProfile obj = new viewProfile();
         obj.connectToDb(getContext());
+
 
         /*Toast.makeText(getContext(), "name: " + str, Toast.LENGTH_SHORT).show();
         for(int z = 0; z < departments.size(); z++)
@@ -129,24 +133,11 @@ public class programsOffered_frag extends Fragment {
     }
 
 
-    private void createCollection(SearchUni obj) {
+    private void createCollection(viewProfile obj) {
 
         List<String> deg = new ArrayList<>();
         degreelist = new HashMap<String,List<String>>();
 
-        /*for(String group:deptlist)
-        {
-            if(group.equals("Department Of \n Computing")){
-                loadChild(dept1);
-            }
-            else if(group.equals("Department Of \n Engineering")){
-                loadChild(dept2);
-            }
-            else {
-                loadChild(dept3);
-            }
-            degreelist.put(group,listdegree);
-        }*/
         for(int z = 0; z < deptlist.size(); z++)
         {
             obj.getProgramsOfDept(getContext(), str, deptlist.get(z), deg);
@@ -164,14 +155,6 @@ public class programsOffered_frag extends Fragment {
         }
 
     }
-
-  /*  private void createGroupList(){
-        deptlist=new ArrayList<>();
-        deptlist.add("Department Of \n Computing");
-        deptlist.add("Department Of \n Engineering");
-        deptlist.add("Department Of \n Management Sciences");
-
-    }*/
 
 
 }

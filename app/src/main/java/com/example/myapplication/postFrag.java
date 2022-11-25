@@ -34,8 +34,8 @@ import java.util.List;
 public class postFrag extends Fragment {
 
     private ListView ilist, vlist, tlist;
-    Student obj1;
-    String str;
+    private Student obj1;
+    private String str;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

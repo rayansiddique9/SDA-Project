@@ -28,10 +28,10 @@ import java.util.Map;
  */
 public class fees_frag extends Fragment {
 
-    List<String> listdegree;
-    List<feeinfo> listfees;
-    ListView listView;
-    String str;
+    private List<String> listdegree;
+    private List<feeinfo> listfees;
+    private ListView listView;
+    private String str;
 
 
     // TODO: Rename parameter arguments, choose names that match

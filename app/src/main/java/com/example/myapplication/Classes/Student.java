@@ -18,6 +18,7 @@ public class Student extends Visitor {
     protected Evaluator e;
     protected SearchUni su;
     protected managePost mp;
+    protected viewProfile vp;
 
 
     public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
@@ -30,6 +31,7 @@ public class Student extends Visitor {
         this.e = new Evaluator();
         this.su = new SearchUni();
         this.mp = new managePost();
+        this.vp = new viewProfile();
     }
 
     public String getDob() {
@@ -160,6 +162,22 @@ public class Student extends Visitor {
     }
 
 
+    public void getUniContent(Context ptr, String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a, List<reviewInfo> r)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getUniveristy(universityname, depts, arr, f, a, r);
+    }
 
+/*    public void getFacultyContent(Context ptr, String universityname, String deptname, List<profinfo> arr)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getFacultyOfDept(universityname, deptname, arr);
+    }*/
+
+    /*public void getProgramsContent(Context ptr, String universityname, String deptname, List<String> arr)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getProgramsOfDept(universityname, deptname, arr);
+    }*/
 
 }
