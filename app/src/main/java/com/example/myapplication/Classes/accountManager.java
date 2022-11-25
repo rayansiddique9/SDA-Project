@@ -51,7 +51,7 @@ public class accountManager {
         return true;
     }
 
-    public void getFeedback(Context ptr, ArrayList<String> arr)
+    public void getFeedback(ArrayList<String> arr)
     {
         if(connection != null)
         {
@@ -69,12 +69,12 @@ public class accountManager {
             catch(SQLException e)
             {
                 e.printStackTrace();
-                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 }

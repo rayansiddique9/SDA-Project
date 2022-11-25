@@ -20,13 +20,14 @@ import java.io.Serializable;
 
 public class loginCredentialsStudent extends AppCompatActivity {
 
-    Button l;
-    EditText username;
-    EditText password;
-    Visitor obj;
-    String edu;
-    Student obj1;
-    currentUser cu;
+    private Button l;
+    private EditText username;
+    private EditText password;
+    private Visitor obj;
+    private String edu;
+    private Student obj1;
+    private currentUser cu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

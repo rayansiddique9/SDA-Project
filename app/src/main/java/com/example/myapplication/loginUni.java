@@ -50,6 +50,7 @@ public class loginUni extends AppCompatActivity {
                     if (obj.signInUni(username, password, loginUni.this) == true)
                     {
                         obj1 = obj.makeUni(username, password, loginUni.this);
+                        Toast.makeText(loginUni.this, "aagya", Toast.LENGTH_SHORT).show();
                         Intent in = new Intent(loginUni.this, homePageUni.class);
                      //   cu = currentUser.getInstance(null, obj1, null);
 

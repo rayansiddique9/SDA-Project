@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.Classes.imageClass;
+
+import java.util.List;
+
 public class AdapterCampusImage extends BaseAdapter {
     Context context;
-    int[] listimage;
+    List<imageClass> listimage;
     LayoutInflater inflator;
 
-    public AdapterCampusImage(Context ctx, int[] imageList)
+    public AdapterCampusImage(Context ctx, List<imageClass> imageList)
     {
         this.context = ctx;
         this.listimage = imageList;
@@ -22,7 +27,7 @@ public class AdapterCampusImage extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return listimage.length;
+        return listimage.size();
     }
 
     @Override
@@ -39,7 +44,9 @@ public class AdapterCampusImage extends BaseAdapter {
     public View getView(int i, View v, ViewGroup viewGroup) {
         v = inflator.inflate(R.layout.campuslife_list_row, null);
         ImageView iview = (ImageView) v.findViewById(R.id.campuslifeimage);
-        iview.setImageResource(listimage[i]);
+        TextView tview = (TextView) v.findViewById(R.id.picCaption);
+        iview.setImageBitmap(listimage.get(i).getImage());
+        tview.setText(listimage.get(i).getCaption());
         return v;
     }
 

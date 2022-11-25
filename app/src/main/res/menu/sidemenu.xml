@@ -46,6 +46,13 @@
             android:title="Location"
             />
 
+        <item android:id="@+id/menu_post"
+            android:icon="@drawable/post"
+            android:title="Posts"
+            />
+
+
+
     </group>
 
 

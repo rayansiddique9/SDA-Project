@@ -7,14 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.myapplication.Classes.Admin;
+import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.currentUserAdmin;
 
 public class homePageAdmin extends AppCompatActivity {
-    Button feedbackBtn;
+    private Button feedbackBtn;
+    private Admin obj;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_admin);
+
+        currentUserAdmin ca  = currentUserAdmin.getInstance(obj);
+        obj = ca.getA();
+        Toast.makeText(this, "username:"+obj.getUsername(), Toast.LENGTH_SHORT).show();
 
         feedbackBtn = findViewById(R.id.fb);
 

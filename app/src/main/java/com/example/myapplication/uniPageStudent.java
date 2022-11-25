@@ -175,6 +175,10 @@ public class uniPageStudent extends AppCompatActivity {
                     startActivity(in);
                   //  loadFragment(new MapsFragment(), true, bundle);
                 }
+                else if(id == R.id.menu_post)
+                {
+                    loadFragment(new postFrag(), true, bundle);
+                }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
 

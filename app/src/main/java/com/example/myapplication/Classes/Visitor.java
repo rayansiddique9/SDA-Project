@@ -86,6 +86,12 @@ public class Visitor extends User{
         return this.au.getUni(ptr, uname.getText().toString(), pass.getText().toString());
     }
 
+    public Admin makeAdmin(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        return this.au.getAdmin(uname.getText().toString(), pass.getText().toString());
+    }
+
 
     public String getUsername() {
         return this.name;

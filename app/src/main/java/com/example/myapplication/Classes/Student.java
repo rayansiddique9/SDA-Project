@@ -17,6 +17,7 @@ public class Student extends Visitor {
     protected String lastName;
     protected Evaluator e;
     protected SearchUni su;
+    protected managePost mp;
 
 
     public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
@@ -28,6 +29,7 @@ public class Student extends Visitor {
         this.lastName = lname;
         this.e = new Evaluator();
         this.su = new SearchUni();
+        this.mp = new managePost();
     }
 
     public String getDob() {
@@ -138,6 +140,25 @@ public class Student extends Visitor {
         int uid = su.getUserId(this.getUsername());
         su.insertFeedback(str, uid);
     }
+
+    public void getImageList(Context ptr, ArrayList<String> imgs, ArrayList<String> captions, String uniname)
+    {
+        mp.connectToDb(ptr);
+        mp.getImages(uniname, imgs, captions);
+    }
+
+    public void getTextList(Context ptr, ArrayList<String> statuses, String uniname)
+    {
+        mp.connectToDb(ptr);
+        mp.getTexts(uniname, statuses);
+    }
+
+    public void getVideoList(Context ptr, ArrayList<String> links, String uniname)
+    {
+        mp.connectToDb(ptr);
+        mp.getVideos(uniname, links);
+    }
+
 
 
 

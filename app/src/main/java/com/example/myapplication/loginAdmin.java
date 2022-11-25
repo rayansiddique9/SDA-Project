@@ -10,14 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.Admin;
 import com.example.myapplication.Classes.Visitor;
+import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.currentUserAdmin;
 
 public class loginAdmin extends AppCompatActivity {
 
-    Button l;
-    EditText username;
-    EditText password;
-    Visitor obj;
+    private Button l;
+    private EditText username;
+    private EditText password;
+    private Visitor obj;
+    private Admin obj1;
+    private currentUserAdmin ca;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -36,6 +41,8 @@ public class loginAdmin extends AppCompatActivity {
 
                     if (obj.signInAdmin(username, password, loginAdmin.this) == true) {
 
+                        obj1 = obj.makeAdmin(username, password, loginAdmin.this);
+                        ca = currentUserAdmin.getInstance(obj1);
                         Intent in = new Intent(loginAdmin.this, homePageAdmin.class);
                         startActivity(in);
 

@@ -20,7 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class homePage extends AppCompatActivity {
 
     private BottomNavigationView bnView;
-    Student obj;
+    private Student obj;
 
     // loads the fragment on tha basis of given 'fragment'
     private void loadFrag(Fragment fragment, boolean flag){

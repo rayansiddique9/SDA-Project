@@ -104,8 +104,8 @@ public class campusLife_frag extends Fragment {
         });
 
 
-        AdapterCampusImage ad = new AdapterCampusImage(this.getContext(), imagelist);
-        listView.setAdapter(ad);
+       /* AdapterCampusImage ad = new AdapterCampusImage(this.getContext(), imagelist);
+        listView.setAdapter(ad);*/
 
 
         return view;

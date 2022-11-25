@@ -203,7 +203,7 @@ public class authenticateUser {
 
                 for(int l = 0; l < dname.size(); l++)
                 {
-                    Toast.makeText(ptr, "Dname:"+dname.get(l), Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(ptr, "Dname:"+dname.get(l), Toast.LENGTH_SHORT).show();
 
                     resultSet = statement.executeQuery("select distinct p.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join UndergraduateProgram ugp on p.idProgram = ugp.idUGProgram where a.userName = '" + name + "' and a.password = '" + pass + "' and d.name = '"+dname.get(l)+"'");
                     while (resultSet.next()) {
@@ -212,7 +212,7 @@ public class authenticateUser {
 
                     if (s1.size() != 0) {
                         for (int z = 0; z < s1.size(); z++) {
-                            Toast.makeText(ptr, "ugProgram:"+s1.get(z), Toast.LENGTH_SHORT).show();
+                         //   Toast.makeText(ptr, "ugProgram:"+s1.get(z), Toast.LENGTH_SHORT).show();
                             resultSet1 = statement.executeQuery("select ugr.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join UndergraduateProgram ugp on p.idProgram = ugp.idUGProgram join ugReqBG ugr on ugp.idUGProgram = ugr.bgid where a.userName = '" + name + "' and a.password = '" + pass + "' and p.name = '" + s1.get(z) + "'");
                             while (resultSet1.next()) {
                                 req1.add(resultSet1.getString(1));
@@ -264,6 +264,36 @@ public class authenticateUser {
         else
         {
             Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+        return obj;
+    }
+
+    public Admin getAdmin(String name, String pass)
+    {
+        Admin obj = null;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.email, u.isAdmin, u.isDisabled from [User] u where u.userName = '"+name+"' and u.password = '"+pass+"'");
+
+                while(resultSet.next())
+                {
+                    obj = new Admin(name, resultSet.getString(1), pass, resultSet.getInt(2), resultSet.getInt(3));
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+              //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
 
         return obj;
