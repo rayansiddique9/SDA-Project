@@ -6,146 +6,95 @@
     android:layout_height="match_parent"
     tools:context=".activity_student_profile">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="890dp"
-        android:layout_height="1295dp"
-        tools:context=".activity_student_profile"
-        tools:layout_editor_absoluteX="-82dp"
-        tools:layout_editor_absoluteY="-247dp">
+    <TextView
+        android:id="@+id/lastname"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="56dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/subjectcombo"
-            android:layout_width="135dp"
-            android:layout_height="74dp"
-            android:layout_marginTop="60dp"
-            android:ems="110"
-            android:inputType="textPersonName"
-            android:text="subjectCombo"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/latitude" />
+    <TextView
+        android:id="@+id/firstname"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="52dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/equivalence"
-            android:layout_width="153dp"
-            android:layout_height="82dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Equivalence"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.139"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="645dp" />
+    <TextView
+        android:id="@+id/DOB"
+        android:layout_width="126dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="56dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/emmail"
+        app:layout_constraintTop_toTopOf="@+id/emmail" />
 
-        <EditText
-            android:id="@+id/latitude"
-            android:layout_width="165dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="56dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Latitude"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.416"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DOB" />
+    <TextView
+        android:id="@+id/emmail"
+        android:layout_width="131dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="52dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastname" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="98dp"
-            android:layout_height="127dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.127"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.229"
-            tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/subjectcomb"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="76dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/location"
+        app:layout_constraintTop_toTopOf="@+id/location" />
 
-        <EditText
-            android:id="@+id/firstname"
-            android:layout_width="133dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="44dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="FirstName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            tools:layout_editor_absoluteY="282dp" />
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="117dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="52dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emmail" />
 
-        <EditText
-            android:id="@+id/lastname"
-            android:layout_width="145dp"
-            android:layout_height="45dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="LastName"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.312"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="344dp" />
+    <TextView
+        android:id="@+id/longitude"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="68dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/latitude"
+        app:layout_constraintTop_toTopOf="@+id/latitude" />
 
-        <EditText
-            android:id="@+id/DOB"
-            android:layout_width="148dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="DOB"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.385"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastname" />
+    <TextView
+        android:id="@+id/CGPA"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="72dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latitude"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/longitude"
-            android:layout_width="151dp"
-            android:layout_height="56dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Longitude"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toTopOf="@+id/equivalence"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/location"
-            app:layout_constraintVertical_bias="0.46" />
-
-        <EditText
-            android:id="@+id/location"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="92dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Location"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.137"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstname" />
-
-        <EditText
-            android:id="@+id/CGPA"
-            android:layout_width="191dp"
-            android:layout_height="58dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="CGPA"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.633"
-            tools:layout_editor_absoluteX="187dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/latitude"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="60dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
