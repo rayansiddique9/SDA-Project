@@ -18,9 +18,9 @@ public class Student extends Visitor {
     protected Evaluator e;
 
 
-    public Student(String name, String email, String pass, String eduType, String d, String fname, String lname)
+    public Student(int uid, String name, String email, String pass, String eduType, String d, String fname, String lname)
     {
-        super(name, email, pass);
+        super(uid, name, email, pass);
         this.educationType = eduType;
         this.dob = d;
         this.firstName = fname;

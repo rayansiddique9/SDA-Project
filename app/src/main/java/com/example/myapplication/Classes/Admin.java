@@ -1,10 +1,9 @@
 package com.example.myapplication.Classes;
 
-public class Admin extends User {
-    int isAdmin;
-    public Admin(int uid,String name, String email,String location,String password,double longitude, double latitude){
+public class Admin extends Visitor {
+    public Admin(int uid,String name, String email,String password){
         // Default Constructor for user
-        super(uid,name,email,location,password,longitude,latitude);
-        isAdmin = 1;
+        super(uid,name,email,password);
+        this.au = new authenticateUser();
     }
 }

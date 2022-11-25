@@ -12,8 +12,8 @@ public class University extends Visitor{
     ArrayList<Department> departments;
 
 
-    University(String name, String email, String pass, String ph, String campus, int rank, String location, double longitude, double latitude) {
-        super(name, email, pass);
+    University(int uid, String name, String email, String pass, String ph, String campus, int rank, String location, double longitude, double latitude) {
+        super(uid,name, email, pass);
         this.phone = ph;
         this.campusLife = campus;
         this.ranking = rank;

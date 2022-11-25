@@ -8,14 +8,16 @@ import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class authenticateUser {
-    private static String url = "jdbc:jtds:sqlserver://10.0.2.2:1433/UniGrab";
+    private static String url = "jdbc:jtds:sqlserver://192.168.100.151:1433/UniGrab";
     private static String username = "sa";
-    private static String password = "258369";
+    private static String password = "123456";
     private Connection connection = null;
 
 
@@ -48,6 +50,32 @@ public class authenticateUser {
         if (connection == null)
             return false;
         return true;
+    }
+
+    public boolean exeQuery(/*Context ptr,*/ArrayList list,String query){
+        if(connection != null)
+        {
+            PreparedStatement statement = null;
+
+            try {
+                statement = connection.prepareStatement(query);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    list.add(resultSet.getString("email"));
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
     }
 
     public boolean verifyInfoStu(Context ptr, String name, String pass) {
@@ -126,7 +154,7 @@ public class authenticateUser {
 
                 while(resultSet.next())
                 {
-                    obj = new UndergradStudent(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getInt(6), resultSet.getString(7));
+                    obj = new UndergradStudent(123,name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getInt(6), resultSet.getString(7));
                 }
             }
             catch(SQLException e)
@@ -156,7 +184,7 @@ public class authenticateUser {
 
                 while(resultSet.next())
                 {
-                    obj = new GraduateStudent(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),  resultSet.getFloat(6), resultSet.getString(7));
+                    obj = new GraduateStudent(123,name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5),  resultSet.getFloat(6), resultSet.getString(7));
                 }
             }
             catch(SQLException e)

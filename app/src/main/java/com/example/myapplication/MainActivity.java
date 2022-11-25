@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
 
-    private static String ip = "192.168.0.107";       //ALWAYS CHANGE IP TO CURRENT WIFI
+    private static String ip = "192.168.100.151";       //ALWAYS CHANGE IP TO CURRENT WIFI
     private static String port = "1433";
     public static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "UniGrab";
