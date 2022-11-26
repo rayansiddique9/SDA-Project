@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,34 +10,26 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myapplication.Classes.SearchUni;
 import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.alumniInfo;
-import com.example.myapplication.Classes.currentUser;
 import com.example.myapplication.Classes.feeinfo;
 import com.example.myapplication.Classes.reviewInfo;
+import com.example.myapplication.Classes.viewProfile;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class uniPageStudent extends AppCompatActivity {
+public class uniPageUni extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
@@ -49,7 +40,7 @@ public class uniPageStudent extends AppCompatActivity {
     private List<feeinfo> fees;
     private List<aidInfo> aid;
     private List<reviewInfo> reviewInfos;
-    private Student obj;
+    private viewProfile obj;
 
     private void loadFragment(Fragment fragment, boolean flag, Bundle b) {
         fragment.setArguments(b);
@@ -75,21 +66,23 @@ public class uniPageStudent extends AppCompatActivity {
         }
     }
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uni_page_student);
+        setContentView(R.layout.activity_uni_page_uni);
 
-        currentUser cu  = currentUser.getInstance(obj, null, null);
-        obj = cu.getStu();
+        obj = new viewProfile();
+        obj.connectToDb(this);
 
-        drawerLayout = findViewById(R.id.side_menu);
-        navigationView = findViewById(R.id.sidenav);
+        drawerLayout = findViewById(R.id.side_menu_uni);
+        navigationView = findViewById(R.id.sidenavuni);
         toolbar = findViewById(R.id.toolbar1);
         headerview = navigationView.getHeaderView(0);
         tname = (TextView) headerview.findViewById(R.id.menu_uniname);
 
-        String s = getIntent().getExtras().getString("uniname");
+        String s = getIntent().getExtras().getString("name");
         tname.setText(s);
 
         depts = new ArrayList<String>();
@@ -100,7 +93,7 @@ public class uniPageStudent extends AppCompatActivity {
 
         //obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);   //gets uni content from db
 
-        obj.getUniContent(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);
+        obj.getUni(uniPageUni.this, s, depts, arr, fees, aid, reviewInfos);
 
         setSupportActionBar(toolbar);
 
@@ -124,7 +117,7 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putStringArrayList("dept", depts);
-                   // b.putSerializable("obj", obj);
+                    // b.putSerializable("obj", obj);
                     loadFragment(new faculty_frag(), true, b);
                 }
                 else if(id == R.id.menu_fees)
@@ -139,7 +132,7 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putStringArrayList("dept", depts);
-                 //   b.putSerializable("obj", obj);
+                    //   b.putSerializable("obj", obj);
                     loadFragment(new programsOffered_frag(), true, b);
                 }
                 else if(id == R.id.menu_alumni)
@@ -161,26 +154,15 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putSerializable("r", (Serializable) reviewInfos);
-                    loadFragment(new Reviews_frag(), true, b);
+                    loadFragment(new reviewsFragUni(), true, b);
                 }
-                else if(id == R.id.menu_eligibility)
+                else if(id == R.id.menu_about)
                 {
-                    loadFragment(new Eligibility_frag(), true, bundle);
-                }
-                else if(id == R.id.menu_campus)
-                {
-                    loadFragment(new campusLife_frag(), true, bundle);
-                }
-                else if(id == R.id.menu_location)
-                {
-                    Intent in = new Intent(uniPageStudent.this, google.class);
-                    in.putExtra("universityName", s);
-                    startActivity(in);
-                  //  loadFragment(new MapsFragment(), true, bundle);
+                    loadFragment(new aboutFrag(), true, bundle);
                 }
                 else if(id == R.id.menu_post)
                 {
-                    loadFragment(new postFrag(), true, bundle);
+                    loadFragment(new postFragUni(), true, bundle);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -188,9 +170,5 @@ public class uniPageStudent extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
-
-
 }

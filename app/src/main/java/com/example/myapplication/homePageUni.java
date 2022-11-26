@@ -25,7 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class homePageUni extends AppCompatActivity {
-    private Button postBtn;
+    private Button postBtn, profileBtn;
     private String uname;
 
 
@@ -38,12 +38,24 @@ public class homePageUni extends AppCompatActivity {
         uname = getIntent().getExtras().getString("name");
 
         postBtn = findViewById(R.id.post);
+        profileBtn = findViewById(R.id.profile);
 
         postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent in = new Intent(homePageUni.this, addPostUni.class);
+                in.putExtra("name", uname);
+                startActivity(in);
+            }
+
+        });
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in = new Intent(homePageUni.this, uniPageUni.class);
                 in.putExtra("name", uname);
                 startActivity(in);
             }

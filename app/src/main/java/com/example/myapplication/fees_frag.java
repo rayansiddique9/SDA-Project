@@ -11,10 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.alumniInfo;
 import com.example.myapplication.Classes.feeinfo;
+import com.example.myapplication.Classes.viewProfile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +34,8 @@ public class fees_frag extends Fragment {
     private List<feeinfo> listfees;
     private ListView listView;
     private String str;
+    private int feeAdmission;
+    TextView t;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -85,6 +89,12 @@ public class fees_frag extends Fragment {
         str = getArguments().getString("universityName");
         listfees = (List<feeinfo>) getArguments().getSerializable("fee");
 
+        viewProfile obj = new viewProfile();
+        obj.connectToDb(getContext());
+        feeAdmission = obj.getUniAdmissionFee(getContext(), str);
+
+        t = view.findViewById(R.id.admissionfee);
+        t.setText("Admission Fees:"+String.valueOf(feeAdmission));
         listView = view.findViewById(R.id.feelist);
         adapterFees ad = new adapterFees(this.getContext(), R.layout.fees_list_row, listfees);
         listView.setAdapter(ad);

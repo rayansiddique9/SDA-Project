@@ -15,17 +15,19 @@ import android.widget.Toast;
 
 import com.example.myapplication.Classes.GraduateStudent;
 import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.Visitor;
 import com.example.myapplication.Classes.accountCreator;
 
 import java.io.Serializable;
 
 public class educationalBgGrad extends AppCompatActivity {
-    Button b;
-    ArrayAdapter<String> adapter;
-    String []arr = {"BSCS", "BSSE", "BSDS","BBA","BSCV", "BSEE", "BSME"};
-    Spinner acc;
-    String item;
-    EditText cgpa;
+    private Button b;
+    private ArrayAdapter<String> adapter;
+    private String []arr = {"BSCS", "BSSE", "BSDS","BBA","BSCV", "BSEE", "BSME"};
+    private Spinner acc;
+    private String item;
+    private EditText cgpa;
+    private Visitor obj;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,9 +35,7 @@ public class educationalBgGrad extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_educational_bg_grad);
 
-        accountCreator obj = new accountCreator();
-        obj.connectToDb(educationalBgGrad.this);
-
+        obj = new Visitor();
 
         String username = getIntent().getExtras().getString("uname");
         String email = getIntent().getExtras().getString("email");
@@ -58,12 +58,8 @@ public class educationalBgGrad extends AppCompatActivity {
             public void onClick(View view)
             {
                 if(Float.valueOf(cgpa.getText().toString()) >= 1.0 && Float.valueOf(cgpa.getText().toString()) <= 4.0) {
-                    obj.createGradAcc(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
-                    //GraduateStudent obj1 = new GraduateStudent(username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item);
+                    obj.insertGStu(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
                     Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
-              /*  in.putExtra("activityname", "educationalBgGrad");
-                in.putExtra("edutype",edutype);
-                in.putExtra("grad", (Serializable) obj1);*/
                     startActivity(in);
                 }
                 else

@@ -44,7 +44,7 @@ public class addStatusUni extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(addStatusUni.this, "Enter url first", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(addStatusUni.this, "Enter status first", Toast.LENGTH_SHORT).show();
                 }
             }
         });

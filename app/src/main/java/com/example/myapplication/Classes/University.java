@@ -11,11 +11,12 @@ public class University extends Visitor{
     protected String location;
     protected double longitude;
     protected double latitude;
+    private int admissionFee;
     ArrayList<Department> departments;
     private managePost mp;
 
 
-    University(String name, String email, String pass, String ph, String campus, int rank, String location, double longitude, double latitude, int isadmin, int isdisabled, ArrayList<Department> depts) {
+    University(String name, String email, String pass, String ph, String campus, int rank, String location, double longitude, double latitude, int isadmin, int isdisabled, ArrayList<Department> depts, int af) {
         super(name, email, pass, isadmin, isdisabled);
         this.phone = ph;
         this.campusLife = campus;
@@ -24,6 +25,7 @@ public class University extends Visitor{
         this.longitude = longitude;
         this.latitude = latitude;
         this.departments = depts;
+        this.admissionFee = af;
         this.mp = new managePost();
     }
 
@@ -45,28 +47,8 @@ public class University extends Visitor{
         this.mp = new managePost();
     }
 
-//    @Override
-//    public String getUsername() {
-//        return super.getUsername();
-//    }
-
-    /*public void getDepartments(ArrayList<String> arr) {
-        for(int i = 0; i < departments.size(); i++)
-        {
-            arr.add(departments.get(i).getName());
-        }
-    }*/
-
-   /* public ArrayList<Department> getDepartments() {
-        return departments;
-    }*/
-
-
-  /*  public void postImage(Context ptr, String img)
-    {
-        this.mp.connectToDb(ptr);
-
-
-    }*/
+    public int getAdmissionFee() {
+        return admissionFee;
+    }
 
 }

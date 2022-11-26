@@ -248,10 +248,10 @@ public class authenticateUser {
                     gprograms.clear();
                 }
 
-                resultSet3 = statement.executeQuery("select u.email, s.phone, s.campusLife, s.ranking, s.location, s.longitude, s.latitude, u.isAdmin, u.isDisabled from [User] u join University s on u.idUser = s.idUniversity where u.userName = '"+name+"' and u.password = '"+pass+"'");
+                resultSet3 = statement.executeQuery("select u.email, s.phone, s.campusLife, s.ranking, s.location, s.longitude, s.latitude, u.isAdmin, u.isDisabled, u.admissionFee from [User] u join University s on u.idUser = s.idUniversity where u.userName = '"+name+"' and u.password = '"+pass+"'");
                 while(resultSet3.next())
                 {
-                    obj = new University(name, resultSet3.getString(1), pass, resultSet3.getString(2), resultSet3.getString(3), resultSet3.getInt(4), resultSet3.getString(5), (double) resultSet3.getFloat(6), (double) resultSet3.getFloat(7), resultSet3.getInt(8), resultSet3.getInt(9), dep);
+                    obj = new University(name, resultSet3.getString(1), pass, resultSet3.getString(2), resultSet3.getString(3), resultSet3.getInt(4), resultSet3.getString(5), (double) resultSet3.getFloat(6), (double) resultSet3.getFloat(7), resultSet3.getInt(8), resultSet3.getInt(9), dep, resultSet3.getInt(10));
                 }
 
             }

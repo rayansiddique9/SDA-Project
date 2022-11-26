@@ -84,7 +84,7 @@ public class accountCreator {
         return true;
     }
 
-    public void createUndergradAcc(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
+    public void createUndergradAcc(String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
     {
         if(connection != null)
         {
@@ -149,11 +149,11 @@ public class accountCreator {
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void createGradAcc(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
+    public void createGradAcc(String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
     {
         if(connection != null)
         {
@@ -218,7 +218,7 @@ public class accountCreator {
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 

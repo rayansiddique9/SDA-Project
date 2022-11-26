@@ -10,7 +10,8 @@ public abstract class User implements Serializable{
     protected String password;
     protected int isAdmin;
     protected int isDisabled;
-    authenticateUser au;
+    protected authenticateUser au;
+    protected accountCreator ac;
 
    /* public String getUsername(){
       //  return name;

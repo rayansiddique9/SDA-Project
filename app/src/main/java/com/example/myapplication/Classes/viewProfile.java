@@ -73,10 +73,10 @@ public class viewProfile {
                     arr.add(new alumniInfo(resultSet1.getString(1), resultSet1.getString(2), Integer.toString(resultSet1.getInt(3))));
                 }
 
-                ResultSet resultSet2 = statement.executeQuery("select p.name, p.feePerCreditHour, p.admissionFee, p.creditHours from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment where a.userName = '"+universityname+"'");
+                ResultSet resultSet2 = statement.executeQuery("select p.name, p.feePerCreditHour, p.creditHours from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment where a.userName = '"+universityname+"'");
                 while(resultSet2.next())
                 {
-                    f.add(new feeinfo(resultSet2.getString(1), resultSet2.getInt(2), resultSet2.getInt(3), resultSet2.getInt(4)));
+                    f.add(new feeinfo(resultSet2.getString(1), resultSet2.getInt(2), resultSet2.getInt(3)));
                 }
 
                 ResultSet resultSet3 = statement.executeQuery("select fa.name, fa.detail from [User] a join University u on a.idUser = u.idUniversity join FinancialAid fa on u.idUniversity = fa.idUniversity where a.userName = '"+universityname+"'");
@@ -101,6 +101,58 @@ public class viewProfile {
         else
         {
            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void getUni(Context ptr, String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a, List<reviewInfo> r)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select d.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity where a.userName = '"+universityname+"'");
+                while(resultSet.next())
+                {
+                    depts.add(resultSet.getString(1));
+                }
+
+                ResultSet resultSet1 = statement.executeQuery("select al.name, al.placementCompany, al.batch from [User] a join University u on a.idUser = u.idUniversity join Alumni al on u.idUniversity = al.idUniversity where a.userName = '"+universityname+"'");
+                while(resultSet1.next())
+                {
+                    arr.add(new alumniInfo(resultSet1.getString(1), resultSet1.getString(2), Integer.toString(resultSet1.getInt(3))));
+                }
+
+                ResultSet resultSet2 = statement.executeQuery("select p.name, p.feePerCreditHour, p.creditHours from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment where a.userName = '"+universityname+"'");
+                while(resultSet2.next())
+                {
+                    f.add(new feeinfo(resultSet2.getString(1), resultSet2.getInt(2), resultSet2.getInt(3)));
+                }
+
+                ResultSet resultSet3 = statement.executeQuery("select fa.name, fa.detail from [User] a join University u on a.idUser = u.idUniversity join FinancialAid fa on u.idUniversity = fa.idUniversity where a.userName = '"+universityname+"'");
+                while(resultSet3.next())
+                {
+                    a.add(new aidInfo(resultSet3.getString(1), resultSet3.getString(2)));
+                }
+
+                ResultSet resultSet4 = statement.executeQuery("select r.review, r.stars from [User] a join University u on a.idUser = u.idUniversity join Review r on u.idUniversity = r.idUniversity where a.userName = '"+universityname+"'");
+                while(resultSet4.next())
+                {
+                    r.add(new reviewInfo(resultSet4.getString(1), resultSet4.getInt(2)));
+                }
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //   Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -188,6 +240,150 @@ public class viewProfile {
         }
         return str;
     }
+
+
+    public int getUniAdmissionFee(Context ptr, String uname)
+    {
+        int ans = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.admissionFee from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+uname+"'");
+                while(resultSet.next())
+                {
+                    ans = resultSet.getInt(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+
+        return ans;
+    }
+
+
+    public void getImages(Context ptr, String uniname, ArrayList<String> arr, ArrayList<String> arr2)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+            int uid = 0;
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.idUniversity from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+uniname+"'");
+
+                while(resultSet.next())
+                {
+                    uid = resultSet.getInt(1);
+                }
+
+                ResultSet resultSet1 = statement.executeQuery("select i.imgBin, i.description from University u join Image i on u.idUniversity = i.idUniversity where u.idUniversity = "+uid);
+
+                while(resultSet1.next())
+                {
+                    arr.add(resultSet1.getString(1));
+                    arr2.add(resultSet1.getString(2));
+                }
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void getTexts(Context ptr, String uniname, ArrayList<String> arr)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+            int uid = 0;
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.idUniversity from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+uniname+"'");
+
+                while(resultSet.next())
+                {
+                    uid = resultSet.getInt(1);
+                }
+
+                ResultSet resultSet1 = statement.executeQuery("select i.description from University u join text i on u.idUniversity = i.idUniversity where u.idUniversity = "+uid);
+
+                while(resultSet1.next())
+                {
+                    arr.add(resultSet1.getString(1));
+                }
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //   Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void getVideos(Context ptr, String uniname, ArrayList<String> arr)
+    {
+
+        if(connection != null)
+        {
+            Statement statement = null;
+            int uid = 0;
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.idUniversity from [User] a join University u on a.idUser = u.idUniversity where a.userName = '"+uniname+"'");
+
+                while(resultSet.next())
+                {
+                    uid = resultSet.getInt(1);
+                }
+
+                ResultSet resultSet1 = statement.executeQuery("select i.link from University u join Video i on u.idUniversity = i.idUniversity where u.idUniversity = "+uid);
+
+                while(resultSet1.next())
+                {
+                    arr.add(resultSet1.getString(1));
+                }
+
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //   Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
 
 
 }

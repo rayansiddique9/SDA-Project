@@ -8,10 +8,9 @@ import androidx.activity.contextaware.ContextAwareHelper;
 
 public class Visitor extends User{
 
-    protected accountCreator ac;
-
     public Visitor()
     {
+        this.ac = new accountCreator();
         this.au = new authenticateUser();
         this.name = null;
         this.email = null;
@@ -90,6 +89,18 @@ public class Visitor extends User{
     {
         this.au.connectToDb(ptr);
         return this.au.getAdmin(uname.getText().toString(), pass.getText().toString());
+    }
+
+    public void insertUGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
+    {
+        this.ac.connectToDb(ptr);
+        this.ac.createUndergradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
+    }
+
+    public void insertGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
+    {
+        this.ac.connectToDb(ptr);
+        this.ac.createGradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
     }
 
 

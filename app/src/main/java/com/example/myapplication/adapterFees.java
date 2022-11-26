@@ -34,11 +34,9 @@ public class adapterFees extends ArrayAdapter<feeinfo> {
         // all views defined in list cell design
         TextView t1 = (TextView) convertView.findViewById(R.id.feeperch);
         TextView t2 = (TextView) convertView.findViewById(R.id.credithrs);
-        TextView t3 = (TextView) convertView.findViewById(R.id.admissionfee);
         TextView t4 = (TextView) convertView.findViewById(R.id.program);
         t1.setText("Fee per credit hour: "+Integer.toString(obj.getFeePerCdthr()));
         t2.setText("Credit Hours: "+Integer.toString(obj.getCreditHrs()));
-        t3.setText("Admission Fee: "+Integer.toString(obj.getAdmissionFee()));
         t4.setText(obj.getDegree());
 
         return convertView;
