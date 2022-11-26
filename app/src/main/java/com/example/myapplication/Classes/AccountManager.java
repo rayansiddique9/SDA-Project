@@ -71,7 +71,7 @@ public class AccountManager {
 
                     while (result.next()) {
 
-                       if (result.getInt("isStudent") == 1) {
+                       //if (result.getInt("isStudent") == 1) {
                             Student st = new Student(
                                     result.getInt("idUser"),// uid
                                     result.getString("userName"), // name
@@ -83,7 +83,7 @@ public class AccountManager {
                                     result.getString("latName") // lname
                             );
                             uList.add(st);
-                       }
+                      // }
 //                    else if(result.getInt("isUniversity") == 1){
 //                        University un = new University(
 //                        )

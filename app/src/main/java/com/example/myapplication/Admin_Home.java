@@ -41,6 +41,7 @@ public class Admin_Home extends AppCompatActivity {
 //        String pass = _pass.getText().toString();
         
            getAllUsers();
+        Toast.makeText(this,"Successful Operation", Toast.LENGTH_SHORT).show();
 
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
