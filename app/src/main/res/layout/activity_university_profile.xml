@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".University_Profile_A">
+    tools:context=".activity_university_profile">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -23,65 +23,71 @@
         android:id="@+id/namee"
         android:layout_width="134dp"
         android:layout_height="43dp"
+        android:layout_marginTop="72dp"
         android:text="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="228dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/Location"
         android:layout_width="134dp"
         android:layout_height="43dp"
+        android:layout_marginTop="72dp"
         android:text="Location"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="228dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/latitudee"
-        android:layout_width="134dp"
+        android:layout_width="129dp"
         android:layout_height="43dp"
+        android:layout_marginTop="68dp"
         android:text="Latitude"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="340dp" />
+        app:layout_constraintTop_toBottomOf="@+id/namee" />
 
     <TextView
         android:id="@+id/longitudee"
         android:layout_width="134dp"
         android:layout_height="43dp"
+        android:layout_marginTop="68dp"
         android:text="Longitude"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="340dp" />
+        app:layout_constraintTop_toBottomOf="@+id/Location" />
 
     <TextView
         android:id="@+id/phonee"
         android:layout_width="134dp"
         android:layout_height="43dp"
+        android:layout_marginTop="64dp"
         android:text="Phone"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="449dp" />
+        app:layout_constraintTop_toBottomOf="@+id/latitudee" />
 
     <TextView
         android:id="@+id/Rankingg"
         android:layout_width="134dp"
         android:layout_height="43dp"
+        android:layout_marginTop="64dp"
         android:text="Ranking"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="449dp" />
+        app:layout_constraintTop_toBottomOf="@+id/longitudee" />
 </androidx.constraintlayout.widget.ConstraintLayout>
