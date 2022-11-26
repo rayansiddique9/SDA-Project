@@ -9,5 +9,8 @@ public abstract class User implements Serializable{
     protected String email;
     protected String password;
     protected int userID;
+    protected boolean isDisabled = false;
     authenticateUser au;
+
+    protected abstract String getType();
 }

@@ -8,6 +8,7 @@ import com.example.myapplication.Classes.*;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 
 public class Admin_Home extends AppCompatActivity {
     AccountManager AM = new AccountManager();
+    ArrayList<User> uList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +40,25 @@ public class Admin_Home extends AppCompatActivity {
 //        String email = _email.getText().toString();
 //        String pass = _pass.getText().toString();
         
-        ArrayList<User> list = new ArrayList<User>();
-        if(AM.viewAccountList(this,list)){
+           getAllUsers();
+
+
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+
+    }
+
+    protected void getAllUsers() {
+        if(AM.viewAccountList(this,uList)){
             Toast.makeText(this,"Successful Operation", Toast.LENGTH_SHORT).show();
         }
         else{
+
             Toast.makeText(this,"Some Error", Toast.LENGTH_SHORT).show();
         }
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
     }
 }
+
 
 //public class Admin_Home extends AppCompatActivity {
 //    private static String url = "jdbc:jtds:sqlserver://192.168.0.104:1433/UniGrab";

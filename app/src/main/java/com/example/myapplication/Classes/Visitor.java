@@ -56,4 +56,7 @@ public class Visitor extends User{
         return this.au.getGStu(ptr, uname.getText().toString(), pass.getText().toString());
     }
 
+    public String getType(){
+        return "Visitor";
+    }
 }

@@ -22,4 +22,8 @@ public class University extends Visitor{
         this.latitude = latitude;
     }
 
+    public String getType(){
+        return "University";
+    }
+
 }

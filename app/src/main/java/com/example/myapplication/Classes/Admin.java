@@ -6,4 +6,8 @@ public class Admin extends Visitor {
         super(uid,name,email,password);
         this.au = new authenticateUser();
     }
+
+    public String getType(){
+        return "Admin";
+    }
 }

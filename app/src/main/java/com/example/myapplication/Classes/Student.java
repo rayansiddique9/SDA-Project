@@ -28,6 +28,10 @@ public class Student extends Visitor {
         this.e = new Evaluator();
     }
 
+    public String getType(){
+        return "Student";
+    }
+
     public String getDob() {
         return dob;
     }
