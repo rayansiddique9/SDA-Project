@@ -41,6 +41,18 @@
             android:title="Write a review"
             />
 
+        <item android:id="@+id/menu_location"
+            android:icon="@drawable/location"
+            android:title="Location"
+            />
+
+        <item android:id="@+id/menu_post"
+            android:icon="@drawable/post"
+            android:title="Posts"
+            />
+
+
+
     </group>
 
 

@@ -16,20 +16,22 @@ public class Student extends Visitor {
     protected String firstName;
     protected String lastName;
     protected Evaluator e;
+    protected SearchUni su;
+    protected managePost mp;
+    protected viewProfile vp;
 
 
-    public Student(int uid, String name, String email, String pass, String eduType, String d, String fname, String lname)
+    public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
     {
-        super(uid, name, email, pass);
+        super(name, email, pass, isadmin, isdisabled);
         this.educationType = eduType;
         this.dob = d;
         this.firstName = fname;
         this.lastName = lname;
         this.e = new Evaluator();
-    }
-
-    public String getType(){
-        return "Student";
+        this.su = new SearchUni();
+        this.mp = new managePost();
+        this.vp = new viewProfile();
     }
 
     public String getDob() {
@@ -94,5 +96,88 @@ public class Student extends Visitor {
         }
     }
 
+    public void getAllPrograms(Context ptr, List<String> programlist)
+    {
+        e.connectToDb(ptr);
+        e.fillAllPrograms(programlist, ptr);
+    }
+
+    public ArrayList<String> getFilteredUniListDeg(Context ptr, String preferredDeg)
+    {
+        e.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = e.getUnisDegFiltered(preferredDeg, ptr);
+        return rst;
+
+    }
+
+    public ArrayList<String> getFilteredUniListRanking(Context ptr, int l, int u)
+    {
+        e.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = e.getUnisRankingFiltered(ptr, l, u);
+        return rst;
+
+    }
+
+    public void submitReview(Context ptr, String uname, int rating, String review)
+    {
+        su.connectToDb(ptr);
+        int uid = su.getUniId(uname);
+      //  Toast.makeText(ptr, "UniId:"+String.valueOf(uid), Toast.LENGTH_SHORT).show();
+        int sid = su.getStuId(this.getUsername());
+      //  Toast.makeText(ptr, "StuId:"+String.valueOf(sid), Toast.LENGTH_SHORT).show();
+        su.insertReview(sid, uid, rating, review);
+    }
+
+    public void getFaqs(Context ptr, List<faqInfo> ar)
+    {
+        su.connectToDb(ptr);
+        su.getFAQs(ar);
+    }
+
+    public void giveFeedback(Context ptr, String str)
+    {
+        su.connectToDb(ptr);
+        int uid = su.getUserId(this.getUsername());
+        su.insertFeedback(str, uid);
+    }
+
+    public void getImageList(Context ptr, ArrayList<String> imgs, ArrayList<String> captions, String uniname)
+    {
+        mp.connectToDb(ptr);
+        mp.getImages(uniname, imgs, captions);
+    }
+
+    public void getTextList(Context ptr, ArrayList<String> statuses, String uniname)
+    {
+        mp.connectToDb(ptr);
+        mp.getTexts(uniname, statuses);
+    }
+
+    public void getVideoList(Context ptr, ArrayList<String> links, String uniname)
+    {
+        mp.connectToDb(ptr);
+        mp.getVideos(uniname, links);
+    }
+
+
+    public void getUniContent(Context ptr, String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a, List<reviewInfo> r)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getUniveristy(universityname, depts, arr, f, a, r);
+    }
+
+/*    public void getFacultyContent(Context ptr, String universityname, String deptname, List<profinfo> arr)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getFacultyOfDept(universityname, deptname, arr);
+    }*/
+
+    /*public void getProgramsContent(Context ptr, String universityname, String deptname, List<String> arr)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getProgramsOfDept(universityname, deptname, arr);
+    }*/
 
 }

@@ -12,7 +12,10 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.currentUser;
 import com.example.myapplication.Classes.profinfo;
+import com.example.myapplication.Classes.viewProfile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,12 +29,13 @@ import java.util.Map;
  */
 public class faculty_frag extends Fragment {
 
-    List<String> listdepartment;
-    List<profinfo> listprof;
-    Map<String,List<profinfo>> proflist;
-    ExpandableListView expandablelistview;
-    ExpandableListAdapter expandableListAdapter;
-    String str;
+    private List<String> listdepartment;
+    private List<profinfo> listprof;
+    private Map<String,List<profinfo>> proflist;
+    private ExpandableListView expandablelistview;
+    private ExpandableListAdapter expandableListAdapter;
+    private String str;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,7 +85,8 @@ public class faculty_frag extends Fragment {
         str = getArguments().getString("universityName");
         listdepartment = new ArrayList<String>();
         listdepartment = getArguments().getStringArrayList("dept");
-        SearchUni obj = (SearchUni) getArguments().getSerializable("obj");
+
+        viewProfile obj = new viewProfile();
         obj.connectToDb(getContext());
 
         createCollection(obj);
@@ -112,24 +117,11 @@ public class faculty_frag extends Fragment {
         return view;
     }
 
-    private void createCollection(SearchUni obj) {
+    private void createCollection(viewProfile obj) {
 
         List<profinfo> prof = new ArrayList<profinfo>();
         proflist = new HashMap<String,List<profinfo>>();
 
-        /*for(String group:listdepartment)
-        {
-            if(group.equals("Department Of \n Computing")){
-                loadChild(profs);
-            }
-            else if(group.equals("Department Of \n Engineering")){
-                loadChild(profs1);
-            }
-            else {
-                loadChild(profs2);
-            }
-            proflist.put(group,listprof);
-        }*/
 
         for(int z = 0; z < listdepartment.size(); z++)
         {

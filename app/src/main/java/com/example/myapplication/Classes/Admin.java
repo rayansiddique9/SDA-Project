@@ -1,13 +1,23 @@
 package com.example.myapplication.Classes;
 
-public class Admin extends Visitor {
-    public Admin(int uid,String name, String email,String password){
-        // Default Constructor for user
-        super(uid,name,email,password);
-        this.au = new authenticateUser();
+import android.content.Context;
+
+import java.util.ArrayList;
+
+public class Admin extends Visitor{
+
+    accountManager am;
+
+    public Admin(String name, String email, String pass,  int isadmin, int isdisabled)
+    {
+        super(name, email, pass, isadmin, isdisabled);
+        this.am = new accountManager();
     }
 
-    public String getType(){
-        return "Admin";
+    public void getfeedback(Context ptr, ArrayList<String> ar)
+    {
+        this.am.connectToDb(ptr);
+        this.am.getFeedback(ar);
     }
+
 }

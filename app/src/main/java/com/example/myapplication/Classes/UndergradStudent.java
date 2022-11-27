@@ -7,9 +7,9 @@ public class UndergradStudent extends Student{
     private String subjectCombo;
 
 
-    public UndergradStudent(int uid,String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects)
+    public UndergradStudent(String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
     {
-        super(uid,name, email, pass, eduType, d, fname, lname);
+        super(name, email, pass, eduType, d, fname, lname, isadmin, isdisabled);
         this.marks = m;
         this.subjectCombo = subjects;
     }

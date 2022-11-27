@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,9 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.alumniInfo;
+import com.example.myapplication.Classes.currentUser;
 import com.example.myapplication.Classes.feeinfo;
+import com.example.myapplication.Classes.reviewInfo;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.Serializable;
@@ -35,15 +39,17 @@ import java.util.List;
 
 
 public class uniPageStudent extends AppCompatActivity {
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    TextView tname;
-    View headerview;
-    ArrayList<String> depts;
-    List<alumniInfo> arr;
-    List<feeinfo> fees;
-    List<aidInfo> aid;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private TextView tname;
+    private View headerview;
+    private ArrayList<String> depts;
+    private List<alumniInfo> arr;
+    private List<feeinfo> fees;
+    private List<aidInfo> aid;
+    private List<reviewInfo> reviewInfos;
+    private Student obj;
 
     private void loadFragment(Fragment fragment, boolean flag, Bundle b) {
         fragment.setArguments(b);
@@ -74,8 +80,8 @@ public class uniPageStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni_page_student);
 
-        SearchUni obj = new SearchUni();             //making instance of persistance class
-        obj.connectToDb(uniPageStudent.this);   //connecting to db
+        currentUser cu  = currentUser.getInstance(obj, null, null);
+        obj = cu.getStu();
 
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
@@ -90,10 +96,11 @@ public class uniPageStudent extends AppCompatActivity {
         arr = new ArrayList<alumniInfo>();
         fees = new ArrayList<feeinfo>();
         aid = new ArrayList<aidInfo>();
+        reviewInfos = new ArrayList<reviewInfo>();
 
-        obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid);   //gets uni content from db
+        //obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);   //gets uni content from db
 
-
+        obj.getUniContent(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);
 
         setSupportActionBar(toolbar);
 
@@ -117,7 +124,7 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putStringArrayList("dept", depts);
-                    b.putSerializable("obj", obj);
+                   // b.putSerializable("obj", obj);
                     loadFragment(new faculty_frag(), true, b);
                 }
                 else if(id == R.id.menu_fees)
@@ -132,7 +139,7 @@ public class uniPageStudent extends AppCompatActivity {
                     Bundle b = new Bundle();
                     b.putString("universityName", s);
                     b.putStringArrayList("dept", depts);
-                    b.putSerializable("obj", obj);
+                 //   b.putSerializable("obj", obj);
                     loadFragment(new programsOffered_frag(), true, b);
                 }
                 else if(id == R.id.menu_alumni)
@@ -151,7 +158,10 @@ public class uniPageStudent extends AppCompatActivity {
                 }
                 else if(id == R.id.menu_review)
                 {
-                    loadFragment(new Reviews_frag(), true, bundle);
+                    Bundle b = new Bundle();
+                    b.putString("universityName", s);
+                    b.putSerializable("r", (Serializable) reviewInfos);
+                    loadFragment(new Reviews_frag(), true, b);
                 }
                 else if(id == R.id.menu_eligibility)
                 {
@@ -160,6 +170,17 @@ public class uniPageStudent extends AppCompatActivity {
                 else if(id == R.id.menu_campus)
                 {
                     loadFragment(new campusLife_frag(), true, bundle);
+                }
+                else if(id == R.id.menu_location)
+                {
+                    Intent in = new Intent(uniPageStudent.this, google.class);
+                    in.putExtra("universityName", s);
+                    startActivity(in);
+                  //  loadFragment(new MapsFragment(), true, bundle);
+                }
+                else if(id == R.id.menu_post)
+                {
+                    loadFragment(new postFrag(), true, bundle);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);

@@ -13,6 +13,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.myapplication.Classes.SearchUni;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.viewProfile;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +26,7 @@ public class campusLife_frag extends Fragment {
 
     private ListView listView, listView2;
     private ScrollView scroll;
-    private int imagelist[] = {R.drawable.uni1, R.drawable.uni2, R.drawable.uni3, R.drawable.uni4, R.drawable.uni5, R.drawable.uni6};
+    private int imagelist[] = {R.drawable.picuni, R.drawable.picuni, R.drawable.picuni, R.drawable.picuni, R.drawable.picuni, R.drawable.picuni};
     private TextView textView;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -74,8 +77,9 @@ public class campusLife_frag extends Fragment {
 
         String str = getArguments().getString("universityName");
 
-        SearchUni obj = new SearchUni();
+        viewProfile obj = new viewProfile();
         obj.connectToDb(getContext());
+
 
         String st = obj.getCampusLife(getContext(), str);
 
@@ -104,8 +108,8 @@ public class campusLife_frag extends Fragment {
         });
 
 
-        AdapterCampusImage ad = new AdapterCampusImage(this.getContext(), imagelist);
-        listView.setAdapter(ad);
+       /* AdapterCampusImage ad = new AdapterCampusImage(this.getContext(), imagelist);
+        listView.setAdapter(ad);*/
 
 
         return view;

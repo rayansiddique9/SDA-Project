@@ -8,10 +8,9 @@ import androidx.activity.contextaware.ContextAwareHelper;
 
 public class Visitor extends User{
 
-    protected accountCreator ac;
-
     public Visitor()
     {
+        this.ac = new accountCreator();
         this.au = new authenticateUser();
         this.name = null;
         this.email = null;
@@ -19,20 +18,45 @@ public class Visitor extends User{
         this.userID = -1;
     }
 
-    public Visitor(int uid, String name, String email, String pass)
+public Visitor(String name, String email, String pass, int admin, int disabled)
     {
         this.name = name;
         this.email = email;
         this.password = pass;
-        this.userID = uid;
+        this.isAdmin = admin;
+        this.isDisabled = disabled;
     }
+
+//    public String getUsername()
+//    {
+//        return this.name;
+//    }
 
     public boolean signInStu(EditText uname, EditText pass, Context ptr)
     {
         this.au.connectToDb(ptr);
         if(this.au.verifyInfoStu(ptr, uname.getText().toString(), pass.getText().toString()) == true)
         {
+            return true;
+        }
+        return false;
+    }
 
+    public boolean signInUni(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        if(this.au.verifyInfoUni(ptr, uname.getText().toString(), pass.getText().toString()) == true)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean signInAdmin(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        if(this.au.verifyInfoAdmin(ptr, uname.getText().toString(), pass.getText().toString()) == true)
+        {
             return true;
         }
         return false;
@@ -55,8 +79,35 @@ public class Visitor extends User{
         this.au.connectToDb(ptr);
         return this.au.getGStu(ptr, uname.getText().toString(), pass.getText().toString());
     }
+    public University makeUni(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        return this.au.getUni(ptr, uname.getText().toString(), pass.getText().toString());
+    }
 
-    public String getType(){
+    public Admin makeAdmin(EditText uname, EditText pass, Context ptr)
+    {
+        this.au.connectToDb(ptr);
+        return this.au.getAdmin(uname.getText().toString(), pass.getText().toString());
+    }
+
+    public void insertUGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
+    {
+        this.ac.connectToDb(ptr);
+        this.ac.createUndergradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
+    }
+
+    public void insertGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
+    {
+        this.ac.connectToDb(ptr);
+        this.ac.createGradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
+    }
+
+    public String getUsername() {
+        return this.name;
+    }
+
+        public String getType(){
         return "Visitor";
     }
 }

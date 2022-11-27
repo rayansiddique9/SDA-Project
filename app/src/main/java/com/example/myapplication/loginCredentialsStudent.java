@@ -20,13 +20,14 @@ import java.io.Serializable;
 
 public class loginCredentialsStudent extends AppCompatActivity {
 
-    Button l;
-    EditText username;
-    EditText password;
-    Visitor obj;
-    String edu;
-    Student obj1;
-    currentUser cu;
+    private Button l;
+    private EditText username;
+    private EditText password;
+    private Visitor obj;
+    private String edu;
+    private Student obj1;
+    private currentUser cu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +50,13 @@ public class loginCredentialsStudent extends AppCompatActivity {
                                 //    Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
                                 obj1 = (Student) obj.makeUndergradObj(username, password, loginCredentialsStudent.this);
                                 //  Toast.makeText(loginCredentialsStudent.this, Integer.toString(((UndergradStudent)obj1).getMarks()), Toast.LENGTH_SHORT).show();
-                                cu = currentUser.getInstance(obj1);
+                                cu = currentUser.getInstance(obj1, null, null);
 
                             } else {
                                 //  Toast.makeText(loginCredentialsStudent.this, "edutype:" + edu, Toast.LENGTH_SHORT).show();
                                 obj1 = (Student) obj.makeGradObj(username, password, loginCredentialsStudent.this);
                                 //   Toast.makeText(loginCredentialsStudent.this, Float.toString(((GraduateStudent)obj1).getCgpa()), Toast.LENGTH_SHORT).show();
-                                cu = currentUser.getInstance(obj1);
+                                cu = currentUser.getInstance(obj1, null, null);
                             }
                             Intent in = new Intent(loginCredentialsStudent.this, homePage.class);
                             in.putExtra("edutype", edu);

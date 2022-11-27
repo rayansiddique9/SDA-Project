@@ -35,9 +35,9 @@ public class Eligibility_frag extends Fragment {
     private Spinner acc;
     private Button b;
     private String item;
-    Student obj1;
-    String str;
-    List<String> arr;
+    private Student obj1;
+    private String str;
+    private List<String> arr;
     private TextView tv;
 
 
@@ -88,7 +88,7 @@ public class Eligibility_frag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_eligibility_frag, container, false);
 
 
-        currentUser cu  = currentUser.getInstance(obj1);
+        currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
         String st = obj1.getEducationType();
         str = getArguments().getString("universityName");

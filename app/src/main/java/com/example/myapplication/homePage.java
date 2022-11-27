@@ -20,7 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class homePage extends AppCompatActivity {
 
     private BottomNavigationView bnView;
-    Student obj;
+    private Student obj;
 
     // loads the fragment on tha basis of given 'fragment'
     private void loadFrag(Fragment fragment, boolean flag){
@@ -45,7 +45,7 @@ public class homePage extends AppCompatActivity {
 
       //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
-        currentUser cu  = currentUser.getInstance(obj);
+        currentUser cu  = currentUser.getInstance(obj, null, null);
         obj = cu.getStu();
 
      //   obj = (Student) getIntent().getExtras().getSerializable("stu");

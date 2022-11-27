@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:backgroundTint="#a4d8ed"
             android:background="@drawable/teacher_row_bg"
+            android:orientation="vertical"
             >
 
                 <TextView
@@ -27,6 +28,13 @@
                     android:text="Review"
                     android:textSize="20sp"
                 />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bar"
+
+                    />
 
         </LinearLayout>
 

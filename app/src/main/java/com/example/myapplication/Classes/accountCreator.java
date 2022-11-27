@@ -84,7 +84,7 @@ public class accountCreator {
         return true;
     }
 
-    public void createUndergradAcc(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects)
+    public void createUndergradAcc(String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
     {
         if(connection != null)
         {
@@ -95,7 +95,7 @@ public class accountCreator {
             int stuId = 0;
             try {
                 statement = connection.createStatement();
-                String query = "insert into [User] values ('"+name+"', '"+email+"', '"+pass+"',0,0)";
+                String query = "insert into [User] values ('"+name+"', '"+email+"', '"+pass+"',"+isadmin+","+isdisabled+")";
                 statement.executeQuery(query);
             }
             catch(SQLException e)
@@ -124,7 +124,7 @@ public class accountCreator {
             try
             {
                 statement2 = connection.createStatement();
-                String query2 = "insert into Student values("+stuId+", '"+eduType+"', '"+d+"', '"+fname+"', '"+lname+"')";
+                String query2 = "insert into Student values("+stuId+", '"+eduType+"', '"+d+"', '"+fname+"', '"+lname+"'"+isadmin+","+isdisabled+")";
                 statement2.executeQuery(query2);
 
             }
@@ -149,11 +149,11 @@ public class accountCreator {
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void createGradAcc(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects)
+    public void createGradAcc(String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
     {
         if(connection != null)
         {
@@ -218,7 +218,7 @@ public class accountCreator {
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 

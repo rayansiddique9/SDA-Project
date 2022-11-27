@@ -109,7 +109,7 @@
         app:layout_constraintVertical_bias="0.123" />
 
     <Button
-        android:id="@+id/review"
+        android:id="@+id/feedback"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="4dp"
@@ -117,7 +117,7 @@
         android:drawableLeft="@drawable/ic_baseline_rate_review_24"
         android:padding="5dp"
 
-        android:text="Reviews"
+        android:text="Feedback"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16dp"
@@ -141,7 +141,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/review"
+        app:layout_constraintBottom_toTopOf="@+id/feedback"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/compare"
@@ -159,7 +159,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/review"
+        app:layout_constraintBottom_toTopOf="@+id/feedback"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"

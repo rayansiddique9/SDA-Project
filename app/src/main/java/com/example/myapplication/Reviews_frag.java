@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,11 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.example.myapplication.Classes.SearchUni;
 import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.reviewInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +31,12 @@ import java.util.List;
  */
 public class Reviews_frag extends Fragment {
 
-    List<String> listreview;
-
-    /*
-     = {"This past summer, I had the privilege of participating in the University of Notre Dame’s Research Experience for Undergraduates (REU) program . Under the mentorship of Professor Wendy Bozeman and Professor Georgia Lebedev from the department of Biological Sciences, my goal this summer was to research the effects of cobalt iron oxide cored (CoFe2O3) titanium dioxide (TiO2) nanoparticles as a scaffold for drug delivery, specifically in the delivery of a compound known as curcumin, a flavonoid known for its anti-inflammatory effects. As a high school student trying to find a research opportunity, it was very difficult to find a place that was willing to take me in, but after many months of trying, I sought the help of my high school biology teacher, who used his resources to help me obtain a position in the program."
-                ,"Using equipment that a high school student could only dream of using, I was able to map apoptosis (programmed cell death) versus necrosis (cell death due to damage) in HeLa cells, a cervical cancer line, after treating them with curcumin-bound nanoparticles. Using flow cytometry to excite each individually suspended cell with a laser, the scattered light from the cells helped to determine which cells were living, had died from apoptosis or had died from necrosis. Using this collected data, it was possible to determine if the curcumin and/or the nanoparticles had played any significant role on the cervical cancer cells. Later, I was able to image cells in 4D through con-focal microscopy. From growing HeLa cells to trying to kill them with different compounds, I was able to gain the hands-on experience necessary for me to realize once again why I love science."
-            ,"Along with the individually tailored research projects and the housing opportunity, there were seminars on public speaking, trips to the Fermi National Accelerator Laboratory, and one-on-one writing seminars for the end of the summer research papers we were each required to write. By the end of the summer, I wasn’t ready to leave the research that I was doing. While my research didn’t yield definitive results for the effects of curcumin on cervical cancer cells, my research on curcumin-functionalized CoFe2O4/TiO2 core-shell nanoconjugates indicated that there were many unknown factors affecting the HeLa cells, and spurred the lab to expand their research into determining whether or not the timing of the drug delivery mattered and whether or not the position of the binding site of the drugs would alter the results. Through this summer experience, I realized my ambition to pursue a career in research. I always knew that I would want to pursue a future in science, but the exciting world of research where the discoveries are limitless has captured my heart. This school year, the REU program has offered me a year-long job, and despite my obligations as a high school senior preparing for college, I couldn’t give up this offer, and so during this school year, I will be able to further both my research and interest in nanotechnology."
-            ,"In all its splendor\n The Phoenix rises\n In a burst of orange and yellow\n It soars in the baby blue sky\n Heading to that Great Light\n Baptized in the dance of time\n Fearless, eternal, beautiful\n It releases a breathtaking aurora\n And I gasp at the enormity"
-
-    };*/
-
-    ListView listView;
+    private List<reviewInfo> listreview;
+    private ListView listView;
+    private RatingBar ratingBar;
+    private Button submit;
+    private EditText editText;
+    private Student obj1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,16 +84,41 @@ public class Reviews_frag extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reviews_frag, container, false);
 
-        SearchUni obj = new SearchUni();
-        obj.connectToDb(getContext());
-        String str = getArguments().getString("universityName");
 
-        listreview = new ArrayList<>();
-        obj.getUniReviews(getContext(), str, listreview);
+        /*SearchUni obj = new SearchUni();
+        obj.connectToDb(getContext());*/
+        String str = getArguments().getString("universityName");
+        listreview = (List<reviewInfo>) getArguments().getSerializable("r");
+      //  Toast.makeText(getContext(), "reviews:"+String.valueOf(listreview.size()), Toast.LENGTH_SHORT).show();
+
+        currentUser cu  = currentUser.getInstance(obj1, null, null);
+        obj1 = cu.getStu();
+
 
         listView = view.findViewById(R.id.reviewlist);
         adapterReview ad = new adapterReview(this.getContext(), R.layout.alumni_list_row, listreview);
         listView.setAdapter(ad);
+
+        submit = view.findViewById(R.id.sub);
+        editText = view.findViewById(R.id.writereview);
+        ratingBar = view.findViewById(R.id.rate);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(editText.getText().length() != 0)
+                {
+                    obj1.submitReview(getContext(), str,  Math.round(ratingBar.getRating()), editText.getText().toString());
+                    Toast.makeText(getContext(), "Review submitted", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "Review field is empty", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         return view;
     }
 }

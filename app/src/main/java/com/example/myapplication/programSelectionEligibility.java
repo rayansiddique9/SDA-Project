@@ -44,7 +44,7 @@ public class programSelectionEligibility extends AppCompatActivity {
       //  String st = getIntent().getExtras().getString("type");
      //   obj1 = (Student) getIntent().getExtras().getSerializable("object");
 
-        currentUser cu  = currentUser.getInstance(obj1);
+        currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
         String st = obj1.getEducationType();
 

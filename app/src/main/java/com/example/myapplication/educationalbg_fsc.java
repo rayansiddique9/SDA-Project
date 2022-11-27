@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.Visitor;
 import com.example.myapplication.Classes.accountCreator;
 
 import java.io.Serializable;
@@ -28,12 +29,13 @@ import java.util.Date;
 public class educationalbg_fsc extends AppCompatActivity {
 
 
-    Button b;
-    ArrayAdapter<String> adapter;
-    String []arr = {"Pre Medical", "Pre Engineering", "ICS","FA","Business"};
-    Spinner acc;
-    String item;
-    EditText marks;
+    private Button b;
+    private ArrayAdapter<String> adapter;
+    private String []arr = {"Pre Medical", "Pre Engineering", "ICS","FA","Business"};
+    private Spinner acc;
+    private String item;
+    private EditText marks;
+    private Visitor obj;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,8 +44,11 @@ public class educationalbg_fsc extends AppCompatActivity {
         setContentView(R.layout.activity_educationalbg_fsc);
 
 
-        accountCreator obj = new accountCreator();
-        obj.connectToDb(educationalbg_fsc.this);
+
+        /*accountCreator obj = new accountCreator();
+        obj.connectToDb(educationalbg_fsc.this);*/
+
+        obj = new Visitor();
 
 
         String username = getIntent().getExtras().getString("uname");
@@ -89,13 +94,15 @@ public class educationalbg_fsc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                obj.createUndergradAcc(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item);
-             //   UndergradStudent obj1 = new UndergradStudent(username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item);
-                Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
-                /*in.putExtra("edutype",edutype);
-                in.putExtra("activityname", "educationalbg_fsc");
-                in.putExtra("undergrad", (Serializable) obj1);*/
-                startActivity(in);
+                if(Integer.valueOf(marks.getText().toString()) >= 300 && Integer.valueOf(marks.getText().toString()) <= 1000) {
+                    obj.insertUGStu(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
+                    Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
+                    startActivity(in);
+                }
+                else
+                {
+                    Toast.makeText(educationalbg_fsc.this, "Marks should be >= 300 & <= 1000", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
