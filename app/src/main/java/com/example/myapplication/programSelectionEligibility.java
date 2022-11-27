@@ -59,11 +59,8 @@ public class programSelectionEligibility extends AppCompatActivity {
         }
 */
 
-
-
-
         arr = new ArrayList<String>();
-        obj1.getAvalaiblePrograms(this, arr);
+        obj1.getAllAvalaiblePrograms(this, arr);
       //  Toast.makeText(this, "Size:"+String.valueOf(arr.size()), Toast.LENGTH_SHORT).show();
 
         acc = findViewById(R.id.spinner);

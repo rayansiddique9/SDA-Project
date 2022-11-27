@@ -131,7 +131,63 @@ public class Evaluator{
     }
 
 
-    public void fillBSlist(List<String> arr, Context ptr)
+    public void fillBSlist(List<String> arr, String uname)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select p.name from [User] a join University u on u.idUniversity = a.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join UndergraduateProgram up on p.idProgram = up.idUGProgram where a.userName = '"+uname+"'");
+                while(resultSet.next())
+                {
+                    arr.add(resultSet.getString(1));
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+            //    Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void fillMSlist(List<String> arr, String uname)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select p.name from [User] a join University u on u.idUniversity = a.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join GraduateProgram gp on p.idProgram = gp.idGProgram where a.userName = '"+uname+"'");
+                while(resultSet.next())
+                {
+                    arr.add(resultSet.getString(1));
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+              //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+          //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+    public void fillAllBSlist(List<String> arr)
     {
         if(connection != null)
         {
@@ -149,16 +205,16 @@ public class Evaluator{
             catch(SQLException e)
             {
                 e.printStackTrace();
-                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void fillMSlist(List<String> arr, Context ptr)
+    public void fillAllMSlist(List<String> arr)
     {
         if(connection != null)
         {
@@ -176,14 +232,16 @@ public class Evaluator{
             catch(SQLException e)
             {
                 e.printStackTrace();
-                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
         else
         {
-            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
     public boolean getStatusBS(String degree, Context ptr, String subjectCombo, int marks, String uniname)
     {

@@ -1,6 +1,8 @@
 package com.example.myapplication.Classes;
 
-public class aidInfo {
+import java.io.Serializable;
+
+public class aidInfo implements Serializable {
     String name;
     String detail;
     aidInfo(String n, String d)

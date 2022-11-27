@@ -19,6 +19,7 @@ public class Student extends Visitor {
     protected SearchUni su;
     protected managePost mp;
     protected viewProfile vp;
+    protected uniComparer uc;
 
 
     public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
@@ -32,6 +33,7 @@ public class Student extends Visitor {
         this.su = new SearchUni();
         this.mp = new managePost();
         this.vp = new viewProfile();
+        this.uc = new uniComparer();
     }
 
     public String getDob() {
@@ -50,18 +52,31 @@ public class Student extends Visitor {
         return lastName;
     }
 
-    public void getAvalaiblePrograms(Context ptr, List<String> programlist)
+    public void getAvalaiblePrograms(Context ptr, String uniname, List<String> programlist)
     {
         e.connectToDb(ptr);
         if(this.educationType.equals("Undergraduate"))
         {
-            e.fillBSlist(programlist, ptr);
+            e.fillBSlist(programlist, uniname);
         }
         else
         {
-            e.fillMSlist(programlist, ptr);
+            e.fillMSlist(programlist, uniname);
         }
 
+    }
+
+    public void getAllAvalaiblePrograms(Context ptr, List<String> programlist)
+    {
+        e.connectToDb(ptr);
+        if(this.educationType.equals("Undergraduate"))
+        {
+            e.fillAllBSlist(programlist);
+        }
+        else
+        {
+            e.fillAllMSlist(programlist);
+        }
     }
 
     public ArrayList<String> getEligibleUniList(Context ptr, String preferredDeg)
@@ -179,5 +194,29 @@ public class Student extends Visitor {
         this.vp.connectToDb(ptr);
         this.vp.getProgramsOfDept(universityname, deptname, arr);
     }*/
+
+    public void getUnis(Context ptr, ArrayList<String> arr)
+    {
+        this.uc.connectToDb(ptr);
+        this.uc.fillUniList(arr);
+    }
+
+    public void getDeptsUni(Context ptr, String uniname, List<String> arr)
+    {
+        this.uc.connectToDb(ptr);
+        this.uc.getDepts(uniname, arr);
+    }
+
+    public List<String> getDeptPrgms(Context ptr, String universityname, String deptname)
+    {
+        this.uc.connectToDb(ptr);
+        return this.uc.getProgramsOfDept(universityname, deptname);
+    }
+
+    public void getUnis(Context ptr, String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a, List<reviewInfo> r)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.getUniveristy(universityname, depts, arr, f, a, r);
+    }
 
 }

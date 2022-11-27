@@ -1,6 +1,8 @@
 package com.example.myapplication.Classes;
 
-public class reviewInfo {
+import java.io.Serializable;
+
+public class reviewInfo implements Serializable {
     private String review;
     private int rating;
 

@@ -96,7 +96,7 @@ public class Reviews_frag extends Fragment {
 
 
         listView = view.findViewById(R.id.reviewlist);
-        adapterReview ad = new adapterReview(this.getContext(), R.layout.alumni_list_row, listreview);
+        adapterReview ad = new adapterReview(this.getContext(), R.layout.review_list_row, listreview);
         listView.setAdapter(ad);
 
         submit = view.findViewById(R.id.sub);

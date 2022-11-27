@@ -34,6 +34,7 @@ public class homeFrag extends Fragment {
     private Button elg;
     private Button Search;
     private Button Feedback;
+    private Button comparison;
     private Button announcements;
     private AutoCompleteTextView act;
     private ArrayList<String> arrUnis;
@@ -95,6 +96,8 @@ public class homeFrag extends Fragment {
         act = view.findViewById(R.id.autotext);
         Search = view.findViewById(R.id.search);
         Feedback = view.findViewById(R.id.feedback);
+        comparison = view.findViewById(R.id.compare);
+        announcements = view.findViewById(R.id.news);
 
         currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
@@ -159,6 +162,22 @@ public class homeFrag extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getContext(), feedbackAndFaq.class);
+                startActivity(in);
+            }
+        });
+
+        announcements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getContext(), announcementsStudent.class);
+                startActivity(in);
+            }
+        });
+
+        comparison.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getContext(), compareUnis.class);
                 startActivity(in);
             }
         });

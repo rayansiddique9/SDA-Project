@@ -1,6 +1,8 @@
 package com.example.myapplication.Classes;
 
-public class feeinfo {
+import java.io.Serializable;
+
+public class feeinfo implements Serializable {
     private String degree;
     private int feePerCdthr;
     private int creditHrs;

@@ -77,7 +77,7 @@ public class reviewsFragUni extends Fragment {
         listreview = (List<reviewInfo>) getArguments().getSerializable("r");
 
         listView = view.findViewById(R.id.reviewlist);
-        adapterReview ad = new adapterReview(this.getContext(), R.layout.alumni_list_row, listreview);
+        adapterReview ad = new adapterReview(this.getContext(), R.layout.review_list_row, listreview);
         listView.setAdapter(ad);
 
 

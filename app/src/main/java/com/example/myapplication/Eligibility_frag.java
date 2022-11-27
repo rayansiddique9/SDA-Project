@@ -95,7 +95,7 @@ public class Eligibility_frag extends Fragment {
 
 
         arr = new ArrayList<String>();
-        obj1.getAvalaiblePrograms(getContext(), arr);
+        obj1.getAvalaiblePrograms(getContext(), str, arr);
 
         tv = view.findViewById(R.id.program);
         acc = view.findViewById(R.id.spinnerprogram);
@@ -106,37 +106,40 @@ public class Eligibility_frag extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(obj1.getEligiblityStatus(getContext(), item, str) == true)
-                {
-                    tv.setText("You are eligible to apply in selected program of "+str);
+                if (arr.size() != 0 && arr.size() != 0) {
+                    if (obj1.getEligiblityStatus(getContext(), item, str) == true) {
+                        tv.setText("You are eligible to apply in selected program of " + str);
 
-                    CountDownTimer timer = new CountDownTimer(3000, 1000) {
-                        @Override
-                        public void onTick(long l) {
-                            tv.setVisibility(View.VISIBLE);
-                        }
+                        CountDownTimer timer = new CountDownTimer(3000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+                                tv.setVisibility(View.VISIBLE);
+                            }
 
-                        @Override
-                        public void onFinish() {
-                            tv.setVisibility(View.INVISIBLE);
-                        }
-                    }.start();
+                            @Override
+                            public void onFinish() {
+                                tv.setVisibility(View.INVISIBLE);
+                            }
+                        }.start();
+                    } else {
+                        tv.setText("You are not eligible to apply in selected program of " + str);
+
+                        CountDownTimer timer = new CountDownTimer(3000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+                                tv.setVisibility(View.VISIBLE);
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                tv.setVisibility(View.INVISIBLE);
+                            }
+                        }.start();
+                    }
                 }
                 else
                 {
-                    tv.setText("You are not eligible to apply in selected program of "+str);
-
-                    CountDownTimer timer = new CountDownTimer(3000, 1000) {
-                        @Override
-                        public void onTick(long l) {
-                            tv.setVisibility(View.VISIBLE);
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            tv.setVisibility(View.INVISIBLE);
-                        }
-                    }.start();
+                    Toast.makeText(getContext(), "University does not have any program avalaible", Toast.LENGTH_SHORT).show();
                 }
             }
         });

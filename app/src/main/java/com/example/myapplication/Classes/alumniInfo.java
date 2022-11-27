@@ -1,6 +1,8 @@
 package com.example.myapplication.Classes;
 
-public class alumniInfo {
+import java.io.Serializable;
+
+public class alumniInfo implements Serializable {
     private String name;
     private String company;
     private String batch;
