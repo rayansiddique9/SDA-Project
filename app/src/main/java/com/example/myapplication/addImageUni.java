@@ -53,8 +53,8 @@ public class addImageUni extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 imageChooser();
-                Intent in = new Intent(addImageUni.this, homePageUni.class);
-                startActivity(in);
+                /*Intent in = new Intent(addImageUni.this, homePageUni.class);
+                startActivity(in);*/
             }
 
         });

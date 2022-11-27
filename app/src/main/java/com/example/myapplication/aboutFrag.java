@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.myapplication.Classes.University;
+import com.example.myapplication.Classes.currentUserUni;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +18,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class aboutFrag extends Fragment {
+
+    private TextView t1,t2,t3,t4,t5,t6,t7;
+    private University obj;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +66,34 @@ public class aboutFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
+
+        currentUserUni cu = currentUserUni.getInstance(obj);
+        obj = (University) cu.getU();
+
+        t1 = view.findViewById(R.id.name);
+        t2 = view.findViewById(R.id.location);
+        t3 = view.findViewById(R.id.phone);
+        t4 = view.findViewById(R.id.rank);
+        t5 = view.findViewById(R.id.email);
+        t6 = view.findViewById(R.id.lat);
+        t7 = view.findViewById(R.id.lng);
+
+        String s = obj.getName();
+        t1.setText(s);
+        String s1 = obj.getLocation();
+        t2.setText(s1);
+        String s3 = obj.getPhone();
+        t3.setText(s3);
+        String s4 = String.valueOf(obj.getRanking());
+        t4.setText(s4);
+        String s5 = obj.getEmail();
+        t5.setText(s5);
+        String s6 = String.valueOf(obj.getLatitude());
+        t6.setText("Latitude:"+s6);
+        String s7 = String.valueOf(obj.getLongitude());
+        t7.setText("Longitude:"+s7);
+
+        return view;
     }
 }

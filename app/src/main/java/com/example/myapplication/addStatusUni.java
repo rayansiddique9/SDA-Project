@@ -39,8 +39,6 @@ public class addStatusUni extends AppCompatActivity {
                     m.connectToDb(addStatusUni.this);
                     m.insertStatus(addStatusUni.this, uname, ev.getText().toString());
                     //   Toast.makeText(addVideoUni.this, "Video posted", Toast.LENGTH_SHORT).show();
-                    Intent in = new Intent(addStatusUni.this, homePageUni.class);
-                    startActivity(in);
                 }
                 else
                 {

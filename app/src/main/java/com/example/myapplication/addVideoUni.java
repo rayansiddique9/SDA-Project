@@ -44,8 +44,6 @@ public class addVideoUni extends AppCompatActivity {
                         m.connectToDb(addVideoUni.this);
                         m.insertVideo(addVideoUni.this, uname, ev.getText().toString());
                         //   Toast.makeText(addVideoUni.this, "Video posted", Toast.LENGTH_SHORT).show();
-                        Intent in = new Intent(addVideoUni.this, homePageUni.class);
-                        startActivity(in);
                     }
                     else
                     {

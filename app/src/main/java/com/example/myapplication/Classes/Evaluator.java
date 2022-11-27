@@ -108,7 +108,7 @@ public class Evaluator{
 
             try {
                 statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select us.userName from [User] us join University u on u.idUniversity = us.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join GraduateProgram gp on p.idProgram = gp.idUGProgram join gReqBG b on gp.idGProgram = b.bgid where b.name = '"+subjectCombo+"' and p.name = '"+degree+"' and "+marks+" >= gp.minCGPA");
+                ResultSet resultSet = statement.executeQuery("select us.userName from [User] us join University u on u.idUniversity = us.idUser join Department d on u.idUniversity = d.idUniversity join Program p on d.idDepartment = p.idDepartment join GraduateProgram gp on p.idProgram = gp.idGProgram join gReqBG b on gp.idGProgram = b.bgid where b.name = '"+subjectCombo+"' and p.name = '"+degree+"' and "+marks+" >= gp.minCGPA");
                 while(resultSet.next())
                 {
                     arr.add(resultSet.getString(1));

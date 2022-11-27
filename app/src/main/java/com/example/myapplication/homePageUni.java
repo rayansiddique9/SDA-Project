@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.Classes.University;
+import com.example.myapplication.Classes.currentUserUni;
 import com.example.myapplication.Classes.managePost;
 
 import java.io.ByteArrayOutputStream;
@@ -27,6 +28,7 @@ import java.io.IOException;
 public class homePageUni extends AppCompatActivity {
     private Button postBtn, profileBtn;
     private String uname;
+    private University obj;
 
 
     @SuppressLint("MissingInflatedId")
@@ -34,6 +36,13 @@ public class homePageUni extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_uni);
+
+        currentUserUni cu = currentUserUni.getInstance(obj);
+        obj = (University) cu.getU();
+
+        Toast.makeText(this, String.valueOf(obj.getName()), Toast.LENGTH_SHORT).show();
+
+
 
         uname = getIntent().getExtras().getString("name");
 

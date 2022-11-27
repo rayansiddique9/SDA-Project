@@ -25,7 +25,7 @@ public class homePageAdmin extends AppCompatActivity {
 
         currentUserAdmin ca  = currentUserAdmin.getInstance(obj);
         obj = ca.getA();
-        Toast.makeText(this, "username:"+obj.getUsername(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "username:"+obj.getName(), Toast.LENGTH_SHORT).show();
 
         feedbackBtn = findViewById(R.id.fb);
 

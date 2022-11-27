@@ -27,13 +27,13 @@ import java.util.Objects;
 
 
 public class programSelectionEligibility extends AppCompatActivity {
-    ArrayAdapter<String> adapter;
-    List<String> arr;
-    List<String> arr1;
-    Spinner acc;
-    Button b;
-    String item;
-    Student obj1;
+    private ArrayAdapter<String> adapter;
+    private List<String> arr;
+    private List<String> arr1;
+    private Spinner acc;
+    private Button b;
+    private String item;
+    private Student obj1;
 
 
     @Override

@@ -16,6 +16,7 @@ import com.example.myapplication.Classes.Student;
 import com.example.myapplication.Classes.University;
 import com.example.myapplication.Classes.Visitor;
 import com.example.myapplication.Classes.currentUser;
+import com.example.myapplication.Classes.currentUserUni;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class loginUni extends AppCompatActivity {
     Visitor obj;
     String edu;
     University obj1;
-    currentUser cu;
+    currentUserUni cu;
     TextView t;
 
     @SuppressLint("MissingInflatedId")
@@ -50,31 +51,8 @@ public class loginUni extends AppCompatActivity {
                     if (obj.signInUni(username, password, loginUni.this) == true)
                     {
                         obj1 = obj.makeUni(username, password, loginUni.this);
-                        Toast.makeText(loginUni.this, "aagya", Toast.LENGTH_SHORT).show();
                         Intent in = new Intent(loginUni.this, homePageUni.class);
-                     //   cu = currentUser.getInstance(null, obj1, null);
-
-                        /*ArrayList<String> swad = new ArrayList<>();
-                        obj1.getDepartments(swad);
-                        for(int x = 0; x < swad.size(); x++)
-                        {
-                            Toast.makeText(loginUni.this, swad.get(x), Toast.LENGTH_SHORT).show();
-                        }*/
-
-                    /*    String un=obj.getUsername();
-                        Toast.makeText(loginUni.this, un, Toast.LENGTH_SHORT).show();
-*/
-                        //Toast.makeText(loginUni.this, obj1.getUsername(), Toast.LENGTH_SHORT).show();
-
-                    //    t.setText(obj1.getUsername());
-
-                        /*ArrayList<Department> dept = null;
-                        dept = obj1.getDepartments();
-
-                        for(int x = 0; x < dept.size(); x++)
-                        {
-                            Toast.makeText(loginUni.this, dept.get(x).getName(), Toast.LENGTH_SHORT).show();
-                        }*/
+                        cu = currentUserUni.getInstance(obj1);
                         in.putExtra("name", username.getText().toString());
                         startActivity(in);
                     }

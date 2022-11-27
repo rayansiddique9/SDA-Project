@@ -2,7 +2,7 @@ package com.example.myapplication.Classes;
 
 public class currentUserAdmin {
     private static currentUserAdmin instance = null;
-    Admin a;
+    private Admin a;
 
     private currentUserAdmin(Admin obj)
     {

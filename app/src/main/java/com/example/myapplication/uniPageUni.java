@@ -18,8 +18,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.University;
 import com.example.myapplication.Classes.aidInfo;
 import com.example.myapplication.Classes.alumniInfo;
+import com.example.myapplication.Classes.currentUserUni;
 import com.example.myapplication.Classes.feeinfo;
 import com.example.myapplication.Classes.reviewInfo;
 import com.example.myapplication.Classes.viewProfile;
@@ -40,7 +42,7 @@ public class uniPageUni extends AppCompatActivity {
     private List<feeinfo> fees;
     private List<aidInfo> aid;
     private List<reviewInfo> reviewInfos;
-    private viewProfile obj;
+    private University obj;
 
     private void loadFragment(Fragment fragment, boolean flag, Bundle b) {
         fragment.setArguments(b);
@@ -73,8 +75,8 @@ public class uniPageUni extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni_page_uni);
 
-        obj = new viewProfile();
-        obj.connectToDb(this);
+        currentUserUni cu = currentUserUni.getInstance(obj);
+        obj = (University) cu.getU();
 
         drawerLayout = findViewById(R.id.side_menu_uni);
         navigationView = findViewById(R.id.sidenavuni);
@@ -91,8 +93,6 @@ public class uniPageUni extends AppCompatActivity {
         aid = new ArrayList<aidInfo>();
         reviewInfos = new ArrayList<reviewInfo>();
 
-        //obj.getUniveristy(uniPageStudent.this, s, depts, arr, fees, aid, reviewInfos);   //gets uni content from db
-
         obj.getUni(uniPageUni.this, s, depts, arr, fees, aid, reviewInfos);
 
         setSupportActionBar(toolbar);
@@ -106,7 +106,7 @@ public class uniPageUni extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("universityName", s);
 
-        loadFragment(new campusLife_frag(),false, bundle);
+        loadFragment(new aboutFrag(),false, bundle);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

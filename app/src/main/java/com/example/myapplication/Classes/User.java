@@ -13,7 +13,31 @@ public abstract class User implements Serializable{
     protected authenticateUser au;
     protected accountCreator ac;
 
-   /* public String getUsername(){
-      //  return name;
-    }*/
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setUsername(String str)
+    {
+        this.name = str;
+    }
+
+    public void setEmail(String str)
+    {
+        this.email = str;
+    }
+
+    public void setPassword(String str)
+    {
+        this.password = str;
+    }
+
+    public void setIsDisabled(int a)
+    {
+        this.isDisabled = a;
+    }
 }

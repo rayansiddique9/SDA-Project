@@ -125,7 +125,7 @@ public class Student extends Visitor {
         su.connectToDb(ptr);
         int uid = su.getUniId(uname);
       //  Toast.makeText(ptr, "UniId:"+String.valueOf(uid), Toast.LENGTH_SHORT).show();
-        int sid = su.getStuId(this.getUsername());
+        int sid = su.getStuId(this.getName());
       //  Toast.makeText(ptr, "StuId:"+String.valueOf(sid), Toast.LENGTH_SHORT).show();
         su.insertReview(sid, uid, rating, review);
     }
@@ -139,7 +139,7 @@ public class Student extends Visitor {
     public void giveFeedback(Context ptr, String str)
     {
         su.connectToDb(ptr);
-        int uid = su.getUserId(this.getUsername());
+        int uid = su.getUserId(this.getName());
         su.insertFeedback(str, uid);
     }
 

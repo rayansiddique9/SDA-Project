@@ -34,10 +34,11 @@ public class homeFrag extends Fragment {
     private Button elg;
     private Button Search;
     private Button Feedback;
+    private Button announcements;
     private AutoCompleteTextView act;
-    ArrayList<String> arrUnis;
-    Student obj1;
-    String str;
+    private ArrayList<String> arrUnis;
+    private Student obj1;
+    private String str;
 
 
     // TODO: Rename parameter arguments, choose names that match

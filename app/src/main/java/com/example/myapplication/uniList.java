@@ -20,15 +20,12 @@ import java.util.ArrayList;
 
 public class uniList extends AppCompatActivity {
 
-    uniinfo unilist[];
-
-
-    ArrayAdapter<String> adapter1;
-    ArrayAdapter<String> adapter2;
-    TextView tv, textView;
-
-    ListView listView;
-    CardView c;
+    private uniinfo unilist[];
+    private ArrayAdapter<String> adapter1;
+    private ArrayAdapter<String> adapter2;
+    private TextView tv, textView;
+    private ListView listView;
+    private CardView c;
 
     @SuppressLint("MissingInflatedId")
     @Override
