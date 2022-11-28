@@ -98,7 +98,9 @@ public class Visitor extends User{
         this.ac.createGradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
     }
 
-
+    public String getType(){
+        return "Visitor";
+    }
   /*  public String getUsername() {
         return this.name;
     }*/
