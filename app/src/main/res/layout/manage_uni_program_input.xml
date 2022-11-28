@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< Updated upstream
     tools:context=".University_SignUp">
+=======
+    tools:context=".ManageUniProgInput">
+>>>>>>> Stashed changes
 
     <ImageView
         android:id="@+id/imageViewManageProgramInput"
         android:layout_width="93dp"
         android:layout_height="115dp"
+<<<<<<< Updated upstream
         android:layout_marginTop="84dp"
+=======
+        android:layout_marginTop="48dp"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,9 +45,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
+<<<<<<< Updated upstream
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Name"
+=======
+        android:minHeight="48dp"
+        android:hint="Name"
+        android:inputType="textPersonName"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textProgrammeInfo" />
@@ -52,7 +66,11 @@
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
+<<<<<<< Updated upstream
         android:text="Credit Hours"
+=======
+        android:hint="Credit Hours"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/programmeName" />
@@ -65,7 +83,11 @@
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
+<<<<<<< Updated upstream
         android:text="Fee Per Credit Hour"
+=======
+        android:hint="Fee Per Credit Hour"
+>>>>>>> Stashed changes
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creditHr" />

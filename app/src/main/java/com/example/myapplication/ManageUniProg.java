@@ -7,6 +7,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+<<<<<<< Updated upstream
+=======
+import android.widget.Toast;
+>>>>>>> Stashed changes
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +21,10 @@ public class ManageUniProg extends AppCompatActivity {
     Spinner acc;
     Button b;
     String item;
+<<<<<<< Updated upstream
+=======
+    String prog = "Graduate";
+>>>>>>> Stashed changes
     @Override
 
 
@@ -33,6 +41,7 @@ public class ManageUniProg extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(item == "Undergraduate") {
+<<<<<<< Updated upstream
                     Intent in = new Intent(ManageUniProg.this, ManageUniProgUG.class);
                     startActivity(in);
                 }
@@ -41,6 +50,20 @@ public class ManageUniProg extends AppCompatActivity {
 //                    Intent in = new Intent(ManageUniProg.this, University_SignUp.class);
 //                    startActivity(in);
 //                }
+=======
+                    Intent in = new Intent(ManageUniProg.this, ManageUniProgInput.class);
+                    in.putExtra("Program", 0);
+                    startActivity(in);
+                }
+                if(item == "Graduate")
+                {
+                    Intent in = new Intent(ManageUniProg.this, ManageUniProgInput.class);
+                    in.putExtra("Program", 1);
+//                    Toast.makeText(ManageUniProg.this, prog,
+//                            Toast.LENGTH_LONG).show();
+                    startActivity(in);
+                }
+>>>>>>> Stashed changes
             }
         });
         acc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
