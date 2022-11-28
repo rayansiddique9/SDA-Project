@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,11 @@ import android.widget.TextView;
 
 import com.example.myapplication.Classes.University;
 import com.example.myapplication.Classes.currentUserUni;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -96,4 +102,6 @@ public class aboutFrag extends Fragment {
 
         return view;
     }
+
+
 }

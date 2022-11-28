@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -82,6 +83,9 @@ public class uniPageStudent extends AppCompatActivity {
 
         currentUser cu  = currentUser.getInstance(obj, null, null);
         obj = cu.getStu();
+
+       /* SearchUni obj1 = new SearchUni();
+        obj1.connectToDb(uniPageStudent.this);*/
 
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
@@ -173,10 +177,18 @@ public class uniPageStudent extends AppCompatActivity {
                 }
                 else if(id == R.id.menu_location)
                 {
+                    /*double lat =  obj1.getUniLatitude(uniPageStudent.this, s);
+                    double lng =  obj1.getUniLongitude(uniPageStudent.this, s);
+                    Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="+lat+","+lng+"&mode=d"));
+                    in.setPackage("com.google.android.apps.maps");
+                    if(in.resolveActivity(getPackageManager()) != null) {
+                        startActivity(in);
+                    }*/
+
                     Intent in = new Intent(uniPageStudent.this, google.class);
                     in.putExtra("universityName", s);
                     startActivity(in);
-                  //  loadFragment(new MapsFragment(), true, bundle);
+
                 }
                 else if(id == R.id.menu_post)
                 {

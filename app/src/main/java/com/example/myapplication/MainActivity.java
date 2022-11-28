@@ -17,6 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -52,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         b2 = findViewById(R.id.button5);
 
+        /*description_webscrape dw = new description_webscrape();
+        dw.execute();*/
+
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -59,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Class.forName(Classes);
             connection = DriverManager.getConnection(url, username, password);
-            textView.setText("Success");
+           // textView.setText("Success");
 
         }
         catch(ClassNotFoundException e) {
@@ -93,56 +100,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void sqlButton(View view)
-    {
-        if(connection != null)
-        {
-            Statement statement = null;
-            try {
-                statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("insert into person(name) values ('zzzebra')");
-           /*     Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery("select * from person");*/
-                while(resultSet.next())
-                {
-                    textView.setText(resultSet.getString(1));
-                }
-            }
-            catch(SQLException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else
-        {
-            textView.setText("Connection is null");
-        }
-    }
 
-    public void sqlButton2(View view)
-    {
-        if(connection != null)
+  /*  private class description_webscrape extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected void onPreExecute()
         {
-            Statement statement = null;
-            try {
-                statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select userName from [User]");
-                while(resultSet.next())
-                {
-                    textView.setText(resultSet.getString(1));
-                }
-            }
-            catch(SQLException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else
-        {
-            textView.setText("Connection is null");
+            super.onPreExecute();
         }
 
-    }
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            org.jsoup.nodes.Document document = null;
+            try {
+                document = (Document) Jsoup.connect("https://www.hec.gov.pk/english/scholarshipsgrants/postdoc/Pages/default.aspx").get();
+            } catch (IOException e) {
+
+            }
+            org.jsoup.select.Elements elements = document.getElementsByClass("ms-rtestate-field");
+            String extracted = elements.text();
+            textView.setText(extracted);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid)
+        {
+
+        }
+
+    }*/
 
 
 

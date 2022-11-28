@@ -16,24 +16,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.currentUser;
+
 import java.util.ArrayList;
 
 public class Universities extends AppCompatActivity {
 
-    String filter[] = {"Degree", "Ranking"};
-    String sort[] = {"Ranking (Asc)", "Ranking (Dsc)"};
-    uniinfo unilist[]; //= {new uniinfo("FAST-NU Lahore", R.drawable.fastnulhr), new uniinfo("LUMS", R.drawable.lums), new uniinfo("GIKI", R.drawable.giki)};
-
-
-
-    Spinner s1, s2;
-    String item;
-    ArrayAdapter<String> adapter1;
-    ArrayAdapter<String> adapter2;
-    ListView listView;
-    CardView c;
-
-    Button b;
+    private String filter[] = {"Degree", "Ranking"};
+    private String sort[] = {"Ranking(Asc)", "Ranking(Dsc)", "Fee(Asc)", "Fee(Dsc)"};
+    private uniinfo unilist[];
+    private Spinner s1, s2;
+    private String item, item1;
+    private ArrayAdapter<String> adapter1;
+    private ArrayAdapter<String> adapter2;
+    private ListView listView;
+    private CardView c;
+    private Button b, b1;
+    private Student obj;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -60,7 +60,7 @@ public class Universities extends AppCompatActivity {
         adapterUniList ad = new adapterUniList(this, R.layout.uni_list_row, unilist);
         listView.setAdapter(ad);
         b = findViewById(R.id.filterbtn);
-
+        b1 = findViewById(R.id.sortbtn);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -79,18 +79,45 @@ public class Universities extends AppCompatActivity {
                 //Dialog dialog = new Dialog(Universities.this);
                 if(item.equals("Degree"))
                 {
-                    /*dialog.setContentView(R.layout.dialogue_box_filter_degree);
-                    dialog.show();*/
                     Intent in = new Intent(Universities.this, filterUniDeg1.class);
                     startActivity(in);
                 }
                 else
                 {
-                    /*dialog.setContentView(R.layout.dialogue_box_filter_ranking);
-                    dialog.show();*/
                     Intent in = new Intent(Universities.this, filterUniRanking1.class);
                     startActivity(in);
                 }
+            }
+        });
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                currentUser cu  = currentUser.getInstance(obj, null, null);
+                obj = cu.getStu();
+                ArrayList<String>rst = null;
+
+                if(item1.equals("Ranking(Asc)"))
+                {
+                    rst = obj.getSortedUnisRankingAsc(Universities.this);
+                }
+                else if(item1.equals("Ranking(Dsc)"))
+                {
+                    rst = obj.getSortedUnisRankingDsc(Universities.this);
+                }
+                else if(item1.equals("Fee(Asc)"))
+                {
+                    rst = obj.getSortedUnisFeeAsc(Universities.this);
+                }
+                else
+                {
+                    rst = obj.getSortedUnisFeeDsc(Universities.this);
+                }
+
+                Intent in = new Intent(Universities.this, uniList.class);
+                in.putExtra("arr", rst);
+                startActivity(in);
             }
         });
 
@@ -112,7 +139,7 @@ public class Universities extends AppCompatActivity {
         s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-                item = parent.getItemAtPosition(i).toString();
+                item1 = parent.getItemAtPosition(i).toString();
                 //    Toast.makeText(getApplicationContext(),"Item: "+item, Toast.LENGTH_SHORT).show();
 
             }

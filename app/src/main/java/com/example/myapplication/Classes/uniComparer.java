@@ -186,4 +186,149 @@ public class uniComparer {
         }
         return arr;
     }
+
+    public String getCampusLife(String uniname)
+    {
+        String str = null;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.campusLife from [User] us join University u on u.idUniversity = us.idUser where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getString(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+              //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+           // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
+    public int getUniRank(String uniname)
+    {
+        int str = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.ranking from [User] us join University u on u.idUniversity = us.idUser where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getInt(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
+    public String getUniMail( String uniname)
+    {
+        String str = null;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select us.email from [User] us join University u on u.idUniversity = us.idUser where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getString(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
+    public String getUniPh( String uniname)
+    {
+        String str = null;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.phone from [User] us join University u on u.idUniversity = us.idUser where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getString(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
+    public String getUniAddr(String uniname)
+    {
+        String str = null;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.location from [User] us join University u on u.idUniversity = us.idUser where us.userName = '"+uniname+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getString(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
 }

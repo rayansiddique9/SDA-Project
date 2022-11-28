@@ -45,6 +45,7 @@ public class University extends Visitor{
         this.txts = txt;
         this.mp = new managePost();
         this.vp = new viewProfile();
+        this.ac = new accountCreator();
     }
 
     public ArrayList<Department> getDepartments() {

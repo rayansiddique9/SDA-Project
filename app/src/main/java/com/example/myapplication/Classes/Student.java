@@ -20,6 +20,7 @@ public class Student extends Visitor {
     protected managePost mp;
     protected viewProfile vp;
     protected uniComparer uc;
+    protected filter_SortPersistence fs;
 
 
     public Student(String name, String email, String pass, String eduType, String d, String fname, String lname, int isadmin, int isdisabled)
@@ -34,6 +35,7 @@ public class Student extends Visitor {
         this.mp = new managePost();
         this.vp = new viewProfile();
         this.uc = new uniComparer();
+        this.fs = new filter_SortPersistence();
     }
 
     public String getDob() {
@@ -119,20 +121,51 @@ public class Student extends Visitor {
 
     public ArrayList<String> getFilteredUniListDeg(Context ptr, String preferredDeg)
     {
-        e.connectToDb(ptr);
+        fs.connectToDb(ptr);
         ArrayList<String> rst;
-        rst = e.getUnisDegFiltered(preferredDeg, ptr);
+        rst = fs.getUnisDegFiltered(preferredDeg, ptr);
         return rst;
 
     }
 
     public ArrayList<String> getFilteredUniListRanking(Context ptr, int l, int u)
     {
-        e.connectToDb(ptr);
+        fs.connectToDb(ptr);
         ArrayList<String> rst;
-        rst = e.getUnisRankingFiltered(ptr, l, u);
+        rst = fs.getUnisRankingFiltered(ptr, l, u);
         return rst;
+    }
 
+    public ArrayList<String> getSortedUnisRankingAsc(Context ptr)
+    {
+        fs.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = fs.getUnisSortedRankAsc(ptr);
+        return rst;
+    }
+
+    public ArrayList<String> getSortedUnisRankingDsc(Context ptr)
+    {
+        fs.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = fs.getUnisSortedRankDsc(ptr);
+        return rst;
+    }
+
+    public ArrayList<String> getSortedUnisFeeAsc(Context ptr)
+    {
+        fs.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = fs.getUnisSortedFeeAsc(ptr);
+        return rst;
+    }
+
+    public ArrayList<String> getSortedUnisFeeDsc(Context ptr)
+    {
+        fs.connectToDb(ptr);
+        ArrayList<String> rst;
+        rst = fs.getUnisSortedFeeDsc(ptr);
+        return rst;
     }
 
     public void submitReview(Context ptr, String uname, int rating, String review)
@@ -215,8 +248,38 @@ public class Student extends Visitor {
 
     public void getUnis(Context ptr, String universityname, ArrayList<String> depts, List<alumniInfo> arr, List<feeinfo> f, List<aidInfo> a, List<reviewInfo> r)
     {
-        this.vp.connectToDb(ptr);
-        this.vp.getUniveristy(universityname, depts, arr, f, a, r);
+        this.uc.connectToDb(ptr);
+        this.uc.getUniveristy(universityname, depts, arr, f, a, r);
+    }
+
+    public String getUniEmail(Context ptr, String universityname)
+    {
+        this.uc.connectToDb(ptr);
+        return this.uc.getUniMail(universityname);
+    }
+
+    public String getUniPhone(Context ptr, String universityname)
+    {
+        this.uc.connectToDb(ptr);
+        return this.uc.getUniPh(universityname);
+    }
+
+    public String getUniAddress(Context ptr, String universityname)
+    {
+        this.uc.connectToDb(ptr);
+        return this.uc.getUniAddr(universityname);
+    }
+
+    public String getUniCampusLife(Context ptr, String universityname)
+    {
+        this.uc.connectToDb(ptr);
+        return this.uc.getCampusLife(universityname);
+    }
+
+    public int getUniRanking(Context ptr, String universityname)
+    {
+        this.uc.connectToDb(ptr);
+        return this.uc.getUniRank(universityname);
     }
 
 }

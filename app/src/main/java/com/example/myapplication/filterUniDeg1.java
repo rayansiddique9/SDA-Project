@@ -51,7 +51,7 @@ public class filterUniDeg1 extends AppCompatActivity {
             public void onClick(View view) {
 
                 ArrayList<String>rst = obj1.getFilteredUniListDeg(filterUniDeg1.this, item);
-                Toast.makeText(filterUniDeg1.this, "Unis:"+String.valueOf(rst.size()), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(filterUniDeg1.this, "Unis:"+String.valueOf(rst.size()), Toast.LENGTH_SHORT).show();
                 Intent in = new Intent(filterUniDeg1.this, uniList.class);
                 in.putExtra("arr", rst);
                 startActivity(in);

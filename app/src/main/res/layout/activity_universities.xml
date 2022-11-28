@@ -8,7 +8,6 @@
     tools:context=".Universities">
 
 
-
     <ListView
         android:id="@+id/unilist"
         android:layout_width="match_parent"
@@ -26,12 +25,11 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
-
     <Spinner
-        android:background="@android:drawable/btn_dropdown"
         android:id="@+id/spinner2"
         android:layout_width="170dp"
         android:layout_height="40dp"
+        android:background="@android:drawable/btn_dropdown"
         app:layout_constraintBottom_toTopOf="@+id/unilist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.938"
@@ -40,11 +38,11 @@
         app:layout_constraintVertical_bias="0.509" />
 
     <Spinner
-        android:background="@android:drawable/btn_dropdown"
         android:id="@+id/spinner3"
         android:layout_width="170dp"
         android:layout_height="40dp"
         android:layout_marginEnd="32dp"
+        android:background="@android:drawable/btn_dropdown"
         app:layout_constraintBottom_toTopOf="@+id/unilist"
         app:layout_constraintEnd_toStartOf="@+id/spinner2"
         app:layout_constraintHorizontal_bias="0.32"
@@ -65,6 +63,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/sortbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="@drawable/signin_bg"
+        android:text="Sort"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/unilist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/filter"
@@ -89,8 +102,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
