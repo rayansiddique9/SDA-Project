@@ -17,43 +17,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class authenticateUser {
-    private static String url = "jdbc:jtds:sqlserver://10.0.2.2:1433/UniGrab";
-    private static String username = "sa";
-    private static String password = "258369";
-    private Connection connection = null;
-
-
-    public void  connectToDb(Context ptr)
-    {
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        try {
-            Class.forName(Classes);
-            connection = DriverManager.getConnection(url, username, password);
-         //   Toast.makeText(ptr,"Success", Toast.LENGTH_SHORT).show();
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void closeConnection() throws SQLException
-    {
-        connection.close();
-        connection = null;
-    }
-
-    public boolean isConnectionOpen()
-    {
-        if (connection == null)
-            return false;
-        return true;
-    }
+public class authenticateUser extends dbConnection{
 
     public boolean verifyInfoStu(Context ptr, String name, String pass) {
 

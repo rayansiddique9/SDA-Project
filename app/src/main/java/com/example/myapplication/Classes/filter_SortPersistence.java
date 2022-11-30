@@ -13,45 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class filter_SortPersistence {
-    private static String url = "jdbc:jtds:sqlserver://10.0.2.2:1433/UniGrab";
-    private static String username = "sa";
-    private static String password = "258369";
-    private Connection connection = null;
-
-
-
-
-    public void  connectToDb(Context ptr)
-    {
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        try {
-            Class.forName(Classes);
-            connection = DriverManager.getConnection(url, username, password);
-            Toast.makeText(ptr,"Success", Toast.LENGTH_SHORT).show();
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void closeConnection() throws SQLException
-    {
-        connection.close();
-        connection = null;
-    }
-
-    public boolean isConnectionOpen()
-    {
-        if (connection == null)
-            return false;
-        return true;
-    }
+public class filter_SortPersistence extends dbConnection{
 
 
     public ArrayList<String> getUnisRankingFiltered(Context ptr, int l, int u)

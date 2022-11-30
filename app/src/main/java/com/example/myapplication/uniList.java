@@ -51,7 +51,7 @@ public class uniList extends AppCompatActivity {
             unilist = new uniinfo[unis.size()];
 
             for (int z = 0; z < unis.size(); z++) {
-                unilist[z] = new uniinfo(unis.get(z), R.drawable.fastnulhr);
+                unilist[z] = new uniinfo(unis.get(z), R.drawable.picuni);
             }
 
 
