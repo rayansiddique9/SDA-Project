@@ -53,8 +53,9 @@ public class loginUni extends AppCompatActivity {
                         obj1 = obj.makeUni(username, password, loginUni.this);
                         Intent in = new Intent(loginUni.this, homePageUni.class);
                         cu = currentUserUni.getInstance(obj1);
-                        in.putExtra("name", username.getText().toString());
+                      //  in.putExtra("name", username.getText().toString());
                         startActivity(in);
+                        finish();
                     }
                     else
                     {
@@ -64,7 +65,7 @@ public class loginUni extends AppCompatActivity {
                 catch(Exception e)
                 {
 
-                    Toast.makeText(loginUni.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(loginUni.this, "Wrong credentials or Account Disabled", Toast.LENGTH_SHORT).show();
                 }
             }
         });

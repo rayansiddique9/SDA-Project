@@ -168,7 +168,7 @@ public class viewProfile {
                 ResultSet resultSet = statement.executeQuery("select f.firstName, f.lastName, f.designantion, f.email from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Faculty f on d.idDepartment = f.idDepartment where a.userName = '"+universityname+"' and d.name = '"+deptname+"'");
                 while(resultSet.next())
                 {
-                    arr.add(new profinfo(resultSet.getString(1)+" "+resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
+                    arr.add(new profinfo(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
                     //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
                 }
             }

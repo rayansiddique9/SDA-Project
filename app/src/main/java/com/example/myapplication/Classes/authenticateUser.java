@@ -307,7 +307,7 @@ public class authenticateUser {
                 ResultSet resultSet = statement.executeQuery("select f.firstName, f.lastName, f.designantion, f.email from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Faculty f on d.idDepartment = f.idDepartment where a.userName = '"+universityname+"' and d.name = '"+deptname+"'");
                 while(resultSet.next())
                 {
-                    arr.add(new profinfo(resultSet.getString(1)+" "+resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
+                    arr.add(new profinfo(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4)));
                     //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -461,7 +461,7 @@ public class authenticateUser {
             try {
                 ResultSet resultSet = statement.executeQuery("select u.email, s.phone, s.campusLife, s.ranking, s.location, s.longitude, s.latitude, u.isAdmin, u.isDisabled, s.admissionFee from [User] u join University s on u.idUser = s.idUniversity where u.userName = '" + name + "' and u.password = '" + pass + "'");
                 while (resultSet.next()) {
-                    obj = new University(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getString(5), (double) resultSet.getFloat(6), (double) resultSet.getFloat(7), resultSet.getInt(8), resultSet.getInt(9), dep, resultSet.getInt(10), aids, alums, reviews, faculty, fees, imgs, s2, s1);
+                    obj = new University(name, resultSet.getString(1), pass, resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4), resultSet.getString(5), (double) resultSet.getFloat(6), (double) resultSet.getFloat(7), resultSet.getInt(8), resultSet.getInt(9), dep, resultSet.getInt(10), null, null, null, null, fees, null, null, null);
                 }
             }
             catch(SQLException e)
@@ -470,58 +470,6 @@ public class authenticateUser {
                 Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
-
-                /*
-                ResultSet resultSet;
-                ResultSet resultSet1;
-                ResultSet resultSet2;
-
-                for(int l = 0; l < dname.size(); l++)
-                {
-                  //  Toast.makeText(ptr, "Dname:"+dname.get(l), Toast.LENGTH_SHORT).show();
-
-                    resultSet = statement.executeQuery("select distinct p.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join UndergraduateProgram ugp on p.idProgram = ugp.idUGProgram where a.userName = '" + name + "' and a.password = '" + pass + "' and d.name = '"+dname.get(l)+"'");
-                    while (resultSet.next()) {
-                        s1.add(resultSet.getString(1));
-                    }
-
-                    if (s1.size() != 0) {
-                        for (int z = 0; z < s1.size(); z++) {
-                         //   Toast.makeText(ptr, "ugProgram:"+s1.get(z), Toast.LENGTH_SHORT).show();
-                            resultSet1 = statement.executeQuery("select ugr.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join UndergraduateProgram ugp on p.idProgram = ugp.idUGProgram join ugReqBG ugr on ugp.idUGProgram = ugr.bgid where a.userName = '" + name + "' and a.password = '" + pass + "' and p.name = '" + s1.get(z) + "'");
-                            while (resultSet1.next()) {
-                                req1.add(resultSet1.getString(1));
-                            }
-
-                            resultSet2 = statement.executeQuery("select top(1) p.creditHours, p.feePerCreditHour, ugp.minMarks from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join UndergraduateProgram ugp on p.idProgram = ugp.idUGProgram where a.userName = '" + name + "' and a.password = '" + pass + "' and p.name = '" + s1.get(z) + "'");
-                            ugprograms.add(new UndergraduteProgram(s1.get(z), resultSet2.getInt(1), resultSet2.getInt(2), resultSet2.getInt(3), req1));
-                            req1.clear();
-                        }
-                    }
-
-                    resultSet = statement.executeQuery("select distinct p.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join GraduateProgram ugp on p.idProgram = ugp.idGProgram where a.userName = '" + name + "' and a.password = '" + pass + "' and d.name = '"+dname.get(l)+"'");
-                    while (resultSet.next()) {
-                        s2.add(resultSet.getString(1));
-                    }
-
-                    if (s2.size() != 0) {
-                        for (int z = 0; z < s2.size(); z++) {
-                            resultSet1 = statement.executeQuery("select ugr.name from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join GraduateProgram ugp on p.idProgram = ugp.idGProgram join gReqBG ugr on ugp.idGProgram = ugr.bgid where a.userName = '" + name + "' and a.password = '" + pass + "' and p.name = '" + s2.get(z) + "'");
-                            while (resultSet1.next()) {
-                                req2.add(resultSet1.getString(1));
-                            }
-
-                            resultSet2 = statement.executeQuery("select top(1) p.creditHours, p.feePerCreditHour, ugp.minCGPA from [User] a join University u on a.idUser = u.idUniversity join Department d on u.idUniversity = d.idUniversity join Program p on p.idDepartment = d.idDepartment join GraduateProgram ugp on p.idProgram = ugp.idGProgram where a.userName = '" + name + "' and a.password = '" + pass + "' and p.name = '" + s2.get(z) + "'");
-                            gprograms.add(new GraduateProgram(s1.get(z), resultSet2.getInt(1), resultSet2.getInt(2), resultSet2.getFloat(3), req2));
-                            req2.clear();
-                        }
-                    }
-
-
-                    dep.add(new Department(dname.get(l), ugprograms, gprograms));
-                    ugprograms.clear();
-                    gprograms.clear();
-                }*/
         }
         else
         {

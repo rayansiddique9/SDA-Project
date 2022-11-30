@@ -98,6 +98,12 @@ public class Visitor extends User{
         this.ac.createGradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
     }
 
+    public void insertUni(Context ptr, String contact, String life, int rank, int fee, String uname, Double lati, Double longi, String loc, String email, String pass)
+    {
+        this.ac.connectToDb(ptr);
+        this.ac.insertUniDetails(ptr, contact, life, rank, fee, uname, lati, longi, loc, email, pass);
+    }
+
 
   /*  public String getUsername() {
         return this.name;

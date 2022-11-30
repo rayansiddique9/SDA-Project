@@ -24,6 +24,7 @@ public class University extends Visitor{
     private ArrayList<String> txts;
     private managePost mp;
     private viewProfile vp;
+    private UniversityManager um;
 
     University(String name, String email, String pass, String ph, String campus, int rank, String location, double longitude, double latitude, int isadmin, int isdisabled, ArrayList<Department> depts, int af, ArrayList<aidInfo> a, ArrayList<alumniInfo> alumnis, ArrayList<reviewInfo> r, ArrayList<profinfo> faculti, ArrayList<feeinfo> fee, ArrayList<imageClass> im, ArrayList<String> vid, ArrayList<String> txt) {
         super(name, email, pass, isadmin, isdisabled);
@@ -45,7 +46,7 @@ public class University extends Visitor{
         this.txts = txt;
         this.mp = new managePost();
         this.vp = new viewProfile();
-        this.ac = new accountCreator();
+        this.um = new UniversityManager();
     }
 
     public ArrayList<Department> getDepartments() {
@@ -117,4 +118,185 @@ public class University extends Visitor{
         this.vp.connectToDb(ptr);
         this.vp.getUniveristy(universityname, depts, arr, f, a, r);
     }
+
+    @Override
+    public void setEmail(String str) {
+        super.setEmail(str);
+    }
+
+    @Override
+    public void setPassword(String str) {
+        super.setPassword(str);
+    }
+
+    @Override
+    public void setUsername(String str) {
+        super.setUsername(str);
+    }
+
+    @Override
+    public void setIsDisabled(int a) {
+        super.setIsDisabled(a);
+    }
+
+    public void setAdmissionFee(int admissionFee) {
+        this.admissionFee = admissionFee;
+    }
+
+    public void setCampusLife(String campusLife) {
+        this.campusLife = campusLife;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setFees(ArrayList<feeinfo> fees) {
+        this.fees = fees;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
+
+    public boolean checkName(Context ptr, String s)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkUsername(ptr, s);
+    }
+
+    public void editAcc(Context ptr, String n, String e, String p, String prevname)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUserDetails(ptr, n, e, p, prevname);
+    }
+
+    public void editPersonal(Context ptr, String contact, String life, int rank, int fee, Double lati, Double longi, String loc, String uname)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniDetails(ptr, contact, life, rank, fee, lati, longi, loc, uname);
+    }
+
+    public void getDeptsUni(Context ptr, String uniname, List<String> arr)
+    {
+        this.um.connectToDb(ptr);
+        this.um.getDepts(ptr, uniname, arr);
+    }
+
+    public boolean checkUniqueDept(Context ptr, String uname, String dname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkDepartment(ptr, uname, dname);
+    }
+
+    public void editDept(Context ptr, String uname, String dname, String prev)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniDepartment(ptr, uname, dname, prev);
+    }
+
+    public List<String> getDeptPrgms(Context ptr, String deptname)
+    {
+        this.um.connectToDb(ptr);
+
+        return this.um.getProgramsOfDept(ptr, this.getName(), deptname);
+    }
+
+    public boolean checkProgramUG(Context ptr, String uname, String dname, String pname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkUGProgram(ptr, uname, dname, pname);
+    }
+
+    public feeinfo getProgFeeInfo(Context ptr, String uname, String dname, String pname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.getProgramFee(ptr, uname, dname, pname);
+    }
+
+    public int getProgUGMinMarks(Context ptr, String uname, String dname, String pname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.getUGMarks(ptr, uname, dname, pname);
+    }
+
+    public float getProgGMinCGPA(Context ptr, String uname, String dname, String pname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.getGCgpa(ptr, uname, dname, pname);
+    }
+
+    public boolean checkProgramUniqueness(Context ptr, String uname, String dname, String pname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkUniquenessProgram(ptr, uname, dname, pname);
+    }
+
+    public void editUGProgram(Context ptr, String uname, String dname, String pname, int c, int fpc, int m, String prev)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniUGprogram(ptr, uname, dname, pname, c, fpc, m, prev);
+    }
+
+    public void editGProgram(Context ptr, String uname, String dname, String pname, int c, int fpc, float m, String prev)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniGprogram(ptr, uname, dname, pname, c, fpc, m, prev);
+    }
+
+    public boolean checkAlumniUniqueness(Context ptr, String uname, String pname)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkUniquenessAlumni(ptr, uname, pname);
+    }
+
+    public void editAlumni(Context ptr, String uname, String pname, String c, int b, String prev)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniAlumni(ptr, uname, pname, c, b, prev);
+    }
+
+    public void getFacultyContent(Context ptr, String universityname, String deptname, List<profinfo> arr )
+    {
+        this.um.connectToDb(ptr);
+        this.um.getFacultyOfDept(ptr, universityname, deptname, arr);
+    }
+
+    public boolean checkFacultyUniqueness(Context ptr, String uname, String email)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkUniquenessFaculty(ptr, uname, email);
+    }
+
+    public void editFaculty(Context ptr, String uname, String dname, String fname, String lname, String email, String desig, String prev)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniFaculty(ptr, uname, dname, fname, lname, email, desig, prev);
+    }
+
+    public boolean checkAidUniqueness(Context ptr, String uname, String name)
+    {
+        this.um.connectToDb(ptr);
+        return this.um.checkUniquenessAid(ptr, uname, name);
+    }
+
+    public void editAid(Context ptr, String uname, String name, String detail, String prev)
+    {
+        this.um.connectToDb(ptr);
+        this.um.editUniAid(ptr, uname, name, detail, prev);
+    }
+
 }

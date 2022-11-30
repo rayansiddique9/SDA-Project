@@ -52,7 +52,7 @@ public class Universities extends AppCompatActivity {
         for(int z = 0; z < unis.size(); z++)
         {
            // Toast.makeText(Universities.this,unis.get(z), Toast.LENGTH_SHORT).show();
-            unilist[z] = new uniinfo(unis.get(z), R.drawable.fastnulhr);
+            unilist[z] = new uniinfo(unis.get(z), R.drawable.picuni);
         }
 
 

@@ -40,4 +40,9 @@ public abstract class User implements Serializable{
     {
         this.isDisabled = a;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
 }

@@ -37,6 +37,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class uniPageStudent extends AppCompatActivity {
@@ -84,8 +85,8 @@ public class uniPageStudent extends AppCompatActivity {
         currentUser cu  = currentUser.getInstance(obj, null, null);
         obj = cu.getStu();
 
-       /* SearchUni obj1 = new SearchUni();
-        obj1.connectToDb(uniPageStudent.this);*/
+        SearchUni obj1 = new SearchUni();
+        obj1.connectToDb(uniPageStudent.this);
 
         drawerLayout = findViewById(R.id.side_menu);
         navigationView = findViewById(R.id.sidenav);
@@ -177,17 +178,21 @@ public class uniPageStudent extends AppCompatActivity {
                 }
                 else if(id == R.id.menu_location)
                 {
-                    /*double lat =  obj1.getUniLatitude(uniPageStudent.this, s);
+                    double lat =  obj1.getUniLatitude(uniPageStudent.this, s);
                     double lng =  obj1.getUniLongitude(uniPageStudent.this, s);
-                    Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="+lat+","+lng+"&mode=d"));
+                  /*  Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="+lat+","+lng+"&mode=d"));
                     in.setPackage("com.google.android.apps.maps");
                     if(in.resolveActivity(getPackageManager()) != null) {
                         startActivity(in);
                     }*/
 
-                    Intent in = new Intent(uniPageStudent.this, google.class);
-                    in.putExtra("universityName", s);
+                    String uri = String.format(Locale.ENGLISH, "geo:%f,%f", lat, lng);
+                    Intent in = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                     startActivity(in);
+
+                   /* Intent in = new Intent(uniPageStudent.this, google.class);
+                    in.putExtra("universityName", s);
+                    startActivity(in);*/
 
                 }
                 else if(id == R.id.menu_post)

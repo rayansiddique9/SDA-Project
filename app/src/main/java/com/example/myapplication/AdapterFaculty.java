@@ -89,7 +89,7 @@ public class AdapterFaculty extends BaseExpandableListAdapter {
         TextView tview = (TextView) view.findViewById(R.id.teacherName);
         TextView tview2 = (TextView) view.findViewById(R.id.teacherDesignation);
         TextView tview3 = (TextView) view.findViewById(R.id.teacherEmail);
-        tview.setText(obj.getProfname());
+        tview.setText(obj.getFname()+" "+obj.getLname());
         tview2.setText(obj.getDesignation());
         tview3.setText(obj.getEmail());
 

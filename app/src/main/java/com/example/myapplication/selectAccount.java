@@ -40,6 +40,7 @@ public class selectAccount extends AppCompatActivity{
                 {
                     Intent in = new Intent(selectAccount.this, loginUni.class);
                     startActivity(in);
+                    finish();
                 }
                 else
                 {

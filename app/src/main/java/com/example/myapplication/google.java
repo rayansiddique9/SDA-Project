@@ -66,10 +66,11 @@ public class google extends FragmentActivity implements OnMapReadyCallback {
         double lat = obj.getUniLatitude(this, str);
         double lng = obj.getUniLongitude(this, str);
 
-        LatLng latLng = new LatLng(lat, lng);
+        LatLng latLng = new LatLng(33.7156, 73.0288);
         mMap.addMarker(new MarkerOptions().position(latLng).title("University"));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(50.0f));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+
 
 
     }

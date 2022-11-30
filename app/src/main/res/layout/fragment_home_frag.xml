@@ -44,10 +44,10 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
-            android:textColor="@color/white"
             android:background="#aedefc"
             android:outlineAmbientShadowColor="@color/black"
+            android:text="Search"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/autotext"
             app:layout_constraintHorizontal_bias="1.0"
@@ -112,7 +112,6 @@
         android:id="@+id/feedback"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="4dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_rate_review_24"
         android:padding="5dp"
@@ -123,34 +122,16 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.862"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.767" />
-
-    <Button
-        android:id="@+id/news"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="36dp"
-        android:background="@drawable/homepage_buttons"
-        android:drawableLeft="@drawable/ic_baseline_newspaper_24"
-        android:padding="5dp"
-        android:text="News"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/feedback"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/compare"
-        app:layout_constraintTop_toBottomOf="@+id/eligibility" />
+        app:layout_constraintTop_toBottomOf="@+id/eligibility"
+        app:layout_constraintVertical_bias="0.44" />
 
     <Button
         android:id="@+id/compare"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginTop="132dp"
         android:background="@drawable/homepage_buttons"
         android:drawableLeft="@drawable/ic_baseline_compare_24"
         android:padding="4dp"
@@ -159,12 +140,12 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/feedback"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/unis"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintVertical_bias="0.011" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

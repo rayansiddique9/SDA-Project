@@ -222,5 +222,59 @@ public class accountCreator {
         }
     }
 
+    public void insertUniDetails(Context ptr,String contact,String life,int ranking,int fee,String uname,double lati,double longi,String loc,String email,String pass)
+    {
+        int uniId=0;
+
+        if(connection!=null)
+        {
+            Statement s1=null;
+            Statement s3=null;
+
+
+            Statement s2=null;
+            try
+            {
+                s2 = connection.createStatement();
+                String query = "insert into [User] values ('"+uname+"','"+email+"','"+pass+"', 0, 0)";
+                s2.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+            }
+
+            try
+            {
+                s3 = connection.createStatement();
+                String query1 = "select a.idUser from [User] a where a.userName = '"+uname+"'";
+                ResultSet resultSet1 = s3.executeQuery(query1);
+
+                while(resultSet1.next())
+                {
+                    uniId = resultSet1.getInt(1);
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+            }
+
+            try
+            {
+                s1 = connection.createStatement();
+                String query = "insert into University values ('"+contact+"',"+uniId+","+ranking+",'"+life+"','"+loc+"',"+lati+","+longi+", "+fee+")";
+                s1.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

@@ -62,6 +62,7 @@ public class loginCredentialsStudent extends AppCompatActivity {
                             in.putExtra("edutype", edu);
                             //   in.putExtra("stu", obj1);
                             startActivity(in);
+                          //  finish();
                     }
                     else
                     {
@@ -71,7 +72,7 @@ public class loginCredentialsStudent extends AppCompatActivity {
                 catch(Exception e)
                 {
 
-                    Toast.makeText(loginCredentialsStudent.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(loginCredentialsStudent.this, "Wrong credentials or Account Disabled", Toast.LENGTH_SHORT).show();
                 }
             }
         });

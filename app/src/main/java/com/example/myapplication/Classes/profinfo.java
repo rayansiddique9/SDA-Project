@@ -1,13 +1,17 @@
 package com.example.myapplication.Classes;
 
-public class profinfo {
-    private String profname;
+import java.io.Serializable;
+
+public class profinfo implements Serializable {
+    private String fname;
+    private String lname;
     private String designation;
     private String email;
 
-    public profinfo(String profName, String Designation, String Email)
+    public profinfo(String f, String l, String Designation, String Email)
     {
-        this.profname = profName;
+        this.fname = f;
+        this.lname = l;
         this.designation = Designation;
         this.email = Email;
     }
@@ -20,7 +24,11 @@ public class profinfo {
         return email;
     }
 
-    public String getProfname() {
-        return profname;
+    public String getFname() {
+        return fname;
+    }
+
+    public String getLname() {
+        return lname;
     }
 }

@@ -22,9 +22,9 @@ import java.util.List;
  */
 public class FinancialAid_frag extends Fragment {
 
-    List<aidInfo> aidlist;
-    ListView listView;
-    String str;
+    private List<aidInfo> aidlist;
+    private ListView listView;
+    private String str;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
