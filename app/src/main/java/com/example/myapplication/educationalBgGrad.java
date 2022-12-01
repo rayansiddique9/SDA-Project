@@ -60,7 +60,7 @@ public class educationalBgGrad extends AppCompatActivity {
                 if(cgpa.length() != 0) {
                     if (Float.valueOf(cgpa.getText().toString()) >= 1.0 && Float.valueOf(cgpa.getText().toString()) <= 4.0) {
                         obj.insertGStu(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
-                        Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
+                        Intent in = new Intent(educationalBgGrad.this, MainActivity.class);
                         startActivity(in);
                     } else {
                         Toast.makeText(educationalBgGrad.this, "Not valid credential", Toast.LENGTH_SHORT).show();

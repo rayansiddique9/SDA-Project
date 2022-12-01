@@ -65,9 +65,12 @@ public class editUniAccount extends AppCompatActivity {
                                     Intent in = new Intent(editUniAccount.this, ManageUniMain.class);
                                     obj.editAcc(editUniAccount.this, e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), name);
 
-                                    obj.setUsername(e1.getText().toString());
+                                    cu.setUniName(e1.getText().toString());
+                                    cu.setUniEmail(e2.getText().toString());
+                                    cu.setUniPass(e3.getText().toString());
+                                   /* obj.setUsername(e1.getText().toString());
                                     obj.setEmail(e2.getText().toString());
-                                    obj.setPassword(e3.getText().toString());
+                                    obj.setPassword(e3.getText().toString());*/
 
                                     startActivity(in);
 

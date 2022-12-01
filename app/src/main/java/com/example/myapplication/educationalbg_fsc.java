@@ -73,12 +73,12 @@ public class educationalbg_fsc extends AppCompatActivity {
             e.printStackTrace();
         }*/
 
- /*       Toast.makeText(educationalbg_fsc.this, "USername:"+username, Toast.LENGTH_SHORT).show();
+       /* Toast.makeText(educationalbg_fsc.this, "USername:"+username, Toast.LENGTH_SHORT).show();
         Toast.makeText(educationalbg_fsc.this, "Email:"+email, Toast.LENGTH_SHORT).show();
         Toast.makeText(educationalbg_fsc.this, "Password:"+pass, Toast.LENGTH_SHORT).show();
         Toast.makeText(educationalbg_fsc.this, "EduType:"+edutype, Toast.LENGTH_SHORT).show();
-        Toast.makeText(educationalbg_fsc.this, "FirstName:"+fname, Toast.LENGTH_SHORT).show();
-        Toast.makeText(educationalbg_fsc.this, "LastName:"+lname, Toast.LENGTH_SHORT).show();*/
+        Toast.makeText(educationalbg_fsc.this, "FirstName:"+fname, Toast.LENGTH_SHORT).show();*/
+      //  Toast.makeText(educationalbg_fsc.this, "LastName:"+lname, Toast.LENGTH_SHORT).show();
       //  Toast.makeText(this, date.toString(), Toast.LENGTH_SHORT).show();
 
 
@@ -97,7 +97,7 @@ public class educationalbg_fsc extends AppCompatActivity {
                 if(marks.length() != 0) {
                     if (Integer.valueOf(marks.getText().toString()) >= 300 && Integer.valueOf(marks.getText().toString()) <= 1000) {
                         obj.insertUGStu(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
-                        Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
+                        Intent in = new Intent(educationalbg_fsc.this, MainActivity.class);
                         startActivity(in);
                     } else {
                         Toast.makeText(educationalbg_fsc.this, "Marks should be >= 300 & <= 1000", Toast.LENGTH_SHORT).show();

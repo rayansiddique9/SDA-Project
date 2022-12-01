@@ -57,7 +57,7 @@ public class UniPersonalSignUp extends AppCompatActivity
                 if(e1.length()!=0 && rank.length()!=0 && e3.length()!=0 && e4.length()!=0 && e5.length()!=0 && e7.length()!=0)
                 {
 
-                    Intent in = new Intent(UniPersonalSignUp.this, loginUni.class);
+                    Intent in = new Intent(UniPersonalSignUp.this, MainActivity.class);
                   //  Toast.makeText(UniPersonalSignUp.this, "aagya", Toast.LENGTH_SHORT).show();
                     obj.insertUni(UniPersonalSignUp.this,e1.getText().toString(),e3.getText().toString(),Integer.valueOf(rank.getText().toString()),Integer.valueOf(e6.getText().toString()),uname,Double.valueOf(e4.getText().toString()),Double.valueOf(e5.getText().toString()), e7.getText().toString(),email,pass);
                     in.putExtra("name",uname);

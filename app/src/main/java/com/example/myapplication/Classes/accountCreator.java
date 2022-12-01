@@ -47,7 +47,7 @@ public class accountCreator extends dbConnection{
         return true;
     }
 
-    public void createUndergradAcc(String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
+    public void createUndergradAcc(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
     {
         if(connection != null)
         {
@@ -64,7 +64,7 @@ public class accountCreator extends dbConnection{
             catch(SQLException e)
             {
                 e.printStackTrace();
-              //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
             }
             try
             {
@@ -75,7 +75,8 @@ public class accountCreator extends dbConnection{
                 while(resultSet1.next())
                 {
                     stuId = resultSet1.getInt(1);
-                  //  Toast.makeText(ptr, String.valueOf(stuId), Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(ptr, "userid:"+String.valueOf(stuId), Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(ptr, String.valueOf(stuId), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -87,7 +88,7 @@ public class accountCreator extends dbConnection{
             try
             {
                 statement2 = connection.createStatement();
-                String query2 = "insert into Student values("+stuId+", '"+eduType+"', '"+d+"', '"+fname+"', '"+lname+"'"+isadmin+","+isdisabled+")";
+                String query2 = "insert into Student values("+stuId+", '"+eduType+"', '"+d+"', '"+fname+"', '"+lname+"')";
                 statement2.executeQuery(query2);
 
             }
@@ -116,7 +117,7 @@ public class accountCreator extends dbConnection{
         }
     }
 
-    public void createGradAcc(String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
+    public void createGradAcc(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, float m, String subjects, int isadmin, int isdisabled)
     {
         if(connection != null)
         {
@@ -133,7 +134,7 @@ public class accountCreator extends dbConnection{
             catch(SQLException e)
             {
                 e.printStackTrace();
-                //  Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
             }
             try
             {

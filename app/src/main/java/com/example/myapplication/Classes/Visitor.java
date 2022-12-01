@@ -89,13 +89,13 @@ public class Visitor extends User{
     public void insertUGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, int m, String subjects, int isadmin, int isdisabled)
     {
         this.ac.connectToDb(ptr);
-        this.ac.createUndergradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
+        this.ac.createUndergradAcc(ptr, name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
     }
 
-    public void insertGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, Float m, String subjects, int isadmin, int isdisabled)
+    public void insertGStu(Context ptr, String name, String email, String pass, String eduType, String d, String fname, String lname, float m, String subjects, int isadmin, int isdisabled)
     {
         this.ac.connectToDb(ptr);
-        this.ac.createGradAcc(name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
+        this.ac.createGradAcc(ptr, name, email, pass, eduType, d, fname, lname, m, subjects, isadmin, isdisabled);
     }
 
     public void insertUni(Context ptr, String contact, String life, int rank, int fee, String uname, Double lati, Double longi, String loc, String email, String pass)

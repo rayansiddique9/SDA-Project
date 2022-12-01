@@ -67,13 +67,13 @@ public class editUniPersonal extends AppCompatActivity {
                     Intent in = new Intent(editUniPersonal.this, ManageUniMain.class);
                     obj.editPersonal(editUniPersonal.this,e1.getText().toString(),e3.getText().toString(),Integer.valueOf(rank.getText().toString()),Integer.valueOf(e6.getText().toString()), Double.valueOf(e4.getText().toString()),Double.valueOf(e5.getText().toString()), e7.getText().toString(), uname);
 
-                    obj.setAdmissionFee(Integer.valueOf(e6.getText().toString()));
-                    obj.setRanking(Integer.valueOf(rank.getText().toString()));
-                    obj.setPhone(e1.getText().toString());
-                    obj.setCampusLife(e3.getText().toString());
-                    obj.setLocation(e7.getText().toString());
-                    obj.setLatitude(Double.valueOf(e4.getText().toString()));
-                    obj.setLongitude(Double.valueOf(e5.getText().toString()));
+                    cu.setUniFee(Integer.valueOf(e6.getText().toString()));
+                    cu.setUniRank(Integer.valueOf(rank.getText().toString()));
+                    cu.setUniPh(e1.getText().toString());
+                    cu.setUniLife(e3.getText().toString());
+                    cu.setUniLoc(e7.getText().toString());
+                    cu.setUniLat(Double.valueOf(e4.getText().toString()));
+                    cu.setUniLon(Double.valueOf(e5.getText().toString()));
 
                     startActivity(in);
 

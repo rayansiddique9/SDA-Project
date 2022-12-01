@@ -63,10 +63,10 @@ public class University_SignUp extends AppCompatActivity {
                             if(obj.checkUsername(University_SignUp.this, uname.getText().toString()) == true && obj.checkUniquenessEmail(University_SignUp.this, String.valueOf(email.getText())) == true)
                             {
 
-                                Toast.makeText(University_SignUp.this, uname.getText().toString(), Toast.LENGTH_SHORT).show();
+                                /*Toast.makeText(University_SignUp.this, uname.getText().toString(), Toast.LENGTH_SHORT).show();
                                 Toast.makeText(University_SignUp.this, email.getText().toString(), Toast.LENGTH_SHORT).show();
                                 Toast.makeText(University_SignUp.this, pass.getText().toString(), Toast.LENGTH_SHORT).show();
-
+*/
                                 Intent in = new Intent(University_SignUp.this, UniPersonalSignUp.class);
                                 in.putExtra("email", email.getText().toString());
                                 in.putExtra("pass", pass.getText().toString());
