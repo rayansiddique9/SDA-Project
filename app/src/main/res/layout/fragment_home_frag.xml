@@ -147,5 +147,20 @@
         app:layout_constraintTop_toBottomOf="@+id/unis"
         app:layout_constraintVertical_bias="0.011" />
 
+    <Button
+        android:id="@+id/bck"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/signin_bg"
+        android:text="Back To Login"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedback"
+        app:layout_constraintVertical_bias="0.5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

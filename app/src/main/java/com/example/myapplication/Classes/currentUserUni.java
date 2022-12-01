@@ -21,4 +21,10 @@ public class currentUserUni {
     public University getU() {
         return a;
     }
+
+    public void logout()
+    {
+        instance = null;
+        this.a = null;
+    }
 }

@@ -62,7 +62,7 @@ public class loginCredentialsStudent extends AppCompatActivity {
                             in.putExtra("edutype", edu);
                             //   in.putExtra("stu", obj1);
                             startActivity(in);
-                          //  finish();
+                            finish();
                     }
                     else
                     {

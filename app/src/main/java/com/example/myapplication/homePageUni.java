@@ -89,6 +89,7 @@ public class homePageUni extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent in = new Intent(homePageUni.this, MainActivity.class);
+                cu.logout();
                 startActivity(in);
             }
 

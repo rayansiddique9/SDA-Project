@@ -35,6 +35,7 @@ public class selectAccount extends AppCompatActivity{
                 if(item == "Student") {
                     Intent in = new Intent(selectAccount.this, loginCredentialsStudent.class);
                     startActivity(in);
+                    finish();
                 }
                 else if(item == "University")
                 {

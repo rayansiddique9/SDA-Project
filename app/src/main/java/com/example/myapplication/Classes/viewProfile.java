@@ -347,6 +347,65 @@ public class viewProfile extends dbConnection{
 
     }
 
+    public int getUGStuMarks(Context ptr, String name)
+    {
+        int str = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.marks from [User] a join Undergraduate u on u.idStudent = a.idUser where a.userName = '"+name+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getInt(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
+
+    public float getGStuCgpa(Context ptr, String name)
+    {
+        float str = 0.0f;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select u.CGPA from [User] a join Graduate u on u.idStudent = a.idUser where a.userName = '"+name+"'");
+                while(resultSet.next())
+                {
+                    str = resultSet.getFloat(1);
+                    //   Toast.makeText(ptr,resultSet.getString(1), Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr,e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            // Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+        return str;
+    }
+
 
 
 

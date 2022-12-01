@@ -35,6 +35,7 @@ public class homeFrag extends Fragment {
     private Button Search;
     private Button Feedback;
     private Button comparison;
+    private Button back;
     private AutoCompleteTextView act;
     private ArrayList<String> arrUnis;
     private Student obj1;
@@ -96,6 +97,7 @@ public class homeFrag extends Fragment {
         Search = view.findViewById(R.id.search);
         Feedback = view.findViewById(R.id.feedback);
         comparison = view.findViewById(R.id.compare);
+        back = view.findViewById(R.id.bck);
 
         currentUser cu  = currentUser.getInstance(obj1, null, null);
         obj1 = cu.getStu();
@@ -170,6 +172,17 @@ public class homeFrag extends Fragment {
                 Intent in = new Intent(getContext(), compareUnis.class);
                 startActivity(in);
             }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in = new Intent(getContext(), MainActivity.class);
+                cu.logout();
+                startActivity(in);
+            }
+
         });
 
         return view;

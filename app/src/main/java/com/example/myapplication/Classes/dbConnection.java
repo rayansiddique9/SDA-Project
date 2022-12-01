@@ -27,7 +27,7 @@ public class dbConnection {
         try {
             Class.forName(Classes);
             connection = DriverManager.getConnection(url, username, password);
-            Toast.makeText(ptr,"Success", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(ptr,"Success", Toast.LENGTH_SHORT).show();
 
         }
         catch (Exception e) {

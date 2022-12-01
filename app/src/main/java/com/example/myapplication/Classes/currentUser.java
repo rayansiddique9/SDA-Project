@@ -35,4 +35,10 @@ public class currentUser{
     public Admin getA() {
         return a;
     }
+
+    public void logout()
+    {
+        instance = null;
+        this.s = null;
+    }
 }

@@ -282,7 +282,17 @@ public class Student extends Visitor {
         return this.uc.getUniRank(universityname);
     }
 
+    public int getUndergradMarks(Context ptr, String name)
+    {
+        this.vp.connectToDb(ptr);
+        return this.vp.getUGStuMarks(ptr, name);
+    }
 
+    public float getGradCgpa(Context ptr, String name)
+    {
+        this.vp.connectToDb(ptr);
+        return this.vp.getGStuCgpa(ptr, name);
+    }
 
 
 }

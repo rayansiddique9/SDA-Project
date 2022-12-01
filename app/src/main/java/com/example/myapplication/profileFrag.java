@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.myapplication.Classes.GraduateStudent;
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.UndergradStudent;
+import com.example.myapplication.Classes.currentUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +26,9 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class profileFrag extends Fragment {
+
+    private TextView t1, t2, t3, t4, t5;
+    private Student obj;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,13 +70,39 @@ public class profileFrag extends Fragment {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_profile_frag, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_frag, container, false);
 
 
+        t1 = view.findViewById(R.id.textViewProfileName);
+        t2 = view.findViewById(R.id.personFirstNameEditText);
+        t3 = view.findViewById(R.id.personLastNameEditText);
+        t4 = view.findViewById(R.id.editTextDate);
+        t5 = view.findViewById(R.id.stuMarks);
+
+        currentUser cu  = currentUser.getInstance(obj, null, null);
+        obj = cu.getStu();
+
+
+        t1.setText(obj.getName());
+        t2.setText(obj.getFirstName());
+        t3.setText(obj.getLastName());
+        t4.setText(obj.getEmail());
+
+        if(obj.getEducationType().equals("Undergraduate")) {
+            t5.setText(String.valueOf(obj.getUndergradMarks(getContext(), obj.getName())));
+        }
+        else
+        {
+            Toast.makeText(getContext(), String.valueOf(obj.getGradCgpa(getContext(), obj.getName())), Toast.LENGTH_SHORT).show();
+            t5.setText( String.valueOf(obj.getGradCgpa(getContext(), obj.getName())) );
+        }
+
+        return view;
     }
 }
