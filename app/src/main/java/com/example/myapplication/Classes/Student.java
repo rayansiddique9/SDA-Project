@@ -36,6 +36,33 @@ public class Student extends Visitor {
         this.uc = new uniComparer();
     }
 
+    public Student(int uid,String name, String email,String d, String fname, String lname,int isdisabled)
+    {
+        super(name, email, "NULL", 0, isdisabled);
+        this.educationType = "NULL";
+        this.dob = d;
+        this.firstName = fname;
+        this.lastName = lname;
+        this.uid = uid;
+        this.e = null;
+        this.su = null;
+        this.mp = null;
+        this.vp = null;
+        this.uc = null;
+    }
+
+    public Student(int uid,String name, String email,int isdisabled)
+    {
+        super(name, email, "NULL", 0, isdisabled);
+        this.educationType = "NULL";
+        this.uid = uid;
+        this.e = null;
+        this.su = null;
+        this.mp = null;
+        this.vp = null;
+        this.uc = null;
+    }
+
     public String getDob() {
         return dob;
     }
@@ -219,4 +246,7 @@ public class Student extends Visitor {
         this.vp.getUniveristy(universityname, depts, arr, f, a, r);
     }
 
+    public String getType(){
+        return "Student";
+    }
 }

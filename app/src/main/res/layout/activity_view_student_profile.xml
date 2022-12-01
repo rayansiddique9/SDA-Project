@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".viewStudentProfile">
+
+    <TextView
+        android:id="@+id/lastname"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="48dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/firstname"
+        android:layout_width="130dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="48dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintTop_toTopOf="@+id/lastname" />
+
+    <TextView
+        android:id="@+id/DOB"
+        android:layout_width="126dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/firstname"
+        app:layout_constraintTop_toBottomOf="@+id/firstname" />
+
+    <TextView
+        android:id="@+id/emmail"
+        android:layout_width="131dp"
+        android:layout_height="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/lastname"
+        app:layout_constraintTop_toTopOf="@+id/DOB" />
+
+    <TextView
+        android:id="@+id/subjectcomb"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/DOB"
+        app:layout_constraintTop_toBottomOf="@+id/DOB" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="117dp"
+        android:layout_height="44dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/emmail"
+        app:layout_constraintTop_toTopOf="@+id/subjectcomb" />
+
+    <TextView
+        android:id="@+id/longitude"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/subjectcomb"
+        app:layout_constraintTop_toBottomOf="@+id/subjectcomb" />
+
+    <TextView
+        android:id="@+id/CGPA"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/latitude"
+        app:layout_constraintStart_toStartOf="@+id/longitude"
+        app:layout_constraintTop_toBottomOf="@+id/longitude" />
+
+    <TextView
+        android:id="@+id/latitude"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/location"
+        app:layout_constraintTop_toTopOf="@+id/longitude" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

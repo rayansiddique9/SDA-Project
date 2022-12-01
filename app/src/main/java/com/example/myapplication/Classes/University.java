@@ -46,7 +46,21 @@ public class University extends Visitor{
         this.mp = new managePost();
         this.vp = new viewProfile();
     }
+    public University(int uid, String name, String email, String ph, String locatioon, int isDisabled) {
+        super(name, email, "NULL", 0, isDisabled);
+        this.phone = ph;
+        this.uid = uid;
+        this.mp = null;
+        this.vp = null;
+    }
 
+    public University(int uid,String name, String email,int isdisabled)
+    {
+        super(name, email, "NULL", 0, isdisabled);
+        this.uid = uid;
+        this.mp = null;
+        this.vp = null;
+    }
     public ArrayList<Department> getDepartments() {
         return departments;
     }
@@ -116,4 +130,6 @@ public class University extends Visitor{
         this.vp.connectToDb(ptr);
         this.vp.getUniveristy(universityname, depts, arr, f, a, r);
     }
+
+    public String getType(){ return "University"; }
 }
