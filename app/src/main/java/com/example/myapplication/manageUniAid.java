@@ -34,7 +34,8 @@ public class manageUniAid extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent in = new Intent(manageUniAid.this, addUniAid.class);
+                startActivity(in);
             }
         });
 

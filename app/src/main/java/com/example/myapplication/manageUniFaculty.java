@@ -25,7 +25,8 @@ public class manageUniFaculty extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent in = new Intent(manageUniFaculty.this, addFaculty.class);
+                startActivity(in);
             }
         });
 

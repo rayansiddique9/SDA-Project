@@ -788,4 +788,83 @@ public class UniversityManager extends dbConnection{
         }
     }
 
+
+    public void addUniFaculty(Context ptr, String uname, String dname, String fname, String lname, String email, String desig)
+    {
+        int uid = getUniID(ptr, uname);
+        int did = getDeptId(ptr, uname, dname);
+        if(connection!=null)
+        {
+            Statement s1 = null;
+
+            try
+            {
+                s1 = connection.createStatement();
+                String query ="insert into Faculty values( "+uid+", "+did+", '"+fname+"', '"+lname+"', '"+email+"', '"+desig+"')";
+                s1.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void addUniAlumni(Context ptr,String uname, String pname, String c, int b)
+    {
+        int uid = getUniID(ptr, uname);
+        if(connection!=null)
+        {
+            Statement s1 = null;
+
+            try
+            {
+                s1 = connection.createStatement();
+                String query = "insert into Alumni values("+uid+", '"+pname+"', '"+c+"', "+b+")";
+                s1.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void addUniAid(Context ptr,String uname, String name, String detail)
+    {
+        int uid = getUniID(ptr, uname);
+        if(connection!=null)
+        {
+            Statement s1 = null;
+
+            try
+            {
+                s1 = connection.createStatement();
+                String query = "insert into FinancialAid values("+uid+", '"+name+"', '"+detail+"')";
+                s1.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+              //  Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            //  Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

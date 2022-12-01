@@ -305,5 +305,22 @@ public class University extends Visitor{
         return this.ac.checkUniquenessEmail(ptr, email);
     }
 
+    public void addFaculty(Context ptr, String uname, String dname, String fname, String lname, String email, String desig)
+    {
+        this.um.connectToDb(ptr);
+        this.um.addUniFaculty(ptr, uname, dname, fname, lname, email, desig);
+    }
+
+    public void addAlumni(Context ptr, String uname, String pname, String c, int b)
+    {
+        this.um.connectToDb(ptr);
+        this.um.addUniAlumni(ptr, uname, pname, c, b);
+    }
+
+    public void addAid(Context ptr, String uname, String name, String detail)
+    {
+        this.um.connectToDb(ptr);
+        this.um.addUniAid(ptr, uname, name, detail);
+    }
 
 }
