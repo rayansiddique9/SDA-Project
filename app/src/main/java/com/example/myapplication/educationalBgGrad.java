@@ -57,14 +57,18 @@ public class educationalBgGrad extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                if(Float.valueOf(cgpa.getText().toString()) >= 1.0 && Float.valueOf(cgpa.getText().toString()) <= 4.0) {
-                    obj.insertGStu(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
-                    Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
-                    startActivity(in);
+                if(cgpa.length() != 0) {
+                    if (Float.valueOf(cgpa.getText().toString()) >= 1.0 && Float.valueOf(cgpa.getText().toString()) <= 4.0) {
+                        obj.insertGStu(educationalBgGrad.this, username, email, pass, edutype, date, fname, lname, Float.valueOf(cgpa.getText().toString()), item, 0, 0);
+                        Intent in = new Intent(educationalBgGrad.this, loginCredentialsStudent.class);
+                        startActivity(in);
+                    } else {
+                        Toast.makeText(educationalBgGrad.this, "Not valid credential", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    Toast.makeText(educationalBgGrad.this, "CGPA must be >= 1.0 && <= 4.0", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(educationalBgGrad.this, "empty field", Toast.LENGTH_SHORT).show();
                 }
             }
         });

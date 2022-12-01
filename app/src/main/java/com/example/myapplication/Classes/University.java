@@ -299,5 +299,11 @@ public class University extends Visitor{
         this.um.editUniAid(ptr, uname, name, detail, prev);
     }
 
+    public boolean checkEmailUnique(Context ptr, String email)
+    {
+        this.ac.connectToDb(ptr);
+        return this.ac.checkUniquenessEmail(ptr, email);
+    }
+
 
 }

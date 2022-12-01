@@ -240,4 +240,37 @@ public class accountCreator extends dbConnection{
         }
     }
 
+    public boolean checkUniquenessEmail(Context ptr, String email)
+    {
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select 1 from [User] a where a.email = '"+email+"'");
+
+                while(resultSet.next())
+                {
+                    if (resultSet.getString(1).equals("1")) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
+    }
+
 }

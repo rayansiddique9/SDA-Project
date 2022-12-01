@@ -94,14 +94,17 @@ public class educationalbg_fsc extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                if(Integer.valueOf(marks.getText().toString()) >= 300 && Integer.valueOf(marks.getText().toString()) <= 1000) {
-                    obj.insertUGStu(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
-                    Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
-                    startActivity(in);
+                if(marks.length() != 0) {
+                    if (Integer.valueOf(marks.getText().toString()) >= 300 && Integer.valueOf(marks.getText().toString()) <= 1000) {
+                        obj.insertUGStu(educationalbg_fsc.this, username, email, pass, edutype, date, fname, lname, Integer.valueOf(marks.getText().toString()), item, 0, 0);
+                        Intent in = new Intent(educationalbg_fsc.this, loginCredentialsStudent.class);
+                        startActivity(in);
+                    } else {
+                        Toast.makeText(educationalbg_fsc.this, "Marks should be >= 300 & <= 1000", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else
-                {
-                    Toast.makeText(educationalbg_fsc.this, "Marks should be >= 300 & <= 1000", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(educationalbg_fsc.this, "empty field", Toast.LENGTH_SHORT).show();
                 }
             }
         });

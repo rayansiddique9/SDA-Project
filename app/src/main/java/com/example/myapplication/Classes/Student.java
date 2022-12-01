@@ -294,5 +294,11 @@ public class Student extends Visitor {
         return this.vp.getGStuCgpa(ptr, name);
     }
 
+    public boolean checkEmailUnique(Context ptr, String email)
+    {
+        this.ac.connectToDb(ptr);
+        return this.ac.checkUniquenessEmail(ptr, email);
+    }
+
 
 }

@@ -60,7 +60,7 @@ public class University_SignUp extends AppCompatActivity {
                     {
                         if (Objects.equals(pass.getText().toString(), repass.getText().toString()))
                         {
-                            if(obj.checkUsername(University_SignUp.this, uname.getText().toString()) == true)
+                            if(obj.checkUsername(University_SignUp.this, uname.getText().toString()) == true && obj.checkUniquenessEmail(University_SignUp.this, String.valueOf(email.getText())) == true)
                             {
 
                                 Toast.makeText(University_SignUp.this, uname.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -75,7 +75,7 @@ public class University_SignUp extends AppCompatActivity {
                             }
                             else
                             {
-                                Toast.makeText(University_SignUp.this, "Account with entered username already exists", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(University_SignUp.this, "Account with entered username/email already exists", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else

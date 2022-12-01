@@ -53,7 +53,7 @@ public class signupdetail_stu extends AppCompatActivity {
                     if(pass1.length() > 6)
                     {
                         if (Objects.equals(pass1.getText().toString(), pass2.getText().toString())) {
-                            if (obj.checkUsername(signupdetail_stu.this, String.valueOf(username.getText())) == true) {
+                            if (obj.checkUsername(signupdetail_stu.this, String.valueOf(username.getText())) == true && obj.checkUniquenessEmail(signupdetail_stu.this, String.valueOf(email.getText())) == true) {
                                 Toast.makeText(signupdetail_stu.this, "aagya", Toast.LENGTH_SHORT).show();
 
                                 Intent in = new Intent(signupdetail_stu.this, signup_personalinfo_stu.class);
@@ -63,7 +63,7 @@ public class signupdetail_stu extends AppCompatActivity {
                                 in.putExtra("pass", pass1.getText().toString());
                                 startActivity(in);
                             } else {
-                                error.setText("Account with entered username already exists");
+                                error.setText("Account with entered username/email already exists");
 
                                 CountDownTimer timer = new CountDownTimer(3000, 1000) {
                                     @Override
