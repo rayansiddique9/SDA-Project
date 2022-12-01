@@ -23,10 +23,14 @@ import java.sql.DriverManager;
 public class adminViewUserProfile extends AppCompatActivity {
     accountManager AM = new accountManager();
 
-    private static String url = "jdbc:jtds:sqlserver://192.168.137.87:1433/UniGrab";
-    private static String username = "sa";
-    private static String password = "123456";
-    private Connection connection = null;
+    @Override
+    public void onBackPressed() {
+        Intent back = new Intent(adminViewUserProfile.this, Admin_Home.class);
+        back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(back);
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

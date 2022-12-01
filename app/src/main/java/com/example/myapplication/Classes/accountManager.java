@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class accountManager {
-    private static String url = "jdbc:jtds:sqlserver://192.168.137.87:1433/UniGrab";
+    private static String url = "jdbc:jtds:sqlserver://10.0.2.2:1433/UniGrab";
     private static String username = "sa";
     private static String password = "123456";
     private Connection connection = null;
