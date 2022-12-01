@@ -406,6 +406,86 @@ public class viewProfile extends dbConnection{
         return str;
     }
 
+    public int getStuID(Context ptr, String name)
+    {
+        int pid = 0;
+        if(connection != null)
+        {
+            Statement statement = null;
+
+            try {
+                statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select a.idUser from [User] a where a.userName = '"+name+"'");
+
+                while(resultSet.next())
+                {
+                    pid = resultSet.getInt(1);
+                }
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                Toast.makeText(ptr, "Unable to get uid. Kindly try again", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+
+        return pid;
+    }
+
+    public void editUGStu(Context ptr,String name, int marks, String combo)
+    {
+        int uid = getStuID(ptr, name);
+        if(connection!=null)
+        {
+            Statement s1 = null;
+
+            try
+            {
+                s1 = connection.createStatement();
+                String query = "update Undergraduate set marks = "+marks+", subjectCombo = '"+combo+"' where idStudent = "+uid;
+                s1.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void editGStu(Context ptr,String name, float marks, String combo)
+    {
+        int uid = getStuID(ptr, name);
+        if(connection!=null)
+        {
+            Statement s1 = null;
+
+            try
+            {
+                s1 = connection.createStatement();
+                String query = "update Graduate set CGPA = "+marks+", BSDegree = '"+combo+"' where idStudent = "+uid;
+                s1.executeQuery(query);
+            }
+            catch(SQLException e)
+            {
+                e.printStackTrace();
+                //  Toast.makeText(ptr, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 

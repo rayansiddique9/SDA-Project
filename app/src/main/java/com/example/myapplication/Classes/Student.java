@@ -93,6 +93,7 @@ public class Student extends Visitor {
         else
         {
             rst = e.getFilteredUnisG(preferredDeg, ptr, ((GraduateStudent)this).getBsDeg(), ((GraduateStudent)this).getCgpa());
+            Toast.makeText(ptr, String.valueOf ((((GraduateStudent)this).getCgpa())), Toast.LENGTH_SHORT).show();
         }
 
         return rst;
@@ -300,5 +301,15 @@ public class Student extends Visitor {
         return this.ac.checkUniquenessEmail(ptr, email);
     }
 
+    public void editUndergradStu(Context ptr,String name, int marks, String combo)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.editUGStu(ptr, name, marks, combo);
+    }
 
+    public void editGradStu(Context ptr,String name, float marks, String combo)
+    {
+        this.vp.connectToDb(ptr);
+        this.vp.editGStu(ptr, name, marks, combo);
+    }
 }

@@ -20,4 +20,11 @@ public class GraduateStudent extends Student{
         return bsDeg;
     }
 
+    public void setBsDeg(String bsDeg) {
+        this.bsDeg = bsDeg;
+    }
+
+    public void setCgpa(float cgpa) {
+        this.cgpa = cgpa;
+    }
 }

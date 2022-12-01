@@ -84,7 +84,7 @@ public class uniPageUni extends AppCompatActivity {
         headerview = navigationView.getHeaderView(0);
         tname = (TextView) headerview.findViewById(R.id.menu_uniname);
 
-        String s = getIntent().getExtras().getString("name");
+        String s = obj.getName();
         tname.setText(s);
 
         depts = new ArrayList<String>();

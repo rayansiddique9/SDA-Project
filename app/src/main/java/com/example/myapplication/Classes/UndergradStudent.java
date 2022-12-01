@@ -21,4 +21,12 @@ public class UndergradStudent extends Student{
     public String getSubjectCombo() {
         return subjectCombo;
     }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    public void setSubjectCombo(String subjectCombo) {
+        this.subjectCombo = subjectCombo;
+    }
 }

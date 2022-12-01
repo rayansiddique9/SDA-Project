@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.example.myapplication.Classes.Student;
+import com.example.myapplication.Classes.currentUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class settingsFrag extends Fragment {
+
+    private Student obj;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +66,24 @@ public class settingsFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings_frag, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings_frag, container, false);
+
+        currentUser cu  = currentUser.getInstance(obj, null, null);
+        obj = cu.getStu();
+
+        if(obj.getEducationType().equals("Undergraduate")) {
+            Intent in = new Intent(getContext(), editStuUg.class);
+            startActivity(in);
+        }
+        else
+        {
+            Intent in = new Intent(getContext(), editStuG.class);
+            startActivity(in);
+        }
+
+
+
+
+        return view;
     }
 }

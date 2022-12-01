@@ -41,7 +41,7 @@ public class homePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
 
-        String str = getIntent().getExtras().getString("edutype");
+   //     String str = getIntent().getExtras().getString("edutype");
 
       //  Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
