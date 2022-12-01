@@ -40,11 +40,18 @@ public class MainActivity extends AppCompatActivity {
     public static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static String database = "UniGrab";
     private static String username = "sa";
-    private static String password = "258369";
+    private static String password = "123456";
     private static String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database;
 
     private Connection connection = null;
 
+    @Override
+    public void onBackPressed() {
+        Intent back = new Intent(MainActivity.this, MainActivity.class);
+        //back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(back);
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

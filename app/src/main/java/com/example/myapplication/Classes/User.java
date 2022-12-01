@@ -12,6 +12,7 @@ public abstract class User implements Serializable{
     protected int isDisabled;
     protected authenticateUser au;
     protected accountCreator ac;
+    int uid;
 
     public String getName() {
         return name;
@@ -47,5 +48,15 @@ public abstract class User implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public abstract String getType();
+
+    public String getStatus() {
+        return (isDisabled == 0) ? "Enabled" : "Disabled";
+    }
+
+    public String getUserId() {
+        return Integer.toString(uid);
     }
 }

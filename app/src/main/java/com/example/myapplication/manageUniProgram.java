@@ -21,27 +21,31 @@ public class manageUniProgram extends AppCompatActivity {
         b1 = findViewById(R.id.addprg);
         b2 = findViewById(R.id.edtprg);
         b3 = findViewById(R.id.delprg);
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(manageUniProgram.this, editUniProgram.class);
-                startActivity(in);
-            }
-        });
-
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 }
+//
+//        b1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent in = new Intent(manageUniProgram.this, ManageUniProgDecide.class);
+//                in.putExtra("Adddep", 0);
+//                startActivity(in);
+//            }
+//        });
+//
+//        b2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent in = new Intent(manageUniProgram.this, editUniProgram.class);
+//                startActivity(in);
+//            }
+//        });
+//
+//        b3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent in = new Intent(manageUniProgram.this, ManageUniProgDel.class);
+//                startActivity(in);
+//            }
+//        });
+//    }

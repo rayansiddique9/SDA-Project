@@ -15,6 +15,8 @@ import com.example.myapplication.Classes.currentUserAdmin;
 
 public class homePageAdmin extends AppCompatActivity {
     private Button feedbackBtn;
+    private Button _lout;
+    private Button _ManAcc;
     private Admin obj;
 
     @SuppressLint("MissingInflatedId")
@@ -28,12 +30,32 @@ public class homePageAdmin extends AppCompatActivity {
         Toast.makeText(this, "username:"+obj.getName(), Toast.LENGTH_SHORT).show();
 
         feedbackBtn = findViewById(R.id.fb);
+        _lout = findViewById(R.id._lout);
+        _ManAcc = findViewById(R.id._ManAcc);
 
         feedbackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(homePageAdmin.this, feedbackShowAdmin.class);
                 startActivity(in);
+            }
+        });
+
+        _lout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent back = new Intent(homePageAdmin.this, MainActivity.class);
+                    //back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(back);
+            }
+        });
+
+        _ManAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(homePageAdmin.this, com.example.myapplication.Admin_Home.class);
+                //back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(back);
             }
         });
     }

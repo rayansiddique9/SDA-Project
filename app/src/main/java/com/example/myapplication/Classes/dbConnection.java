@@ -14,7 +14,7 @@ public class dbConnection {
 
     protected static String url = "jdbc:jtds:sqlserver://10.0.2.2:1433/UniGrab";
     protected static String username = "sa";
-    protected static String password = "258369";
+    protected static String password = "123456";
     protected Connection connection = null;
 
 

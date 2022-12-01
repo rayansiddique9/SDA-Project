@@ -104,7 +104,9 @@ public class Visitor extends User{
         this.ac.insertUniDetails(ptr, contact, life, rank, fee, uname, lati, longi, loc, email, pass);
     }
 
-
+    public String getType(){
+        return "Visitor";
+    }
   /*  public String getUsername() {
         return this.name;
     }*/

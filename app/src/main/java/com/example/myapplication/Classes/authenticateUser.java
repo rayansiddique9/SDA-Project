@@ -49,7 +49,7 @@ public class authenticateUser extends dbConnection{
             Toast.makeText(ptr,"Connection is null", Toast.LENGTH_SHORT).show();
         }
 
-        return true;
+        return false;
     }
 
     public String getEduType(Context ptr, String name, String pass)

@@ -49,6 +49,16 @@ public class University extends Visitor{
         this.um = new UniversityManager();
     }
 
+    public University(int uid,String name, String email,int isdisabled)
+    {
+        super(name, email, "NULL", 0, isdisabled);
+        this.uid = uid;
+        this.mp = null;
+        this.vp = null;
+    }
+
+    public String getType(){ return "University"; }
+
     public ArrayList<Department> getDepartments() {
         return departments;
     }

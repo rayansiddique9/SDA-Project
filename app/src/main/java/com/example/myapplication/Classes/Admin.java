@@ -20,4 +20,8 @@ public class Admin extends Visitor{
         this.am.getFeedback(ar);
     }
 
+    public String getType(){
+        return "Admin";
+    }
+
 }

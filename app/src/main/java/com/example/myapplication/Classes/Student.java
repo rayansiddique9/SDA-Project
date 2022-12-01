@@ -38,6 +38,20 @@ public class Student extends Visitor {
         this.fs = new filter_SortPersistence();
     }
 
+    public Student(int uid,String name, String email,int isdisabled)
+    {
+        super(name, email, "NULL", 0, isdisabled);
+        this.educationType = "NULL";
+        this.uid = uid;
+        this.e = null;
+        this.su = null;
+        this.mp = null;
+        this.vp = null;
+        this.uc = null;
+    }
+
+    public String getType(){ return "Student"; }
+
     public String getDob() {
         return dob;
     }
