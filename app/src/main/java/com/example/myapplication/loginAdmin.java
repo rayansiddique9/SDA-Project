@@ -45,6 +45,7 @@ public class loginAdmin extends AppCompatActivity {
                         ca = currentUserAdmin.getInstance(obj1);
                         Intent in = new Intent(loginAdmin.this, homePageAdmin.class);
                         startActivity(in);
+                        finish();
 
                     } else {
                         Toast.makeText(loginAdmin.this, "Wrong credentials", Toast.LENGTH_SHORT).show();

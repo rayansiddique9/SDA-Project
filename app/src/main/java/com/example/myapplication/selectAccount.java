@@ -47,6 +47,7 @@ public class selectAccount extends AppCompatActivity{
                 {
                     Intent in = new Intent(selectAccount.this, loginAdmin.class);
                     startActivity(in);
+                    finish();
                 }
             }
         });
